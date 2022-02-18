@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
    <h1> Food Story</h1>
-  <Link href='/CreateRecipePage'> Create Recipe </Link>
-    <Link href='/SearchRecipePage'> Search Recipe </Link>
+  <Link href='/CreateRecipePage'><a> Create Recipe</a> </Link>
+    <Link href='/SearchRecipePage'><a> Search Recipe</a> </Link>
  
 
 
