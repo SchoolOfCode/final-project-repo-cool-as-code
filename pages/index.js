@@ -8,7 +8,7 @@ export default function Home() {
     <>
    <h1> Food Story story</h1>
 <h2>Test</h2>
- 
+ <Link href='/searchPages'><a>Search</a></Link>
 
 
    </>
