@@ -6,10 +6,11 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <>
-   <h1> Food Story story</h1>
-<h2>Test</h2>
- <Link href='/searchPages'><a>Search</a></Link>
+   <h1> Food Story </h1>
 
+ <Link href='/searchRecipe'><a>Search</a></Link>
+ <br></br>
+ <Link href='/createRecipe'><a>Create</a></Link>
 
    </>
   )
