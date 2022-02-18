@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <>
-   <h1> Food Story</h1>
+   <h1> Food Story story</h1>
 <h2>Test</h2>
  
 
