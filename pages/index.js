@@ -6,9 +6,10 @@ import Navbar from "../components/navbar";
 export default function Home() {
   return (
     <>
+          <Navbar />
       <h1> Food Story </h1>
       <h3>User Login</h3>
-      <Navbar />
+
       <Link href="/home">
         <a>Search</a>
       </Link>
