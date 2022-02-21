@@ -10,8 +10,10 @@ export default function Home() {
       <h1> Food Story </h1>
       <h3>User Login</h3>
       <Navbar />
+      <MtButton mealTypes = "breakfast" />
       <MtButton mealTypes = "lunch" />
       <MtButton mealTypes = "dinner" />
+      <MtButton mealTypes = "snacks" />
       <Link href="/home">
         <a>Search</a>
       </Link>
