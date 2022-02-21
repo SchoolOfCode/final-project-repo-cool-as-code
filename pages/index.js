@@ -11,6 +11,7 @@ export default function Home() {
       <h3>User Login</h3>
       <Navbar />
       <MtButton mealTypes = "lunch" />
+      <MtButton mealTypes = "dinner" />
       <Link href="/home">
         <a>Search</a>
       </Link>
