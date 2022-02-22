@@ -1,0 +1,41 @@
+.header{
+display: flex;
+width:100%;
+align-items: center;
+justify-content: space-between;
+position: relative;
+padding:.4rem;
+background:orange;
+}
+
+
+.list_items{
+list-style-type: none;
+display: flex;
+gap:3.5rem;
+   
+}
+
+.list_items .list a{
+
+    text-decoration: none;
+    color: white;
+    font-size: clamp(1rem, .5vw + .5rem, 3.5rem );
+}
+
+
+.list_items .list a:hover, .list_items .list a:focus{
+
+    color:navy
+}
+
+.close_icon{
+    display: none;
+}
+
+.hamburger_icon .icon{
+    color: navy;
+    font-size:clamp(1rem,4vw + 1rem ,4rem) ;   
+    cursor: pointer;
+    display:none;
+}

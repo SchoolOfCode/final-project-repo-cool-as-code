@@ -17,6 +17,7 @@ const Hamburger = ({ isOpen }) => {
           justify-content: space-around;
           flex-flow: column nowrap;
           z-index: 10;
+          background-color: black;
         }
         .burger {
           width: 2rem;
