@@ -1,49 +1,63 @@
-import { Input, Space } from "antd";
-import { AudioOutlined } from "@ant-design/icons";
 import { useState } from "react";
+
+//libraries
+import { Input } from "antd";
+import { AudioOutlined } from "@ant-design/icons";
+
+//Config
+import { SEARCH_BASE_URL } from "../APIconfig/config";
+
+//API
+import API from "../APIconfig/API";
 
 const { Search } = Input;
 
 const suffix = (
-	<AudioOutlined
-		style={{
-			fontSize: 16,
-			color: "#1890ff",
-		}}
-	/>
+  <AudioOutlined
+    style={{
+      fontSize: 16,
+      color: "#1890ff",
+    }}
+  />
 );
 
 function SearchBar() {
-	const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-	// function to receive search term
-	// update the search term
+  //for local host
+  async function fetchData(searchTerm) {
+    let response = await fetch(
+      `http://localhost:5000/recipes/search?query=${searchTerm}`
+    );
+    const data = await response.json();
+    console.log(data);
 
-	// fetch request sent to API, build URL Header to send the search
+    //for Heroku
+    const fetchRecipes = async (searchTerm) => {
+      try {
+        //   set error & set Loading
+        const recipes = await API.fetchRecipe(searchTerm);
+      } catch (error) {
+        //set error
+      }
+      //set loading
+    };
+  }
 
-	async function fetchData(searchTerm) {
-		let response = await fetch(
-			`http://localhost:5000/recipes?food=${searchTerm}`
-		);
-		const data = await response.json();
-		setLinks(data.payload);
-	}
+  function onClick(searchTerm) {
+    fetchData(searchTerm);
+  }
 
-	function onClick(value) {
-		setSearchTerm(value);
-		fetchData(searchTerm);
-	}
-
-	return (
-		<div>
-			<Search
-				placeholder="What do you fancy?"
-				allowClear
-				onSearch={onClick}
-				style={{ width: 200 }}
-			/>
-		</div>
-	);
+  return (
+    <div>
+      <Search
+        placeholder="What do you fancy?"
+        allowClear
+        onSearch={onClick}
+        style={{ width: 200 }}
+      />
+    </div>
+  );
 }
 
 export default SearchBar;
