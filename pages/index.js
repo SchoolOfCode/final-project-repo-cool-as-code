@@ -3,17 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/navbar";
-import MtButton from "../components/mealtypebutton"
+
 export default function Home() {
   return (
     <>
       <h1> Food Story </h1>
       <h3>User Login</h3>
       <Navbar />
-      <MtButton mealTypes = "breakfast" />
-      <MtButton mealTypes = "lunch" />
-      <MtButton mealTypes = "dinner" />
-      <MtButton mealTypes = "snacks" />
+     
       <Link href="/home">
         <a>Search</a>
       </Link>
