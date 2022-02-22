@@ -1,32 +1,44 @@
 import { Close, MenuOutlined } from '@material-ui/icons';
 import Link from 'next/link';
+import { useState } from 'react';
 
-import css from "./header.module.css"
+
 
 const Header = () => {
-    return (
-        <div className={css.header}>
+    
+    
+const [navActive , setNavActive] = useState(false);
 
-          <div className={css.logo}>
+ function openMenu(){
+
+    setNavActive(!navActive)
+
+ }
+
+    
+    return (
+        <div className="header">
+
+          <div className="logo">
               <span>FS</span>
           </div>
           <nav>
-<ul className={css.list_items}>
+<ul className={navActive ? "list_items active"  :"list_items"}>
 
-<div className={css.close_icon}>
-<Close className={css.close}/>
+<div className="close_icon">
+<Close className="close" onClick={openMenu}/>
 </div>
-<li className={css.list}><Link href="/home"><a>Home</a></Link></li>
-<li  className={css.list}><Link href="/search"><a>Search</a></Link></li>
-<li  className={css.list}><Link href="/createRecipe"><a>Create Recipe</a></Link></li>
-<li className={css.list}><Link href="/createRecipe"><a>Logout</a></Link></li>
+<li className="list"><Link href="/home"><a>Home</a></Link></li>
+<li  className="list"><Link href="/search"><a>Search</a></Link></li>
+<li  className="list"><Link href="/createRecipe"><a>Create Recipe</a></Link></li>
+<li className="list"><Link href="/createRecipe"><a>Logout</a></Link></li>
 
 </ul>
 
           </nav> 
-        <div className={css.hamburger_icon}>
+        <div className="hamburger_icon">
 
-          <MenuOutlined className={css.icon}/>  
+          <MenuOutlined className="icon" onClick={openMenu}/>  
         </div>
 
         </div>
