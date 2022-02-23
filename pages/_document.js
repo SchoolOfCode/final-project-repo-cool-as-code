@@ -9,7 +9,6 @@ class MyDocument extends Document {
 			styles: <>{initialProps.styles}</>,
 		};
 	}
-	// small change
 	render() {
 		return (
 			<Html lang="en">
