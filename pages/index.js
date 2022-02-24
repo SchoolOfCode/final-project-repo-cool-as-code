@@ -1,10 +1,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
-import { Button } from "@nextui-org/react";
 import LoginButton from "../components/LoginButton/LoginButton";
-import { SubtitlesOutlined } from "@material-ui/icons";
 
 const BgImage = dynamic(
 	() => import("../components/BackgroundImage/BackgroundImage.js"),
@@ -18,18 +17,21 @@ export default function Home() {
 		<>
 			<div className={styles.wrapper}>
 				<Image
-					src="/image/foodstory_rev2.png"
+					src="/image/logo_dark.png"
 					alt="Foodstory Logo"
-					width="500%"
-					height="500%"
+					width="1491px"
+					height="608px"
+					className={styles.logo}
 				/>
 				<LoginButton
 					className={styles.landingButton}
-					color="gradient"
+					color="primary"
 					size="xl"
 					clickable="true"
 				>
-					ENTER
+					<Link href="/home">
+						<a>LOGIN</a>
+					</Link>
 				</LoginButton>
 			</div>
 			<BgImage />

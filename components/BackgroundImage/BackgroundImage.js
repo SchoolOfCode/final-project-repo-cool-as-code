@@ -31,11 +31,23 @@ function BGImage() {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-	if (width && height) {
+	if (width < height) {
 		return (
 			<div className={styles.box}>
 				<Image
-					src="/../public/image/home.jpg"
+					src="/../public/image/background_portrait.jpg"
+					width={width}
+					height={height}
+					alt="Background Image"
+				/>
+			</div>
+		);
+	}
+	if (width > height) {
+		return (
+			<div className={styles.box}>
+				<Image
+					src="/../public/image/background_landscape.jpg"
 					width={width}
 					height={height}
 					alt="Background Image"
