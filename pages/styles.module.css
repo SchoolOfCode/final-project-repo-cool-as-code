@@ -1,6 +1,10 @@
 .landingImage {
 	z-index: 0;
 }
+
+.landingLogo {
+	z-index: 1;
+}
 .landingButton {
 	justify-content: center;
 	align-items: center;

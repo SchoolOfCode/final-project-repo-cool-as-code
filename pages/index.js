@@ -16,10 +16,12 @@ export default function Home() {
 				objectPosition="center"
 			/>
 			<Image
-				className={styles.landingImage}
+				className={styles.landingLogo}
 				src="/foodstory.png"
 				alt="Photo of Food"
-				layout="fill"
+				layout="responsive"
+				height="200px"
+				width="200px"
 				objectFit="cover"
 				objectPosition="center"
 			/>
