@@ -20,16 +20,26 @@ const SearchResultsPage = () => {
   let searchTerm = "Results for: Breakfast"
 
   let {state,setState} = useContext(pageWrapper)
-  console.log("hi", state)
+  //console.log("hi", state)
+  //console.log("hi", state.apiData)
   return (
     <>
       <h1>Search Page</h1>
       <SearchBar />
       
       <Grid header={searchTerm}>
-        {state.apiData.payload.map((item) => (
-          <RecipeCard key={i} image={Arr[0]} />
-        ))}
+      {console.log(state.apiData.length)}
+        
+
+
+
+     
+        {state.apiData.map((item) => (
+          item.length > 0?
+         
+          <RecipeCard key={item} image={Arr[0]} />
+          :null
+          ))}
       </Grid>
     </>
   )

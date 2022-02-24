@@ -7,13 +7,13 @@ export let pageWrapper = React.createContext({})
 
 
 function MyApp({ Component, pageProps }) {
-  let [state ,setState] = useState({apiData:"data"})
+  let [state ,setState] = useState({apiData:[]})
   
   return (
     <pageWrapper.Provider value={{state,setState}}>
-   {/* {// <NextUIProvider>} */}
+    <NextUIProvider>
       <Component {...pageProps} />
-    {/* </NextUIProvider> */}
+     </NextUIProvider> 
     </pageWrapper.Provider>
   )
 }
