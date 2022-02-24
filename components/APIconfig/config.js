@@ -4,5 +4,6 @@
 const API_URL = "https://soc-foodstory.herokuapp.com/";
 
 const SEARCH_BASE_URL = `${API_URL}recipes?search=`;
+const TYPE_BASE_URL = `${API_URL}recipes?type=`;
 
-export { API_URL, SEARCH_BASE_URL };
+export { API_URL, SEARCH_BASE_URL, TYPE_BASE_URL };
