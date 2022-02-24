@@ -15,14 +15,14 @@ export default function Home() {
 				objectFit="cover"
 				objectPosition="center"
 			/>
-			{/* <Image
+			<Image
 				className={styles.landingImage}
-				src="/foodstory.jpg"
+				src="/foodstory.png"
 				alt="Photo of Food"
 				layout="fill"
 				objectFit="cover"
 				objectPosition="center"
-			/> */}
+			/>
 			<LoginButton
 				className={styles.landingButton}
 				color="gradient"
