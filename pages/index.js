@@ -1,13 +1,22 @@
 import Header from "../components/Header/Header.js";
-import RecipeCard from "../components/RecipeCard/RecipeCard";
+import Image from "next/image";
+
+import { Button } from "@nextui-org/react";
 
 export default function Home() {
-	return (
-		<>
-			<Header />
-			<h1> Food Story </h1>
-			<h3>User Login</h3>
-			<RecipeCard />
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <Image
+        layout="responsive"
+        src="/home.jpg"
+        alt="Sunset"
+        width={600}
+        height={450}
+      />
+      <Button color="gradient" auto>
+        Enter
+      </Button>
+    </>
+  );
 }
