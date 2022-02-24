@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 //libraries
 import { Input } from "antd"
@@ -6,6 +6,7 @@ import { AudioOutlined } from "@ant-design/icons"
 
 //API
 import API from "../APIconfig/API"
+import { pageWrapper } from "../../pages/_app"
 
 const { Search } = Input
 
@@ -19,13 +20,16 @@ const suffix = (
 )
 
 function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState("")
+//Use a copy of line 24 to put the results  on any other page
+  let {state,setState} = useContext(pageWrapper)
+  console.log(state)
+ 
 
   const fetchRecipesSearch = async (searchTerm) => {
     try {
       //   set error & set Loading
       const response = await API.fetchRecipesSearch(searchTerm)
-      console.log(response)
+ setState({...state , apiData:response})
     } catch (error) {
       //set error
     }

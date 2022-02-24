@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 
 //styling
 import "antd/dist/antd.css"
@@ -7,6 +7,7 @@ import "antd/dist/antd.css"
 import RecipeCard from "/components/RecipeCard/RecipeCard.js"
 import Grid from "/components/Grid/Grid.js"
 import SearchBar from "/components/SearchBar/SearchBar"
+import { pageWrapper } from "../_app"
 
 const Arr = [
   "https://media.istockphoto.com/photos/people-laughing-at-dinner-table-picture-id1181396290?k=20&m=1181396290&s=612x612&w=0&h=HuHaBwesWsMnlZeoBOMqsa_xbo6H0nc3Vfa2CN_We2g=",
@@ -17,13 +18,17 @@ const Arr = [
 
 const SearchResultsPage = () => {
   let searchTerm = "Results for: Breakfast"
+
+  let {state,setState} = useContext(pageWrapper)
+  console.log("hi", state)
   return (
     <>
       <h1>Search Page</h1>
       <SearchBar />
+      
       <Grid header={searchTerm}>
-        {Arr.map((i) => (
-          <RecipeCard key={i} image={i} />
+        {state.apiData.payload.map((item) => (
+          <RecipeCard key={i} image={Arr[0]} />
         ))}
       </Grid>
     </>
@@ -31,3 +36,4 @@ const SearchResultsPage = () => {
 }
 
 export default SearchResultsPage
+// we want to check if the state is undef  if it is undefined  we dont want to map anything
