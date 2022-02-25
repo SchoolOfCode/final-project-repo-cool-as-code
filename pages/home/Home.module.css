@@ -1,0 +1,8 @@
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+  .grid {
+    z-index: 0;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

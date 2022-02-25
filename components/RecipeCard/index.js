@@ -1,63 +1,30 @@
-// import React from "react";
-// import { Card } from "antd";
-// const { Meta } = Card;
-// import Image from "next/image";
-// import "./RecipeCard.module.css";
-// //import "antd/dist/antd.css";
+import React from "react"
+import Image from "next/image"
 
-// //import { Card } from "antd";
+//styles
+import CardStyles from "./RecipeCard.module.css"
 
-// function RecipeCard() {
-//   return (
-//     <>
-//       <Card
-//         hoverable
-//         style={{ width: 240 }}
-//         cover={
-//           <Image
-//             src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-//             width="240px"
-//             height="240px"
-//             alt="example"
-//           />
-//         }
-//       >
-//         <Meta title="Europe Street beat" description="www.instagram.com" />
-//       </Card>
-//       ,
-//       <div id="container" style="padding: 24px" />
-//     </>
-//   );
-// }
-
-import { Grid, Card, Row, Text } from "@nextui-org/react";
-
-function RecipeCard() {
+function RecipeCard({ image, recipeName, title, p1, p2 }) {
   return (
-    <Grid.Container gap={2} justify="flex-start">
-      <Grid xs={6} sm={3}>
-        <Card hoverable clickable shadow>
-          <Card.Body css={{ p: 0 }}>
-            <Card.Image
-              width="240px"
-              height="240px"
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              alt="mytest"
-            />
-          </Card.Body>
-          <Card.Footer justify="flex-start">
-            <Row
-              wrap="wrap"
-              justify="space-between"
-              width="240px"
-              height="240px"
-            >
-              <Text b>Breakfast</Text>
-            </Row>
-          </Card.Footer>
-        </Card>
-      </Grid>
-    </Grid.Container>
-  );
+    <>
+      <div className={CardStyles.flip_card}>
+        <div className={CardStyles.flip_card_inner}>
+          <div className={CardStyles.flip_card_front}>
+            <div className={CardStyles.imageContainer}>
+              <Image src={image} layout="fill" alt="Recipe Picture" />
+            </div>
+            <div className={CardStyles.infoContainer}>
+              <p className={CardStyles.info}>{recipeName}</p>
+            </div>
+          </div>
+          <div className={CardStyles.flip_card_back}>
+            <h3 className={CardStyles.writting}>{title}</h3>
+            <p className={CardStyles.writting}>Meal Type: {p1}</p>
+            <p className={CardStyles.writting}>Tags: {p2}</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
-export default RecipeCard;
+export default RecipeCard

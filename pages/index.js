@@ -1,28 +1,40 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Header from "../components/Header/Header.js";
-import styles from "../styles/Home.module.css";
-import Navbar from "../components/navbar";
-import RecipeCard from "../components/RecipeCard";
+import Image from "next/image"
+import styles from "./styles.module.css"
+import dynamic from "next/dynamic"
+import Link from "next/link"
 
+import LoginButton from "../components/LoginButton"
+
+const BgImage = dynamic(
+  () => import("../components/BackgroundImage/BackgroundImage.js"),
+  {
+    ssr: false,
+  }
+)
 
 export default function Home() {
   return (
     <>
-<Header/>
-    
-      <h1> Food Story </h1>
-      <h3>User Login</h3>
-      <Navbar />
-      <Link href="/home">
-        <a>Search</a>
-      </Link>
-      <br></br>
-      <Link href="/createRecipe">
-        <a>Create</a>
-      </Link>
-      <RecipeCard />
+      <div className={styles.wrapper}>
+        <Image
+          src="/image/logo_dark.png"
+          alt="Foodstory Logo"
+          width="1491px"
+          height="608px"
+          className={styles.logo}
+        />
+        <LoginButton
+          className={styles.landingButton}
+          color="primary"
+          size="xl"
+          clickable="true"
+        >
+          <Link href="/home">
+            <a>LOGIN</a>
+          </Link>
+        </LoginButton>
+      </div>
+      <BgImage />
     </>
-  );
+  )
 }

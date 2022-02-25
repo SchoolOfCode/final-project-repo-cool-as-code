@@ -1,24 +1,43 @@
-import React from "react";
-import MtButton from "/components/mealtypebutton";
-import { useState, useEffect } from "react";
-import css from "./search.module.css";
-import RecipeCard from "../../components/RecipeCard";
-export default function searchPage() {
-  //const [recipeData, setRecipeData] = useState();
-  //to create fetch request to get return value for the empty buttons
+import React, { useContext } from "react"
 
-  async function getMealTypeRecipe(mealType) {}
+//styling
+import SearchStyling from "./SearchStyle.module.css"
+
+//components
+import RecipeCard from "../../components/RecipeCard"
+import Grid from "../../components/Grid"
+import SearchInput from "../../components/SearchInput"
+import Header from "../../components/Header"
+
+//useContext
+import { pageWrapper } from "../_app"
+
+const SearchResultsPage = () => {
+  let { state, setState } = useContext(pageWrapper)
 
   return (
     <>
-      <h1>Search</h1>
-      <nav className={css.grid}>
-        <MtButton mealTypes="breakfast" />
-        <MtButton mealTypes="lunch" />
-        <MtButton mealTypes="dinner" />
-        <MtButton mealTypes="snacks" />
-      </nav>
-      <RecipeCard />
+      <Header />
+      <div className={SearchStyling.wrapper}>
+        <SearchInput />
+        <Grid header={`Search Results: ${state.apiMessage}`}>
+          {console.log(state.apiData, state.apiMessage)}
+          {state.apiData.length > 0
+            ? state.apiData.map((item, index) => (
+                <RecipeCard
+                  key={index}
+                  image={item.image}
+                  recipeName={item.title}
+                  title={item.story}
+                  p1={item.type}
+                  p2={item.tags}
+                />
+              ))
+            : null}
+        </Grid>
+      </div>
     </>
-  );
+  )
 }
+
+export default SearchResultsPage
