@@ -26,6 +26,7 @@ const SearchPage = () => {
         <FeatureButton />
         <FeatureButton />
         <FeatureButton />
+        <FeatureButton />
       </nav>
     </div>
   )
