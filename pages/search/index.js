@@ -1,13 +1,13 @@
 import React, { useContext } from "react"
 
 //styling
-import "antd/dist/antd.css"
+// import "antd/dist/antd.css"
 import SearchStyling from "./Search.module.css"
 
 //components
-import RecipeCard from "/components/RecipeCard/RecipeCard.js"
-import Grid from "/components/Grid/Grid.js"
-import SearchBar from "./../../components/Searchbar/index.js"
+import RecipeCard from "../../components/RecipeCard/RecipeCard.js"
+import Grid from "../../components/Grid/Grid.js"
+import SearchBar from "../../components/Searchbar/index.js"
 import Header from "../../components/Header/Header.js"
 
 //useContext

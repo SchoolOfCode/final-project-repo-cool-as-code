@@ -6,8 +6,8 @@ import "antd/dist/antd.css"
 
 //components
 import Header from "../../components/Header/Header.js"
-import SearchBar from "../../components/Searchbar/index.js"
-import MtButton from "../../components/MealTypeButton/MealTypeButton.js"
+import SearchBar from "../../components/SearchBar"
+import MtButton from "../../components/MealTypeButton/MealTypeButton"
 import FeatureButton from "../../components/FeatureButton/FeatureButton.js"
 
 const SearchPage = () => {
