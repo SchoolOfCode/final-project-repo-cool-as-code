@@ -1,20 +1,29 @@
-import { React } from "react"
-import { link } from "next/link"
+import { useContext,React } from "react"
+import Router from "next/router"
+
 import { Button } from "antd"
 import { useState } from "react"
 
+//Page wrapper for useContext
+import { pageWrapper } from "../../pages/_app"
 //API
 import API from "../APIconfig/API"
 
+
+
 export default function MtButton({ getMeal, mealTypes }) {
+  
+    let { state, setState } = useContext(pageWrapper)
   const fetchRecipesByType = async (mealTypes) => {
     const response = await API.fetchRecipesByType(mealTypes)
+    setState({ ...state, apiData: response.payload })
     console.log(response)
   }
 
   function getMeal() {
-    console.log("meal type:", mealTypes)
+  
     fetchRecipesByType(mealTypes)
+    Router.push("/search")
   }
 
   return (

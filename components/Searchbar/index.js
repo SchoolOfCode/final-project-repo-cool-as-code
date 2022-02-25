@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import Router from "next/router"
 
 //libraries
 import { Input } from "antd"
@@ -40,6 +41,7 @@ function SearchBar() {
 
   function onClick(searchTerm) {
     fetchRecipesSearch(searchTerm)
+    Router.push("/search")
   }
 
   return (
