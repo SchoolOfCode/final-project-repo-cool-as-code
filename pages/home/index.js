@@ -8,6 +8,7 @@ import "antd/dist/antd.css"
 import Header from "../../components/Header/Header.js"
 import SearchBar from "../../components/Searchbar/index.js"
 import MtButton from "/components/MealTypeButton/MealTypeButton.js"
+import FeatureButton from "../../components/FeatureButton/FeatureButton.js"
 
 const SearchPage = () => {
   // async function getMealTypeRecipe(mealType)
@@ -22,6 +23,9 @@ const SearchPage = () => {
         <MtButton onClick={() => getMeal} mealTypes="Lunch" />
         <MtButton onClick={() => getMeal} mealTypes="Dinner" />
         <MtButton onClick={() => getMeal} mealTypes="Snack" />
+        <FeatureButton />
+        <FeatureButton />
+        <FeatureButton />
       </nav>
     </div>
   )
