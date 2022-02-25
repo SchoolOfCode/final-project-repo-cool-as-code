@@ -2,45 +2,43 @@ import React, { useContext } from "react"
 
 //styling
 import "antd/dist/antd.css"
+import SearchStyling from "./Search.module.css"
 
 //components
 import RecipeCard from "/components/RecipeCard/RecipeCard.js"
 import Grid from "/components/Grid/Grid.js"
-import SearchBar from "/components/SearchBar/SearchBar"
+import SearchBar from "./../../components/Searchbar/index.js"
+import Header from "../../components/Header/Header.js"
+
+//useContext
 import { pageWrapper } from "../_app"
 
-const Arr = [
-  "https://media.istockphoto.com/photos/people-laughing-at-dinner-table-picture-id1181396290?k=20&m=1181396290&s=612x612&w=0&h=HuHaBwesWsMnlZeoBOMqsa_xbo6H0nc3Vfa2CN_We2g=",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfpZB0_3qGRT0vx7Jlw662goIgQc9en4esg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8yMIHkxs901EzRfpvMq6gIEfDADZcfbJxLw&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5WXgA7BWwKq7f8CwtJmvPpiYk3LsAey0dZw&usqp=CAU",
-]
-
 const SearchResultsPage = () => {
-  let searchTerm = "Results for: Breakfast"
+  let searchTerm = "Search Results for: Breakfast"
 
-  let {state,setState} = useContext(pageWrapper)
-  //console.log("hi", state)
-  //console.log("hi", state.apiData)
+  let { state, setState } = useContext(pageWrapper)
+
   return (
     <>
-      <h1>Search Page</h1>
-      <SearchBar />
-      
-      <Grid header={searchTerm}>
-      {console.log(state.apiData.length)}
-        
-
-
-
-     
-        {state.apiData.map((item) => (
-          item.length > 0?
-         
-          <RecipeCard key={item} image={Arr[0]} />
-          :null
-          ))}
-      </Grid>
+      <Header />
+      <div className={SearchStyling.wrapper}>
+        <SearchBar />
+        <Grid header={searchTerm}>
+          {console.log(state.apiData)}
+          {state.apiData.length > 0
+            ? state.apiData.map((item, index) => (
+                <RecipeCard
+                  key={index}
+                  image={item.image}
+                  recipeName={item.title}
+                  title={item.story}
+                  p1={item.type}
+                  p2={item.tags}
+                />
+              ))
+            : null}
+        </Grid>
+      </div>
     </>
   )
 }

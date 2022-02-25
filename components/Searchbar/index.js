@@ -20,27 +20,24 @@ const suffix = (
 )
 
 function SearchBar() {
-//Use a copy of line 24 to put the results  on any other page
-  let {state,setState} = useContext(pageWrapper)
+  //Use a copy of line 24 to put the results  on any other page
+  let { state, setState } = useContext(pageWrapper)
   console.log(state.apiData)
- 
 
   const fetchRecipesSearch = async (searchTerm) => {
     try {
       //   set error & set Loading
       const response = await API.fetchRecipesSearch(searchTerm)
 
-console.log(response.payload)
-      
+      console.log(response)
 
- setState({...state , apiData:response.payload})
-      
+      setState({ ...state, apiData: response.payload })
     } catch (error) {
       //set error
     }
     //set loading
   }
-  
+
   function onClick(searchTerm) {
     fetchRecipesSearch(searchTerm)
   }

@@ -4,4 +4,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  .wrapper {
+    align-items: center;
+    justify-content: center;
+  }
 }

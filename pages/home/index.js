@@ -1,14 +1,12 @@
 import React from "react"
 
 //styling
-import PageStyling from "./searchPages.module.css"
-
-//styling
+import PageStyling from "./HomeStyle.module.css"
 import "antd/dist/antd.css"
 
 //components
 import Header from "../../components/Header/Header.js"
-import SearchBar from "../../components/Searchbar/SearchBar.js"
+import SearchBar from "../../components/Searchbar/index.js"
 import MtButton from "/components/MealTypeButton/MealTypeButton.js"
 
 const SearchPage = () => {

@@ -45,11 +45,17 @@
 .flip_card_back {
   background-color: white;
   transform: rotateY(180deg);
+  padding-top: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 0.5em;
+  line-height: 1em;
 }
 
 .writting {
   color: black;
   font-style: italic;
+  font-size: 1em;
 }
 
 .info {
