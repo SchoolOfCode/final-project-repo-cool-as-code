@@ -15,11 +15,13 @@ body {
 	position: a;
 	padding: 0.4rem;
 	background: #fb8500;
+	/* height: 10vh; */
 }
 
 .list_items {
 	list-style-type: none;
 	display: flex;
+	justify-content: flex-end;
 	gap: 3.5rem;
 }
 
