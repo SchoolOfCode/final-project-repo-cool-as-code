@@ -11,7 +11,7 @@ function RecipeCard({ image, recipeName, title, p1, p2 }) {
         <div className={CardStyles.flip_card_inner}>
           <div className={CardStyles.flip_card_front}>
             <div className={CardStyles.imageContainer}>
-              <Image src={image} layout="fill" bo />
+              <Image src={image} layout="fill" alt="Recipe Picture" />
             </div>
             <div className={CardStyles.infoContainer}>
               <p className={CardStyles.info}>{recipeName}</p>
