@@ -7,6 +7,8 @@ module.exports = nextConfig;
 
 // module.exports = {
 //   images: {
-//     domains: ["os.alipayobjects.com"],
+//     domains: [
+//       "https://i.ibb.co/2WHGdM3/lindsay-cotter-9-J7s-Hie-VFi0-unsplash.jpg",
+//     ],
 //   },
 // };

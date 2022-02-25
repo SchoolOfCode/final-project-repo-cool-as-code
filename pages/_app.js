@@ -5,8 +5,8 @@ import { useState } from "react"
 import React from "react"
 export let pageWrapper = React.createContext({})
 
-
 function MyApp({ Component, pageProps }) {
+
   let [state ,setState] = useState({apiData:[]})
   
   return (
@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
      </NextUIProvider> 
     </pageWrapper.Provider>
   )
+
 }
 
 export default MyApp
