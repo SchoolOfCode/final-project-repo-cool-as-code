@@ -6,7 +6,12 @@ import React from "react"
 export let pageWrapper = React.createContext({})
 
 function MyApp({ Component, pageProps }) {
+
   let [state, setState] = useState({ apiData: [], apiMessage: "" })
+
+
+  
+
   return (
     <pageWrapper.Provider value={{ state, setState }}>
       <NextUIProvider>
@@ -14,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       </NextUIProvider>
     </pageWrapper.Provider>
   )
+
 }
 
 export default MyApp
