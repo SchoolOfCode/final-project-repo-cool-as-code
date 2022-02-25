@@ -14,11 +14,12 @@ const Header = () => {
 		<div className="header">
 			<div className="logo">
 				<Image
-					src="/app_logo.png"
+					className="image"
+					src="/nav_logo1.png"
 					alt="Foodstory Logo"
 					// layout="responsive"
-					width="812"
-					height="317"
+					width="136"
+					height="52"
 				/>
 			</div>
 			<nav>
