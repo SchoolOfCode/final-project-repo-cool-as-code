@@ -7,13 +7,16 @@ export let pageWrapper = React.createContext({})
 
 function MyApp({ Component, pageProps }) {
 
-  let [state ,setState] = useState({apiData:[]})
+  let [state, setState] = useState({ apiData: [], apiMessage: "" })
+
+
   
+
   return (
-    <pageWrapper.Provider value={{state,setState}}>
-    <NextUIProvider>
-      <Component {...pageProps} />
-     </NextUIProvider> 
+    <pageWrapper.Provider value={{ state, setState }}>
+      <NextUIProvider>
+        <Component {...pageProps} />
+      </NextUIProvider>
     </pageWrapper.Provider>
   )
 
