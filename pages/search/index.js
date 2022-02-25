@@ -1,8 +1,7 @@
 import React, { useContext } from "react"
 
 //styling
-// import "antd/dist/antd.css"
-import SearchStyling from "./Search.module.css"
+import SearchStyling from "./SearchStyle.module.css"
 
 //components
 import RecipeCard from "../../components/RecipeCard"
