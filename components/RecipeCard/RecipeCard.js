@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 
 //styles
 import CardStyles from "./RecipeCard.module.css"
@@ -9,7 +10,9 @@ function RecipeCard({ image, recipeName, title, p1, p2 }) {
       <div className={CardStyles.flip_card}>
         <div className={CardStyles.flip_card_inner}>
           <div className={CardStyles.flip_card_front}>
-            <img className={CardStyles.img} src={image} />
+            <div className={CardStyles.imageContainer}>
+              <Image src={image} layout="fill" bo />
+            </div>
             <div className={CardStyles.infoContainer}>
               <p className={CardStyles.info}>{recipeName}</p>
             </div>
