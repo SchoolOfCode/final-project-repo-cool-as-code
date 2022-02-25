@@ -1,14 +1,30 @@
-import React from "react";
-import "antd/dist/antd.css";
-import SearchBar from "/components/SearchBar/SearchBar";
+import React from "react"
+
+//styling
+import PageStyling from "./HomeStyle.module.css"
+import "antd/dist/antd.css"
+
+//components
+import Header from "../../components/Header/Header.js"
+import SearchBar from "../../components/Searchbar/index.js"
+import MtButton from "/components/MealTypeButton/MealTypeButton.js"
 
 const SearchPage = () => {
-	return (
-		<div>
-			<h1>Search Page</h1>
-			<SearchBar />
-		</div>
-	);
-};
+  // async function getMealTypeRecipe(mealType)
 
-export default SearchPage;
+  return (
+    <div>
+      <Header />
+      <h1>Home Page</h1>
+      <SearchBar />
+      <nav className={PageStyling.grid}>
+        <MtButton onClick={() => getMeal} mealTypes="Breakfast" />
+        <MtButton onClick={() => getMeal} mealTypes="Lunch" />
+        <MtButton onClick={() => getMeal} mealTypes="Dinner" />
+        <MtButton onClick={() => getMeal} mealTypes="Snack" />
+      </nav>
+    </div>
+  )
+}
+
+export default SearchPage
