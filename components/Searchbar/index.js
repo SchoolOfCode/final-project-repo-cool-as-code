@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import Router from "next/router"
+import { useRouter } from "next/router"
 
 //libraries
 import { Input } from "antd"
@@ -23,7 +24,8 @@ const suffix = (
 function SearchBar() {
   //Use a copy of line 24 to put the results  on any other page
   let { state, setState } = useContext(pageWrapper)
-  console.log(state.apiData)
+  const router = useRouter()
+  // console.log(state.apiData)
 
   const fetchRecipesSearch = async (searchTerm) => {
     try {
@@ -33,6 +35,11 @@ function SearchBar() {
       console.log(response)
 
       setState({ ...state, apiData: response.payload })
+      if (router.pathname === "/search" || response.payload.length === 0) {
+        return
+      } else {
+        Router.push("/search")
+      }
     } catch (error) {
       //set error
     }
@@ -41,7 +48,10 @@ function SearchBar() {
 
   function onClick(searchTerm) {
     fetchRecipesSearch(searchTerm)
-    Router.push("/search")
+    console.log(router.pathname)
+    //check if its on search page dont push
+    //if 0 results not on search page dont push
+    //else push
   }
 
   return (
