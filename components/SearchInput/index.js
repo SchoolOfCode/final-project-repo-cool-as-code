@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import Router from "next/router"
 import { useRouter } from "next/router"
 
@@ -23,7 +23,7 @@ const suffix = (
   />
 )
 
-function SearchBar() {
+function SearchInput() {
   //Use a copy of line 24 to put the results  on any other page
   let { state, setState } = useContext(pageWrapper)
   const router = useRouter()
@@ -71,4 +71,4 @@ function SearchBar() {
   )
 }
 
-export default SearchBar
+export default SearchInput

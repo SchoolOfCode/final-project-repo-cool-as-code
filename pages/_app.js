@@ -1,16 +1,13 @@
 import "../styles/globals.css"
 import { NextUIProvider } from "@nextui-org/react"
 import { useState } from "react"
+import "antd/dist/antd.css"
 
 import React from "react"
 export let pageWrapper = React.createContext({})
 
 function MyApp({ Component, pageProps }) {
-
   let [state, setState] = useState({ apiData: [], apiMessage: "" })
-
-
-  
 
   return (
     <pageWrapper.Provider value={{ state, setState }}>
@@ -19,7 +16,6 @@ function MyApp({ Component, pageProps }) {
       </NextUIProvider>
     </pageWrapper.Provider>
   )
-
 }
 
 export default MyApp

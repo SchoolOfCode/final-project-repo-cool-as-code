@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-import LoginButton from "../components/LoginButton/LoginButton"
+import LoginButton from "../components/LoginButton"
 
 const BgImage = dynamic(
   () => import("../components/BackgroundImage/BackgroundImage.js"),

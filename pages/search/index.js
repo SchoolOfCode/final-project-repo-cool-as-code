@@ -5,10 +5,10 @@ import React, { useContext } from "react"
 import SearchStyling from "./Search.module.css"
 
 //components
-import RecipeCard from "../../components/RecipeCard/RecipeCard.js"
-import Grid from "../../components/Grid/Grid.js"
-import SearchBar from "../../components/Searchbar/index.js"
-import Header from "../../components/Header/Header.js"
+import RecipeCard from "../../components/RecipeCard"
+import Grid from "../../components/Grid"
+import SearchInput from "../../components/SearchInput"
+import Header from "../../components/Header"
 
 //useContext
 import { pageWrapper } from "../_app"
@@ -20,7 +20,7 @@ const SearchResultsPage = () => {
     <>
       <Header />
       <div className={SearchStyling.wrapper}>
-        <SearchBar />
+        <SearchInput />
         <Grid header={`Search Results: ${state.apiMessage}`}>
           {console.log(state.apiData, state.apiMessage)}
           {state.apiData.length > 0
@@ -42,4 +42,3 @@ const SearchResultsPage = () => {
 }
 
 export default SearchResultsPage
-// we want to check if the state is undef  if it is undefined  we dont want to map anything
