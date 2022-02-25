@@ -32,9 +32,12 @@ function SearchBar() {
       //   set error & set Loading
       const response = await API.fetchRecipesSearch(searchTerm)
 
-      console.log(response)
-
-      setState({ ...state, apiData: response.payload })
+      setState({
+        ...state,
+        apiData: response.payload,
+        apiMessage: response.message,
+      })
+      console.log(state)
       if (router.pathname === "/search" || response.payload.length === 0) {
         return
       } else {

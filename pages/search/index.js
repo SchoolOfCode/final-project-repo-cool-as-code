@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 
 //styling
 import "antd/dist/antd.css"
@@ -14,8 +14,6 @@ import Header from "../../components/Header/Header.js"
 import { pageWrapper } from "../_app"
 
 const SearchResultsPage = () => {
-  let searchTerm = "Search Results for: Breakfast"
-
   let { state, setState } = useContext(pageWrapper)
 
   return (
@@ -23,8 +21,8 @@ const SearchResultsPage = () => {
       <Header />
       <div className={SearchStyling.wrapper}>
         <SearchBar />
-        <Grid header={searchTerm}>
-          {console.log(state.apiData)}
+        <Grid header={`Search Results: ${state.apiMessage}`}>
+          {console.log(state.apiData, state.apiMessage)}
           {state.apiData.length > 0
             ? state.apiData.map((item, index) => (
                 <RecipeCard
