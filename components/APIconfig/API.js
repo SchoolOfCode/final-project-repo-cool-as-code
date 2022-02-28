@@ -16,9 +16,10 @@ const apiSettings = {
     return await (await fetch(endpoint)).json()
   },
   createNewRecipe: async (dataToSend) => {
+    console.log(`${API_URL}`)
     const endpoint = await fetch(`${API_URL}recipes`, {
       method: "POST",
-      headers: { "CONTENT-TYPE": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataToSend),
     })
     return await (await fetch(endpoint)).json()
@@ -26,12 +27,11 @@ const apiSettings = {
   updateRecipe: async (dataToSend) => {
     const endpoint = await fetch(`${API_URL}recipes`, {
       method: "PUT",
-      headers: { "CONTENT-TYPE": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataToSend),
     })
     return await (await fetch(endpoint)).json()
   },
-  // PUT - /recipes/recipe_id - updateRecipe
   //  DELETE - /recipes/recipe_id - deleteRecipe
 }
 export default apiSettings
