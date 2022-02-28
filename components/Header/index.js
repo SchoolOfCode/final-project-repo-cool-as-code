@@ -20,6 +20,7 @@ const Header = () => {
 					// layout="responsive"
 					width="136"
 					height="52"
+					
 				/>
 			</div>
 			<nav>
@@ -43,7 +44,7 @@ const Header = () => {
 						</Link>
 					</li>
 					<li className="list">
-						<Link href="/createRecipe">
+						<Link href="/api/auth/logout">
 							<a>Logout</a>
 						</Link>
 					</li>
