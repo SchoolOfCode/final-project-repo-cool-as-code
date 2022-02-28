@@ -60,9 +60,12 @@ export default function Home() {
       <a href="/api/auth/login">Login</a>
       <a href="/api/auth/logout">Logout</a>
 
-      {/* <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
+      <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
         {user && (
           <p className="mb-6">
+            <Link href="/home">
+              <a>Home</a>
+            </Link>
             Welcome <span className="text-amber-600">{user.name}</span>
           </p>
         )}
@@ -70,7 +73,7 @@ export default function Home() {
           <p>You are Not signed In, Please Sign In to view the Secret Pages.</p>
         )}
       </div>
-      <BgImage /> */}
+      <BgImage />
     </>
   );
 }
