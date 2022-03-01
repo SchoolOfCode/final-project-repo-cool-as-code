@@ -2,9 +2,10 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
 import Link from "next/link"
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 
 import { useUser } from "@auth0/nextjs-auth0";
+
 
 import LoginButton from "../components/LoginButton";
 
@@ -17,16 +18,22 @@ const BgImage = dynamic(
   }
 );
 
-export default function Home() {
-  let router = useRouter()
- 
-  const { user, error, isLoading } = useUser();
-  console.log(user)
-  
-  if(user){
 
-    router.push("/home",undefined,{shallow:true})
-  }
+export default function Home() {
+
+  
+  
+const { user, error, isLoading } = useUser();
+
+ 
+
+console.log(user)
+
+
+
+
+
+ 
 
   // you can use the error and loading state to show an error message or a loading spinner while loading.
   if (isLoading) {
@@ -44,6 +51,8 @@ export default function Home() {
       </div>
     );
   }
+
+ 
 
   return (
     <>
@@ -64,11 +73,11 @@ export default function Home() {
         size="xl"
         clickable="true"
       >
-        <Link href="/home">
-          <a>LOGIN</a>
+        <Link href="/api/auth/login">
+           <a >Login</a> 
         </Link>
       </LoginButton>
-      <a href="/api/auth/login">Login</a>
+    
       <a href="/api/auth/logout">Logout</a>
 
      {/*  <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">

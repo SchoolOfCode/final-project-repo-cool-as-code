@@ -3,10 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
+
 const Header = () => {
 	const [navActive, setNavActive] = useState(false);
 
-	function openMenu() {
+
+function openMenu() {
 		setNavActive(!navActive);
 	}
 
@@ -22,7 +24,9 @@ const Header = () => {
 					height="52"
 					
 				/>
+
 			</div>
+			
 			<nav>
 				<ul className={navActive ? "list_items active" : "list_items"}>
 					<div className="close_icon">
