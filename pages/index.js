@@ -1,11 +1,15 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useNavigate } from "react-router-dom";
+import Link from "next/link"
+//import { useRouter } from "next/router";
+
 import { useUser } from "@auth0/nextjs-auth0";
 
+
 import LoginButton from "../components/LoginButton";
+
+
 
 const BgImage = dynamic(
   () => import("../components/BackgroundImage/BackgroundImage.js"),
@@ -14,12 +18,23 @@ const BgImage = dynamic(
   }
 );
 
+
 export default function Home() {
-  // function changePage() {
-  //   navigate("/createRecipe");
-  // }
-  const { user, error, isLoading } = useUser();
-  // let navigate = useNavigate();
+
+  
+  
+const { user, error, isLoading } = useUser();
+
+ 
+
+console.log(user)
+
+
+
+
+
+ 
+
   // you can use the error and loading state to show an error message or a loading spinner while loading.
   if (isLoading) {
     return (
@@ -37,15 +52,20 @@ export default function Home() {
     );
   }
 
+ 
+
   return (
     <>
-      {/* // <div className={styles.wrapper}> */}
+  
+  <div className={styles.wrapper}> 
+  
       <Image
         src="/image/logo_dark.png"
         alt="Foodstory Logo"
         width="1491px"
         height="608px"
         className={styles.logo}
+        priority={true}
       />
       <LoginButton
         className={styles.landingButton}
@@ -53,15 +73,15 @@ export default function Home() {
         size="xl"
         clickable="true"
       >
-        <Link href="/home">
-          <a>LOGIN</a>
+        <Link href="/api/auth/login">
+           <a >Login</a> 
         </Link>
       </LoginButton>
-      <a href="/api/auth/login">Login</a>
+    
       <a href="/api/auth/logout">Logout</a>
 
-      <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
-        {user && (
+     {/*  <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
+       {user && (
           <p className="mb-6">
             <Link href="/home">
               <a>Home</a>
@@ -71,9 +91,9 @@ export default function Home() {
         )}
         {!user && (
           <p>You are Not signed In, Please Sign In to view the Secret Pages.</p>
-        )}
+        )}*/}
       </div>
-      <BgImage />
+      <BgImage  />
     </>
   );
 }
