@@ -78,7 +78,7 @@ console.log(user)
         </Link>
       </LoginButton>
     
-      <a href="/api/auth/logout">Logout</a>
+      <Link href="/api/auth/logout"><a>Logout</a></Link>
 
      {/*  <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
        {user && (
