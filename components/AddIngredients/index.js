@@ -1,4 +1,7 @@
 import { useState } from "react";
+import ClearIcon from "@mui/icons-material/Clear";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { Icon } from "@mui/material";
 
 function AddIngredients() {
 	const [ingredients, setIngredients] = useState([
@@ -26,6 +29,7 @@ function AddIngredients() {
 
 	return (
 		<div>
+			<p>INGREDIENTS:</p>
 			{ingredients.map((ingredient, index) => {
 				return (
 					<div key={index}>
@@ -51,11 +55,13 @@ function AddIngredients() {
 							onChange={(event) => handleFormChange(event, index)}
 							value={ingredient.food}
 						/>
-						<button onClick={() => removeIngredients(index)}>Remove</button>
+						<ClearIcon onClick={() => removeIngredients(index)}>
+							Remove
+						</ClearIcon>
 					</div>
 				);
 			})}
-			<button onClick={addIngredients}>ADD</button>
+			<AddCircleOutlineIcon onClick={addIngredients} />
 		</div>
 	);
 }
