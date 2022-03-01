@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddIngredients from "../AddIngredients";
 import Button from "../Button";
 
 //styling
@@ -12,7 +13,7 @@ function RecipeForm(props) {
 	const [story, setStory] = useState("");
 	const [tags, setTags] = useState([]);
 	const [type, setType] = useState("");
-	const [ingredients, setIngredients] = useState([]);
+
 	const [instructions, setInstructions] = useState([]);
 	const [image, setImage] = useState("");
 
@@ -44,10 +45,6 @@ function RecipeForm(props) {
 		setType(event.target.value);
 	}
 
-	function handleChangeIngredients(event) {
-		setIngredients(event.target.value);
-	}
-
 	function handleChangeInstructions(event) {
 		setInstructions(event.target.value);
 	}
@@ -64,12 +61,11 @@ function RecipeForm(props) {
 			story,
 			tags,
 			type,
-			ingredients,
 			instructions,
 			image,
 		};
 		console.log(recipe);
-		addNewRecipe(recipe);
+		// addNewRecipe(recipe);
 		resetState();
 	}
 
@@ -79,7 +75,6 @@ function RecipeForm(props) {
 		setStory("");
 		setTags([]);
 		setType("");
-		setIngredients([]);
 		setInstructions([]);
 		setImage("");
 	}
@@ -112,19 +107,13 @@ function RecipeForm(props) {
 				onChange={handleChangeTags}
 			/>
 			<br />
-			<select value="select" onChange={handleChangeType}>
+			<select placeholder="select" onChange={handleChangeType}>
 				{mealTypeOptions.map((mealTypeOption) => (
 					<option key={mealTypeOption.key} value={mealTypeOption.value}>
 						{mealTypeOption.label}
 					</option>
 				))}
 			</select>
-			<br />
-			<input
-				type="text"
-				placeholder="Enter Ingredients"
-				onChange={handleChangeIngredients}
-			/>
 			<br />
 			<input
 				type="text"
