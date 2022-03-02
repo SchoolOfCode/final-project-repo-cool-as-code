@@ -1,5 +1,6 @@
 import React from "react";
 import AddIngredients from "../../components/AddIngredients";
+import AddInstructions from "../../components/AddInstructions";
 
 //components
 import RecipeForm from "../../components/RecipeForm";
@@ -21,7 +22,6 @@ const createRecipe = () => {
 		<div>
 			<h1>Create Recipe</h1>
 			<RecipeForm addNewRecipe={addNewRecipe} />
-			<AddIngredients />
 		</div>
 	);
 };

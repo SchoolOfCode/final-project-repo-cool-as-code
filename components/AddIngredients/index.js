@@ -3,10 +3,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Icon } from "@mui/material";
 
-function AddIngredients() {
-	const [ingredients, setIngredients] = useState([
-		{ quantity: "", measure: "", food: "" },
-	]);
+function AddIngredients(props) {
+	const { ingredients, setIngredients } = props;
 
 	function handleFormChange(event, index) {
 		let data = [...ingredients];
@@ -16,13 +14,11 @@ function AddIngredients() {
 
 	function addIngredients() {
 		let addIngredient = { quantity: "", measure: "", food: "" };
-		console.log(ingredients);
 		setIngredients([...ingredients, addIngredient]);
 	}
 
 	function removeIngredients(index) {
 		let data = [...ingredients];
-		console.log(data);
 		data.splice(index, 1);
 		setIngredients(data);
 	}

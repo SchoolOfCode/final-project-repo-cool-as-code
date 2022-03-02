@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddIngredients from "../AddIngredients";
+import AddInstructions from "../AddInstructions";
 import Button from "../Button";
 
 //styling
@@ -12,9 +13,13 @@ function RecipeForm(props) {
 	const [portions, setPortions] = useState("");
 	const [story, setStory] = useState("");
 	const [tags, setTags] = useState([]);
-	const [type, setType] = useState("");
-
-	const [instructions, setInstructions] = useState([]);
+	const [type, setType] = useState("Breakfast");
+	const [ingredients, setIngredients] = useState([
+		{ quantity: "", measure: "", food: "" },
+	]);
+	const [instructions, setInstructions] = useState([
+		{ instruction: "", image: "" },
+	]);
 	const [image, setImage] = useState("");
 
 	const mealTypeOptions = [
@@ -45,10 +50,6 @@ function RecipeForm(props) {
 		setType(event.target.value);
 	}
 
-	function handleChangeInstructions(event) {
-		setInstructions(event.target.value);
-	}
-
 	function handleChangeImage(event) {
 		setImage(event.target.value);
 	}
@@ -61,8 +62,9 @@ function RecipeForm(props) {
 			story,
 			tags,
 			type,
-			instructions,
 			image,
+			ingredients,
+			instructions,
 		};
 		console.log(recipe);
 		// addNewRecipe(recipe);
@@ -74,8 +76,9 @@ function RecipeForm(props) {
 		setPortions("");
 		setStory("");
 		setTags([]);
-		setType("");
-		setInstructions([]);
+		setType("Breakfast");
+		setIngredients([{ quantity: "", measure: "", food: "" }]);
+		setInstructions([{ instruction: "", image: "" }]);
 		setImage("");
 	}
 
@@ -86,6 +89,14 @@ function RecipeForm(props) {
 				placeholder="Recipe Name"
 				maxLength="100"
 				onChange={handleChangeTitle}
+				value={title}
+			/>
+			<br />
+			<input
+				type="text"
+				placeholder="Recipe Image"
+				onChange={handleChangeImage}
+				value={image}
 			/>
 			<br />
 			<input
@@ -93,18 +104,21 @@ function RecipeForm(props) {
 				min="0"
 				placeholder="Number of Portions"
 				onChange={handleChangePortions}
+				value={portions}
 			/>
 			<br />
 			<input
 				type="text"
 				placeholder="Story Behind the Recipe"
 				onChange={handleChangeStory}
+				value={story}
 			/>
 			<br />
 			<input
 				type="text"
 				placeholder="Enter the tags"
 				onChange={handleChangeTags}
+				value={tags}
 			/>
 			<br />
 			<select placeholder="select" onChange={handleChangeType}>
@@ -115,16 +129,13 @@ function RecipeForm(props) {
 				))}
 			</select>
 			<br />
-			<input
-				type="text"
-				placeholder="Enter Instructions"
-				onChange={handleChangeInstructions}
+			<AddIngredients
+				ingredients={ingredients}
+				setIngredients={setIngredients}
 			/>
-			<br />
-			<input
-				type="text"
-				placeholder="Enter Image"
-				onChange={handleChangeImage}
+			<AddInstructions
+				instructions={instructions}
+				setInstructions={setInstructions}
 			/>
 			<Button type="submit" onClick={handleSubmit} className={styles.button}>
 				SAVE
