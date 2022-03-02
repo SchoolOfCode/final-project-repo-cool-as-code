@@ -48,7 +48,7 @@ let cuisineTypeTags = [
 ];
 import React from "react";
 
-export const AddTags = () => {
+const AddTags = () => {
   return (
     <div>
       <select>
@@ -58,6 +58,22 @@ export const AddTags = () => {
           </option>
         ))}
       </select>
+
+      <select>
+        {cuisineTypeTags.map((cuisineTypeTag, index) => (
+          <option key={index} value={cuisineTypeTag}>
+            {cuisineTypeTag}
+          </option>
+        ))}
+      </select>
+      {healthTags.map((healthTag, index) => (
+        <div key={index}>
+          <input id={index} type="checkbox" value={healthTag} />
+          <label htmlFor={index}>{healthTag}</label>
+        </div>
+      ))}
     </div>
   );
 };
+
+export default AddTags;
