@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 const Camera = () => {
    const [picture , setPicture] = useState()
@@ -17,6 +17,7 @@ const Camera = () => {
            
             <label>Upload a photo of your meal:</label>
             <input type="file" id="imageFile" capture="enviroment" accept="image/*" onChange={takePicture }  ></input>
+            <div>{picture}</div>
         </div>
     )
 }
