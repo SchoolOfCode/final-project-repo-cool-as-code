@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
 import AddInstructions from "../../components/AddInstructions";
+import Header from "../../components/Header";
 
 //components
 import RecipeForm from "../../components/RecipeForm";
@@ -11,7 +12,7 @@ const CreateRecipe = () => {
 	let [recipe, setRecipe] = useState([]);
 
 	async function addNewRecipe(recipe) {
-		const response = await fetch("http://localhost:5000/recipes", {
+		const response = await fetch(`${API_URL}/recipes`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(recipe),
@@ -22,6 +23,7 @@ const CreateRecipe = () => {
 
 	return (
 		<div>
+			<Header />
 			<h1>Create Recipe</h1>
 			<RecipeForm addNewRecipe={addNewRecipe} />
 		</div>

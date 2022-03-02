@@ -35,7 +35,18 @@ let cuisineTypeTags = [
 	"South East Asian",
 ];
 
-const AddTags = () => {
+function AddTags(props) {
+	const {
+		tags,
+		setTags,
+		dishType,
+		setDishType,
+		cuisineType,
+		setCuisineType,
+		health,
+		setHealth,
+	} = props;
+
 	const [healthTags, setHealthTags] = useState([
 		{ id: "1", tag: "Alcohol-Cocktail", isSelected: false },
 		{ id: "2", tag: "Alcohol-Free", isSelected: false },
@@ -43,25 +54,41 @@ const AddTags = () => {
 		{ id: "4", tag: "Gluten-Free", isSelected: false },
 		{ id: "5", tag: "Kosher", isSelected: false },
 		{ id: "6", tag: "Peanut-Free", isSelected: false },
-		{ id: "7", tag: "Pecatarian", isSelected: false },
+		{ id: "7", tag: "Pescatarian", isSelected: false },
 		{ id: "8", tag: "Vegan", isSelected: false },
 		{ id: "9", tag: "Vegetarian", isSelected: false },
 	]);
 
-	function toggleSelect(index) {
+	function toggleSelect(id) {
 		const updatedTags = [...healthTags].map((obj) => {
-			if (obj.id === index) {
+			if (obj.id === id) {
 				obj.isSelected = !obj.isSelected;
 			}
 			return obj;
 		});
 		setHealthTags(updatedTags);
-		console.log(healthTags);
+		filterSelectedHealthTags();
+	}
+
+	function filterSelectedHealthTags() {
+		const selectedTags = [...healthTags].filter(
+			(tag) => tag.isSelected === true
+		);
+		const selectedTagsArr = selectedTags.map((healthTag) => healthTag.tag);
+		setHealth(selectedTagsArr);
+	}
+
+	function handleChangeDishType(event) {
+		setDishType(event.target.value);
+	}
+
+	function handleChangeCuisineType(event) {
+		setCuisineType(event.target.value);
 	}
 
 	return (
 		<div>
-			<select>
+			<select onChange={handleChangeDishType}>
 				{dishTypeTags.map((dishTypeTag, index) => (
 					<option key={index} value={dishTypeTag}>
 						{dishTypeTag}
@@ -69,7 +96,7 @@ const AddTags = () => {
 				))}
 			</select>
 
-			<select>
+			<select onChange={handleChangeCuisineType}>
 				{cuisineTypeTags.map((cuisineTypeTag, index) => (
 					<option key={index} value={cuisineTypeTag}>
 						{cuisineTypeTag}
@@ -97,6 +124,6 @@ const AddTags = () => {
 			))}
 		</div>
 	);
-};
+}
 
 export default AddTags;

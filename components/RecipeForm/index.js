@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddIngredients from "../AddIngredients";
 import AddInstructions from "../AddInstructions";
 import Button from "../Button";
@@ -13,7 +13,7 @@ function RecipeForm(props) {
 	const [title, setTitle] = useState("");
 	const [portions, setPortions] = useState("");
 	const [story, setStory] = useState("");
-	const [tags, setTags] = useState([]);
+	const [tags, setTags] = useState(["Alcohol-Cocktail", "American"]);
 	const [type, setType] = useState("Breakfast");
 	const [ingredients, setIngredients] = useState([
 		{ quantity: "", measure: "", food: "" },
@@ -30,6 +30,13 @@ function RecipeForm(props) {
 		{ key: 4, label: "Snack", value: "Snack" },
 	];
 
+	// TAG
+	const [dishType, setDishType] = useState("Alcohol-Cocktail");
+
+	const [cuisineType, setCuisineType] = useState("American");
+
+	const [health, setHealth] = useState([]);
+
 	function handleChangeTitle(event) {
 		setTitle(event.target.value);
 	}
@@ -42,12 +49,8 @@ function RecipeForm(props) {
 		setStory(event.target.value);
 	}
 
-	function handleChangeTags(event) {
-		setTags([...tags, event.target.value]);
-	}
-
 	function handleChangeType(event) {
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setType(event.target.value);
 	}
 
@@ -55,8 +58,14 @@ function RecipeForm(props) {
 		setImage(event.target.value);
 	}
 
+	useEffect(() => {
+		// console.log(dishType, cuisineType, health);
+		setTags([dishType, cuisineType, ...health]);
+	}, [dishType, cuisineType, health]);
+
 	function handleSubmit(event) {
 		event.preventDefault();
+		// console.log(tags);
 		const recipe = {
 			title,
 			portions,
@@ -111,13 +120,6 @@ function RecipeForm(props) {
 				value={story}
 			/>
 			<br />
-			<input
-				type="text"
-				placeholder="Enter the tags"
-				onChange={handleChangeTags}
-				value={tags}
-			/>
-			<br />
 			<select placeholder="select" onChange={handleChangeType}>
 				{mealTypeOptions.map((mealTypeOption) => (
 					<option key={mealTypeOption.key} value={mealTypeOption.value}>
@@ -134,11 +136,20 @@ function RecipeForm(props) {
 				instructions={instructions}
 				setInstructions={setInstructions}
 			/>
+			<p>Tags</p>
+			<AddTags
+				tags={tags}
+				setTags={setTags}
+				dishType={dishType}
+				setDishType={setDishType}
+				cuisineType={cuisineType}
+				setCuisineType={setCuisineType}
+				health={health}
+				setHealth={setHealth}
+			/>
 			<Button type="submit" onClick={handleSubmit} className={styles.button}>
 				SAVE
 			</Button>
-			<p>Tags</p>
-			<AddTags />
 		</form>
 	);
 }
