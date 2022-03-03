@@ -2,9 +2,9 @@
 	background-color: var(--clr-2a);
 }
 
-.recipeForm {
-	/* margin: 3vw; */
+.tabs {
+	margin: 3vw;
 	background-color: var(--clr-w);
 	border-radius: 8px;
-	padding: 2vw;
+	/* padding: 2vw; */
 }

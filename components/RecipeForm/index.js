@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddIngredients from "../AddIngredients";
 import AddInstructions from "../AddInstructions";
+
 import Button from "../Button";
 import AddTags from "../AddTags";
 
@@ -20,6 +21,7 @@ import {
 
 //styling
 import styles from "./styles.module.css";
+import RecipeFormTabs from "../RecipeFormTabs";
 
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
@@ -148,7 +150,7 @@ function RecipeForm(props) {
 						<br />
 						<FormLabel htmlFor="type">Meal Type:</FormLabel>
 						<Select
-							focusBorderColor="brand.primary"
+							focusBorderColor="#fb8500"
 							placeholder="Select"
 							onChange={handleChangeType}
 						>
@@ -162,11 +164,9 @@ function RecipeForm(props) {
 				</FormControl>
 			</div>
 			<br />
-			<AddIngredients
+			<RecipeFormTabs
 				ingredients={ingredients}
 				setIngredients={setIngredients}
-			/>
-			<AddInstructions
 				instructions={instructions}
 				setInstructions={setInstructions}
 			/>

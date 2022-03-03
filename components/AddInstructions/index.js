@@ -47,7 +47,6 @@ function AddInstructions(props) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.recipeForm}>
-				<p>METHOD:</p>
 				<FormControl>
 					{instructions.map((method, index) => {
 						return (

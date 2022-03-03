@@ -3,7 +3,7 @@
 }
 
 .recipeForm {
-	margin: 3vw;
+	/* margin: 3vw; */
 	background-color: var(--clr-w);
 	border-radius: 8px;
 	padding: 2vw;

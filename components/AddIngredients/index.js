@@ -54,7 +54,6 @@ function AddIngredients(props) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.recipeForm}>
-				<p>Ingredients</p>
 				<FormControl>
 					{ingredients.map((ingredient, index) => {
 						return (
