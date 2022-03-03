@@ -6,6 +6,7 @@ const nextConfig = {
 module.exports = nextConfig
 
 module.exports = {
+  reactStrictMode: true,
   images: {
     domains: ["https://i.ibb.co", "images.immediate.co.uk"],
   },

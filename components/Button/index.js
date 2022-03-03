@@ -21,7 +21,6 @@ const Button = ({ onClick }) => {
   }
 
   function onClick() {
-    console.log("Hi")
     createPosts(post)
   }
 
