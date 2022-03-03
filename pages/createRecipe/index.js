@@ -1,16 +1,33 @@
-import React from "react"
+import React, { useState } from "react";
+import AddIngredients from "../../components/AddIngredients";
+import AddInstructions from "../../components/AddInstructions";
+import Header from "../../components/Header";
 
 //components
-import Button from "../../components/Button"
+import RecipeForm from "../../components/RecipeForm";
 
-const createRecipe = () => {
-  return (
-    <div>
-      <h1>Create Recipe</h1>
+const API_URL = process.env.API_URL;
 
-      <Button />
-    </div>
-  )
-}
+const CreateRecipe = () => {
+	let [recipe, setRecipe] = useState([]);
 
-export default createRecipe
+	async function addNewRecipe(recipe) {
+		const response = await fetch(`${API_URL}/recipes`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(recipe),
+		});
+		const data = await response.json();
+		setRecipe(data);
+	}
+
+	return (
+		<div>
+			<Header />
+			<h1>Create Recipe</h1>
+			<RecipeForm addNewRecipe={addNewRecipe} />
+		</div>
+	);
+};
+
+export default CreateRecipe;
