@@ -1,15 +1,4 @@
-import {
-	FormControl,
-	Text,
-	FormLabel,
-	Textarea,
-	Input,
-	NumberInput,
-	NumberInputField,
-	NumberInputStepper,
-	NumberIncrementStepper,
-	NumberDecrementStepper,
-} from "@chakra-ui/react";
+import { FormControl, Text, Textarea } from "@chakra-ui/react";
 
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 
@@ -17,6 +6,7 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import styles from "./styles.module.css";
 import RecipeFormAddButton from "../RecipeFormAddButton";
 import RecipeFormRemoveButton from "../RecipeFormRemoveButton";
+import AddRecipePhoto from "../AddRecipePhoto";
 
 function AddInstructions(props) {
 	const { instructions, setInstructions } = props;
@@ -56,8 +46,8 @@ function AddInstructions(props) {
 							<div key={index} className={styles.instructionItem}>
 								<div className={styles.rowOne}>
 									<div className={styles.step}>
-										<Text mb="8px">STEP {index + 1}</Text>
-										<PhotoCameraIcon
+										<Text mb="8px">Step {index + 1}</Text>
+										<AddRecipePhoto
 											className={styles.cameraIcon}
 											onClick={(event) => handleImageChange(event, index)}
 										/>
@@ -72,7 +62,7 @@ function AddInstructions(props) {
 									index={index}
 									focusBorderColor="#fb8500"
 									type="text"
-									placeholder={`Instructions for step ${
+									placeholder={`Instructions for Step ${
 										index + 1
 									} of the recipe`}
 									// variant="flushed"

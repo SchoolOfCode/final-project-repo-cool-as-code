@@ -3,7 +3,7 @@
 }
 .selected {
 	white-space: nowrap;
-	border-color: var(--clr-b);
+	border-color: var(--clr-2);
 	border-width: thin;
 	color: var(--clr-w);
 	border-radius: 25px;
@@ -14,6 +14,12 @@
 	background-color: var(--clr-2);
 	cursor: pointer;
 	transition-timing-function: ease-in;
+}
+
+.selected:hover,
+.notSelected:hover {
+	background-color: var(--clr-1);
+	border-color: var(--clr-1);
 }
 .notSelected {
 	white-space: nowrap;

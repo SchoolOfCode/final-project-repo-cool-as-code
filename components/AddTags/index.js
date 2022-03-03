@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 
+import { FormLabel, Select } from "@chakra-ui/react";
+
 let dishTypeTags = [
 	"Alcohol-Cocktail",
 	"Biscuits and Cookies",
@@ -79,6 +81,7 @@ function AddTags(props) {
 	}
 
 	function handleChangeDishType(event) {
+		console.log(event.target.value);
 		setDishType(event.target.value);
 	}
 
@@ -88,21 +91,34 @@ function AddTags(props) {
 
 	return (
 		<div>
-			<select onChange={handleChangeDishType}>
+			<br />
+			<FormLabel htmlFor="dishType">Dish Type:</FormLabel>
+			<Select
+				focusBorderColor="#fb8500"
+				placeholder="Select"
+				onChange={handleChangeDishType}
+			>
 				{dishTypeTags.map((dishTypeTag, index) => (
 					<option key={index} value={dishTypeTag}>
 						{dishTypeTag}
 					</option>
 				))}
-			</select>
-
-			<select onChange={handleChangeCuisineType}>
+			</Select>
+			<br />
+			<FormLabel htmlFor="cuisineType">Cuisine Type:</FormLabel>
+			<Select
+				focusBorderColor="#fb8500"
+				placeholder="Select"
+				onChange={handleChangeCuisineType}
+			>
 				{cuisineTypeTags.map((cuisineTypeTag, index) => (
 					<option key={index} value={cuisineTypeTag}>
 						{cuisineTypeTag}
 					</option>
 				))}
-			</select>
+			</Select>
+			<br />
+			<FormLabel htmlFor="healthTags">Additional Categories:</FormLabel>
 			<div className={styles.tagContainer}>
 				{healthTags.map((healthTag) => (
 					<div className={styles.healthTag} key={healthTag.id}>

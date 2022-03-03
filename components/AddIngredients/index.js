@@ -57,55 +57,61 @@ function AddIngredients(props) {
 				<FormControl>
 					{ingredients.map((ingredient, index) => {
 						return (
-							<div key={index}>
-								<FormLabel htmlFor="quantity">Quantity:</FormLabel>
-								<NumberInput
-									index={index}
-									focusBorderColor="#fb8500"
-									size="sm"
-									maxW={20}
-									defaultValue={0}
-									min={0}
-									onChange={(value) =>
-										handlePortionsChange(
-											index,
-											value ? Number.parseInt(value) : 0
-										)
-									}
-									value={ingredient.quantity}
-								>
-									<NumberInputField />
-									<NumberInputStepper>
-										<NumberIncrementStepper />
-										<NumberDecrementStepper />
-									</NumberInputStepper>
-								</NumberInput>
+							<div key={index} className={styles.ingredientItem}>
+								<div className={styles.rowOne}>
+									<div className={styles.quantity}>
+										<FormLabel htmlFor="quantity">Quantity:</FormLabel>
+										<NumberInput
+											index={index}
+											focusBorderColor="#fb8500"
+											size="sm"
+											maxW={20}
+											defaultValue={0}
+											min={0}
+											onChange={(value) =>
+												handlePortionsChange(
+													index,
+													value ? Number.parseInt(value) : 0
+												)
+											}
+											value={ingredient.quantity}
+										>
+											<NumberInputField />
+											<NumberInputStepper>
+												<NumberIncrementStepper />
+												<NumberDecrementStepper />
+											</NumberInputStepper>
+										</NumberInput>
+									</div>
+									<RecipeFormRemoveButton
+										onClick={() => removeIngredients(index)}
+									>
+										Remove
+									</RecipeFormRemoveButton>
+								</div>
 								<br />
-								<Input
-									index={index}
-									focusBorderColor="#fb8500"
-									type="text"
-									placeholder="measure"
-									// variant="flushed"
-									onChange={(event) => handleMeasureChange(index, event)}
-									value={ingredient.measure}
-								/>
-								<br />
-								<br />
-								<Input
-									index={index}
-									focusBorderColor="#fb8500"
-									type="text"
-									placeholder="food"
-									// variant="flushed"
-									onChange={(event) => handleFoodChange(index, event)}
-									value={ingredient.food}
-								/>
-								<RecipeFormRemoveButton
-									onClick={() => removeIngredients(index)}
-								>
-									Remove
-								</RecipeFormRemoveButton>
+								<div className={styles.rowTwo}>
+									<Input
+										index={index}
+										focusBorderColor="#fb8500"
+										type="text"
+										placeholder="Measure"
+										// variant="flushed"
+										onChange={(event) => handleMeasureChange(index, event)}
+										value={ingredient.measure}
+									/>
+									<br />
+
+									<Input
+										index={index}
+										focusBorderColor="#fb8500"
+										type="text"
+										placeholder="Food"
+										// variant="flushed"
+										onChange={(event) => handleFoodChange(index, event)}
+										value={ingredient.food}
+									/>
+								</div>
 							</div>
 						);
 					})}

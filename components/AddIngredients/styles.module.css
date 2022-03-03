@@ -8,3 +8,20 @@
 	border-radius: 8px;
 	padding: 2vw;
 }
+.rowOne {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.quantity {
+	display: flex;
+	flex-direction: row;
+}
+.ingredientItem {
+	margin-bottom: 2rem;
+}
+.rowTwo {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+}

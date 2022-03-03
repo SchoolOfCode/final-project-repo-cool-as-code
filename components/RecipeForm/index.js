@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AddIngredients from "../AddIngredients";
-import AddInstructions from "../AddInstructions";
 
 import Button from "../Button";
 import AddTags from "../AddTags";
@@ -22,6 +20,7 @@ import {
 //styling
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
+import AddRecipePhoto from "../AddRecipePhoto";
 
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
@@ -72,7 +71,8 @@ function RecipeForm(props) {
 	}
 
 	function handleChangeImage(event) {
-		setImage(event.target.value);
+		console.log("main recipe image button clicked");
+		// setImage(event.target.value);
 	}
 
 	useEffect(() => {
@@ -109,7 +109,13 @@ function RecipeForm(props) {
 		<div className={styles.createRecipe}>
 			<div className={styles.recipeForm}>
 				<FormControl className={styles.infoContainer}>
-					<FormLabel htmlFor="title">Recipe</FormLabel>
+					<div className={styles.flexIcon}>
+						<FormLabel htmlFor="title">Recipe:</FormLabel>
+						<AddRecipePhoto
+							className={styles.cameraIcon}
+							onChange={handleChangeImage}
+						/>
+					</div>
 					<Input
 						focusBorderColor="#fb8500"
 						id="title"
@@ -119,7 +125,9 @@ function RecipeForm(props) {
 						onChange={handleChangeTitle}
 						value={title}
 					/>
-					<Text mb="8px">Story</Text>
+					<br />
+					<br />
+					<FormLabel htmlFor="story">Story:</FormLabel>
 					<Textarea
 						focusBorderColor="#fb8500"
 						value={story}
@@ -127,6 +135,7 @@ function RecipeForm(props) {
 						placeholder="What is the story behind this recipe?"
 						size="sm"
 					/>
+					<br />
 					<br />
 					<div className={styles.inputsOne}>
 						<FormLabel htmlFor="portions">Number of Servings:</FormLabel>
@@ -169,12 +178,6 @@ function RecipeForm(props) {
 							setCuisineType={setCuisineType}
 							health={health}
 							setHealth={setHealth}
-						/>
-						<input
-							type="text"
-							placeholder="Recipe Image"
-							onChange={handleChangeImage}
-							value={image}
 						/>
 					</div>
 				</FormControl>

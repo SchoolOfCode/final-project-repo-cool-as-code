@@ -29,3 +29,9 @@
 		grid-template-areas: "one" "two";
 	}
 }
+
+.flexIcon {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
