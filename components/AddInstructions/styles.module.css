@@ -8,3 +8,24 @@
 	border-radius: 8px;
 	padding: 2vw;
 }
+.instructionItem {
+	margin-bottom: 2rem;
+}
+.rowOne {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.step {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-right: 20px;
+}
+.cameraIcon {
+	margin-left: 20px;
+	color: var(--clr-2);
+	cursor: pointer;
+	border: black;
+	border-width: thin;
+}

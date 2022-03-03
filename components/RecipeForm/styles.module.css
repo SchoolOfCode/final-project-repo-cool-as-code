@@ -1,10 +1,31 @@
+.createRecipe {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "one two";
+	background-color: #e0f2f8;
+}
+
 .container {
 	background-color: var(--clr-2a);
 }
-
 .recipeForm {
+	grid-area: one;
 	margin: 3vw;
 	background-color: var(--clr-w);
 	border-radius: 8px;
 	padding: 2vw;
+}
+
+.tabContainer {
+	grid-area: two;
+}
+
+@media (max-width: 50em) {
+	.createRecipe {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto minmax(0, 1fr);
+		grid-template-areas: "one" "two";
+	}
 }

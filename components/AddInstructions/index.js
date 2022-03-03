@@ -11,6 +11,8 @@ import {
 	NumberDecrementStepper,
 } from "@chakra-ui/react";
 
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+
 //styling
 import styles from "./styles.module.css";
 import RecipeFormAddButton from "../RecipeFormAddButton";
@@ -26,9 +28,10 @@ function AddInstructions(props) {
 	}
 
 	function handleImageChange(event, index) {
-		let data = [...instructions];
-		data[index].image = event.target.value;
-		setInstructions(data);
+		// let data = [...instructions];
+		// data[index].image = event.target.value;
+		// setInstructions(data);
+		console.log(index, "camera icon clicked");
 	}
 
 	function addInstructions() {
@@ -50,8 +53,21 @@ function AddInstructions(props) {
 				<FormControl>
 					{instructions.map((method, index) => {
 						return (
-							<div key={index}>
-								<Text mb="8px">STEP {index + 1}</Text>
+							<div key={index} className={styles.instructionItem}>
+								<div className={styles.rowOne}>
+									<div className={styles.step}>
+										<Text mb="8px">STEP {index + 1}</Text>
+										<PhotoCameraIcon
+											className={styles.cameraIcon}
+											onClick={(event) => handleImageChange(event, index)}
+										/>
+									</div>
+									<RecipeFormRemoveButton
+										onClick={() => removeInstructions(index)}
+									>
+										Remove
+									</RecipeFormRemoveButton>
+								</div>
 								<Textarea
 									index={index}
 									focusBorderColor="#fb8500"
@@ -63,34 +79,13 @@ function AddInstructions(props) {
 									onChange={(value) => handleInstructionChange(value, index)}
 									value={method.instruction}
 								/>
-								<br />
-								<br />
-								<Input
-									index={index}
-									focusBorderColor="#fb8500"
-									type="text"
-									placeholder="food"
-									// variant="flushed"
-									onChange={(event) => handleImageChange(event, index)}
-									value={method.image}
-								/>
-								{/* <input
-									name="image"
-									type="text"
-									placeholder="image"
-									onChange={(event) => handleFormChange(event, index)}
-									value={method.image}
-								/> */}
-								<RecipeFormRemoveButton
-									onClick={() => removeInstructions(index)}
-								>
-									Remove
-								</RecipeFormRemoveButton>
 							</div>
 						);
 					})}
-
-					<RecipeFormAddButton onClick={addInstructions}>
+					<RecipeFormAddButton
+						className={styles.addButton}
+						onClick={addInstructions}
+					>
 						Add Instruction
 					</RecipeFormAddButton>
 				</FormControl>

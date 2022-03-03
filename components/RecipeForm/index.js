@@ -106,9 +106,9 @@ function RecipeForm(props) {
 	}
 
 	return (
-		<form className={styles.container} action="">
+		<div className={styles.createRecipe}>
 			<div className={styles.recipeForm}>
-				<FormControl>
+				<FormControl className={styles.infoContainer}>
 					<FormLabel htmlFor="title">Recipe</FormLabel>
 					<Input
 						focusBorderColor="#fb8500"
@@ -160,37 +160,38 @@ function RecipeForm(props) {
 								</option>
 							))}
 						</Select>
+						<AddTags
+							tags={tags}
+							setTags={setTags}
+							dishType={dishType}
+							setDishType={setDishType}
+							cuisineType={cuisineType}
+							setCuisineType={setCuisineType}
+							health={health}
+							setHealth={setHealth}
+						/>
+						<input
+							type="text"
+							placeholder="Recipe Image"
+							onChange={handleChangeImage}
+							value={image}
+						/>
 					</div>
 				</FormControl>
 			</div>
 			<br />
-			<RecipeFormTabs
-				ingredients={ingredients}
-				setIngredients={setIngredients}
-				instructions={instructions}
-				setInstructions={setInstructions}
-			/>
-			<p>Tags</p>
-			<AddTags
-				tags={tags}
-				setTags={setTags}
-				dishType={dishType}
-				setDishType={setDishType}
-				cuisineType={cuisineType}
-				setCuisineType={setCuisineType}
-				health={health}
-				setHealth={setHealth}
-			/>
-			<input
-				type="text"
-				placeholder="Recipe Image"
-				onChange={handleChangeImage}
-				value={image}
-			/>
-			<Button type="submit" onClick={handleSubmit} className={styles.button}>
-				SAVE
-			</Button>
-		</form>
+			<div className={styles.tabContainer}>
+				<RecipeFormTabs
+					ingredients={ingredients}
+					setIngredients={setIngredients}
+					instructions={instructions}
+					setInstructions={setInstructions}
+				/>
+				<Button type="submit" onClick={handleSubmit} className={styles.button}>
+					SAVE
+				</Button>
+			</div>
+		</div>
 	);
 }
 

@@ -103,25 +103,27 @@ function AddTags(props) {
 					</option>
 				))}
 			</select>
-			{healthTags.map((healthTag) => (
-				<div key={healthTag.id}>
-					<input
-						id={healthTag.id}
-						type="checkbox"
-						value={healthTag.tag}
-						className={styles.checkbox}
-						onChange={() => toggleSelect(healthTag.id)}
-					/>
-					<label
-						className={
-							healthTag.isSelected ? styles.selected : styles.notSelected
-						}
-						htmlFor={healthTag.id}
-					>
-						{healthTag.tag}
-					</label>
-				</div>
-			))}
+			<div className={styles.tagContainer}>
+				{healthTags.map((healthTag) => (
+					<div className={styles.healthTag} key={healthTag.id}>
+						<input
+							id={healthTag.id}
+							type="checkbox"
+							value={healthTag.tag}
+							className={styles.checkbox}
+							onChange={() => toggleSelect(healthTag.id)}
+						/>
+						<label
+							className={
+								healthTag.isSelected ? styles.selected : styles.notSelected
+							}
+							htmlFor={healthTag.id}
+						>
+							{healthTag.tag}
+						</label>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
