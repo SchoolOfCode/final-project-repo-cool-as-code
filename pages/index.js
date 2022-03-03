@@ -27,8 +27,6 @@ const { user, error, isLoading } = useUser();
 
  
 
-console.log(user)
-
 
 
 

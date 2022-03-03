@@ -3,12 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
-
 const Header = () => {
 	const [navActive, setNavActive] = useState(false);
 
-
-function openMenu() {
+	function openMenu() {
 		setNavActive(!navActive);
 	}
 
@@ -22,11 +20,9 @@ function openMenu() {
 					// layout="responsive"
 					width="136"
 					height="52"
-					
 				/>
-
 			</div>
-			
+
 			<nav>
 				<ul className={navActive ? "list_items active" : "list_items"}>
 					<div className="close_icon">
@@ -34,22 +30,22 @@ function openMenu() {
 					</div>
 					<li className="list">
 						<Link href="/home">
-							<a>Home</a>
+							<a>HOME</a>
 						</Link>
 					</li>
 					<li className="list">
 						<Link href="/search">
-							<a>Search</a>
+							<a>SEARCH</a>
 						</Link>
 					</li>
 					<li className="list">
 						<Link href="/createRecipe">
-							<a>Create Recipe</a>
+							<a>ADD RECIPE</a>
 						</Link>
 					</li>
 					<li className="list">
 						<Link href="/api/auth/logout">
-							<a>Logout</a>
+							<a>LOGOUT</a>
 						</Link>
 					</li>
 				</ul>
