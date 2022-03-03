@@ -38,6 +38,7 @@ function BGImage() {
           width={width}
           height={height}
           alt="Background Image"
+          priority={true}
         />
       </div>
     )
@@ -50,6 +51,7 @@ function BGImage() {
           width={width}
           height={height}
           alt="Background Image"
+          priority={true}
         />
       </div>
     )
