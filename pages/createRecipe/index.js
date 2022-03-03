@@ -1,9 +1,12 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
+import  Header from "../../components/Header"
+import Camera from "../../components/Camera/Camera";
 const createRecipe = () => {
   return (
     <div>
-      <h1>Create Recipe</h1>
+    <Header/>
+      <div>Create Recipe</div>
+      <Camera/>
     </div>
   );
 };
