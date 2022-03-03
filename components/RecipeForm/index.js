@@ -4,6 +4,20 @@ import AddInstructions from "../AddInstructions";
 import Button from "../Button";
 import AddTags from "../AddTags";
 
+import {
+	FormControl,
+	FormLabel,
+	Input,
+	NumberInput,
+	NumberInputField,
+	NumberInputStepper,
+	NumberIncrementStepper,
+	NumberDecrementStepper,
+	Textarea,
+	Text,
+	Select,
+} from "@chakra-ui/react";
+
 //styling
 import styles from "./styles.module.css";
 
@@ -11,7 +25,7 @@ function RecipeForm(props) {
 	const { addNewRecipe } = props;
 
 	const [title, setTitle] = useState("");
-	const [portions, setPortions] = useState("");
+	const [portions, setPortions] = useState(0);
 	const [story, setStory] = useState("");
 	const [tags, setTags] = useState(["Alcohol-Cocktail", "American"]);
 	const [type, setType] = useState("Breakfast");
@@ -41,8 +55,9 @@ function RecipeForm(props) {
 		setTitle(event.target.value);
 	}
 
-	function handleChangePortions(event) {
-		setPortions(event.target.value);
+	function handleChangePortions(portions) {
+		// console.log(portions);
+		setPortions(portions);
 	}
 
 	function handleChangeStory(event) {
@@ -77,9 +92,9 @@ function RecipeForm(props) {
 			instructions,
 		};
 		console.log(recipe);
-		addNewRecipe(recipe);
+		// addNewRecipe(recipe);
 		setTitle("");
-		setPortions("");
+		setPortions(0);
 		setStory("");
 		setTags([]);
 		setType("Breakfast");
@@ -89,44 +104,63 @@ function RecipeForm(props) {
 	}
 
 	return (
-		<form action="">
-			<input
-				type="text"
-				placeholder="Recipe Name"
-				maxLength="100"
-				onChange={handleChangeTitle}
-				value={title}
-			/>
-			<br />
-			<input
-				type="text"
-				placeholder="Recipe Image"
-				onChange={handleChangeImage}
-				value={image}
-			/>
-			<br />
-			<input
-				type="number"
-				min="0"
-				placeholder="Number of Portions"
-				onChange={handleChangePortions}
-				value={portions}
-			/>
-			<br />
-			<input
-				type="text"
-				placeholder="Story Behind the Recipe"
-				onChange={handleChangeStory}
-				value={story}
-			/>
-			<br />
-			<select placeholder="select" onChange={handleChangeType}>
-				{mealTypeOptions.map((mealTypeOption) => (
-					<option key={mealTypeOption.key} value={mealTypeOption.value}>
-						{mealTypeOption.label}
-					</option>
-				))}
-			</select>
+		<form className={styles.container} action="">
+			<div className={styles.recipeForm}>
+				<FormControl>
+					<FormLabel htmlFor="title">Recipe</FormLabel>
+					<Input
+						focusBorderColor="#fb8500"
+						id="title"
+						type="text"
+						placeholder="Enter the recipe title"
+						variant="flushed"
+						onChange={handleChangeTitle}
+						value={title}
+					/>
+					<Text mb="8px">Story</Text>
+					<Textarea
+						focusBorderColor="#fb8500"
+						value={story}
+						onChange={handleChangeStory}
+						placeholder="What is the story behind this recipe?"
+						size="sm"
+					/>
+					<br />
+					<div className={styles.inputsOne}>
+						<FormLabel htmlFor="portions">Number of Servings:</FormLabel>
+						<NumberInput
+							focusBorderColor="#fb8500"
+							size="sm"
+							maxW={20}
+							defaultValue={0}
+							min={0}
+							onChange={(value) =>
+								handleChangePortions(value ? Number.parseInt(value) : 0)
+							}
+							value={portions}
+						>
+							<NumberInputField />
+							<NumberInputStepper>
+								<NumberIncrementStepper />
+								<NumberDecrementStepper />
+							</NumberInputStepper>
+						</NumberInput>
+						<br />
+						<FormLabel htmlFor="type">Meal Type:</FormLabel>
+						<Select
+							focusBorderColor="brand.primary"
+							placeholder="Select"
+							onChange={handleChangeType}
+						>
+							{mealTypeOptions.map((mealTypeOption) => (
+								<option key={mealTypeOption.key} value={mealTypeOption.value}>
+									{mealTypeOption.label}
+								</option>
+							))}
+						</Select>
+					</div>
+				</FormControl>
+			</div>
 			<br />
 			<AddIngredients
 				ingredients={ingredients}
@@ -146,6 +180,12 @@ function RecipeForm(props) {
 				setCuisineType={setCuisineType}
 				health={health}
 				setHealth={setHealth}
+			/>
+			<input
+				type="text"
+				placeholder="Recipe Image"
+				onChange={handleChangeImage}
+				value={image}
 			/>
 			<Button type="submit" onClick={handleSubmit} className={styles.button}>
 				SAVE

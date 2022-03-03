@@ -4,10 +4,13 @@
 :root {
 	--clr-1: #fb8500;
 	--clr-2: #219ebc;
+	--clr-2a: #eefbff;
 	--clr-3: #023047;
 	--clr-4: #ffb703;
+	--clr-4a: rgb(255, 226, 146);
 	--clr-b: #000000;
 	--clr-w: #ffffff;
+	--clr-test: #90dff7;
 	--font-1: "Raleway", sans-serif;
 	--font-2: "Roboto", sans-serif;
 }
