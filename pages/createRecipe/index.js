@@ -1,4 +1,3 @@
-
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
@@ -32,6 +31,5 @@ const CreateRecipe = () => {
 	);
 };
 
-export default createRecipe;
+export default CreateRecipe;
 export const getServerSideProps = withPageAuthRequired();
-
