@@ -34,20 +34,23 @@ function openMenu() {
 					</div>
 					<li className="list">
 						<Link href="/home">
-							<a>Home</a>
+							<a>HOME</a>
 						</Link>
 					</li>
 					<li className="list">
 						<Link href="/search">
-							<a>Search</a>
+							<a>SEARCH</a>
 						</Link>
 					</li>
 					<li className="list">
 						<Link href="/createRecipe">
-							<a>Create Recipe</a>
+							<a>ADD RECIPE</a>
 						</Link>
 					</li>
 					<li className="list">
+// <<<<<<< FEfetchCRUD
+// 						<Link href="/createRecipe">
+// 							<a>LOGOUT</a>
 						<Link href="/api/auth/logout">
 							<a>Logout</a>
 						</Link>
