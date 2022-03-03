@@ -3,7 +3,7 @@
 	grid-template-columns: 0.5fr 1fr;
 	grid-template-rows: 1fr;
 	grid-template-areas: "one two";
-	background-color: #e0f2f8;
+	background-color: rgba(241, 242, 244, 255);
 }
 
 .container {
@@ -11,7 +11,9 @@
 }
 .recipeForm {
 	grid-area: one;
-	margin: 3vw;
+	margin-left: 3vw;
+	margin-bottom: 3vw;
+	margin-top: 3vw;
 	background-color: var(--clr-w);
 	border-radius: 8px;
 	padding: 2vw;

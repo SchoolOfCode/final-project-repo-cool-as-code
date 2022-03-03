@@ -7,6 +7,9 @@ import Header from "../../components/Header";
 //components
 import RecipeForm from "../../components/RecipeForm";
 
+//styling
+import styles from "./styles.module.css";
+
 const API_URL = process.env.API_URL;
 
 const CreateRecipe = () => {
@@ -25,7 +28,7 @@ const CreateRecipe = () => {
 	return (
 		<div>
 			<Header />
-			<h1>Create Recipe</h1>
+			<h1 className={styles.title}>Create Recipe</h1>
 			<RecipeForm addNewRecipe={addNewRecipe} />
 		</div>
 	);
