@@ -24,7 +24,7 @@ function Camera() {
     e.preventDefault()
     if (!previewSource) return
     uploadImage(previewSource)
-    console.log(response)
+    //console.log(response)
   }
 
   async function uploadImage(base64EncodedImage) {
@@ -36,6 +36,7 @@ function Camera() {
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-type": "application/json" },
       })
+      console.log(response)
       return setResponse(response)
     } catch (error) {
       console.log(error)
