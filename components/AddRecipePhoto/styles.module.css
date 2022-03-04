@@ -1,0 +1,14 @@
+.cameraIcon {
+	margin-left: 20px;
+	color: var(--clr-2);
+	cursor: pointer;
+	border: black;
+	border-width: thin;
+}
+.cameraIcon:hover {
+	margin-left: 20px;
+	color: var(--clr-1);
+	cursor: pointer;
+	border: black;
+	border-width: thin;
+}

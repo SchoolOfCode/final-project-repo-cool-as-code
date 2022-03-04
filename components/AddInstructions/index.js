@@ -1,57 +1,85 @@
-import { useState } from "react";
-import ClearIcon from "@mui/icons-material/Clear";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Icon } from "@mui/material";
+import { FormControl, Text, Textarea } from "@chakra-ui/react";
+
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+
+//styling
+import styles from "./styles.module.css";
+import RecipeFormAddButton from "../RecipeFormAddButton";
+import RecipeFormRemoveButton from "../RecipeFormRemoveButton";
+import AddRecipePhoto from "../AddRecipePhoto";
 
 function AddInstructions(props) {
 	const { instructions, setInstructions } = props;
 
-	function handleFormChange(event, index) {
+	function handleInstructionChange(event, index) {
 		let data = [...instructions];
-		data[index][event.target.name] = event.target.value;
+		data[index].instruction = event.target.value;
 		setInstructions(data);
 	}
 
+	function handleImageChange(event, index) {
+		// let data = [...instructions];
+		// data[index].image = event.target.value;
+		// setInstructions(data);
+		console.log(index, "camera icon clicked");
+	}
+
 	function addInstructions() {
+		event.preventDefault();
 		let addInstruction = { instruction: "", image: "" };
 		setInstructions([...instructions, addInstruction]);
 	}
 
 	function removeInstructions(index) {
+		event.preventDefault();
 		let data = [...instructions];
 		data.splice(index, 1);
 		setInstructions(data);
 	}
 
 	return (
-		<div>
-			<p>METHOD:</p>
-			{instructions.map((method, index) => {
-				return (
-					<div key={index}>
-						<p>STEP {index + 1}:</p>
-						<input
-							name="instruction"
-							type="text"
-							min="0"
-							placeholder="instruction"
-							onChange={(event) => handleFormChange(event, index)}
-							value={method.instruction}
-						/>
-						<input
-							name="image"
-							type="text"
-							placeholder="image"
-							onChange={(event) => handleFormChange(event, index)}
-							value={method.image}
-						/>
-						<ClearIcon onClick={() => removeInstructions(index)}>
-							Remove
-						</ClearIcon>
-					</div>
-				);
-			})}
-			<AddCircleOutlineIcon onClick={addInstructions} />
+		<div className={styles.container}>
+			<div className={styles.recipeForm}>
+				<FormControl>
+					{instructions.map((method, index) => {
+						return (
+							<div key={index} className={styles.instructionItem}>
+								<div className={styles.rowOne}>
+									<div className={styles.step}>
+										<Text mb="8px">Step {index + 1}</Text>
+										<AddRecipePhoto
+											className={styles.cameraIcon}
+											onClick={(event) => handleImageChange(event, index)}
+										/>
+									</div>
+									<RecipeFormRemoveButton
+										onClick={() => removeInstructions(index)}
+									>
+										Remove
+									</RecipeFormRemoveButton>
+								</div>
+								<Textarea
+									index={index}
+									focusBorderColor="#fb8500"
+									type="text"
+									placeholder={`Instructions for Step ${
+										index + 1
+									} of the recipe`}
+									// variant="flushed"
+									onChange={(value) => handleInstructionChange(value, index)}
+									value={method.instruction}
+								/>
+							</div>
+						);
+					})}
+					<RecipeFormAddButton
+						className={styles.addButton}
+						onClick={addInstructions}
+					>
+						Add Instruction
+					</RecipeFormAddButton>
+				</FormControl>
+			</div>
 		</div>
 	);
 }

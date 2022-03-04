@@ -4,12 +4,16 @@
 :root {
 	--clr-1: #fb8500;
 	--clr-2: #219ebc;
+	--clr-2a: #eefbff;
 	--clr-3: #023047;
 	--clr-4: #ffb703;
+	--clr-4a: rgb(255, 226, 146);
 	--clr-b: #000000;
 	--clr-w: #ffffff;
+	--clr-test: #fbd3a2;
 	--font-1: "Raleway", sans-serif;
-	--font-2: "Roboto", sans-serif;
+	--font-2: "Poppins", sans-serif;
+	--font-3: "Roboto", sans-serif;
 }
 
 html,
@@ -21,6 +25,12 @@ body {
 }
 
 /* [START] THIS IS STYLING FOR THE HEADER - DO NOT CHANGE */
+.logo {
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	padding-left: 6vh;
+	padding-right: 6vh;
+}
 .header {
 	display: flex;
 	width: 100%;
@@ -28,7 +38,7 @@ body {
 	justify-content: space-between;
 	position: a;
 	padding: 0.4rem;
-	background: #fb8500;
+	background: var(--clr-3);
 	/* height: 10vh; */
 }
 
@@ -41,15 +51,15 @@ body {
 
 .list_items .list a {
 	text-decoration: none;
-	font-family: var(--font-1);
-	color: var(--clr-3);
+	font-family: var(--font-2);
+	color: var(--clr-w);
 	font-weight: bolder;
 	font-size: clamp(1.5rem, 0.5vw + 0.5rem, 3.5rem);
 }
 
 .list_items .list a:hover,
 .list_items .list a:focus {
-	color: var(--clr-w);
+	color: var(--clr-1);
 }
 
 .close_icon {
@@ -57,7 +67,7 @@ body {
 }
 
 .hamburger_icon .icon {
-	color: var(--clr-3);
+	color: var(--clr-w);
 	font-size: clamp(1rem, 4vw + 1rem, 4rem);
 	cursor: pointer;
 	display: none;
@@ -102,7 +112,7 @@ body {
 
 	.list_items .list a:hover,
 	.list_items .list a:focus {
-		color: var(--clr-3);
+		color: var(--clr-w);
 	}
 
 	.hamburger_icon .icon {

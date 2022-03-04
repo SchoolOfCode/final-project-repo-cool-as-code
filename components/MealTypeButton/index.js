@@ -1,8 +1,8 @@
 import { useContext, React } from "react"
 import Router from "next/router"
 
-import { Button } from "antd"
-
+//import { Button } from "antd"
+import css from "./Button.module.css"
 //API
 import API from "../APIconfig/API"
 
@@ -28,8 +28,8 @@ export default function MtButton({ getMeal, mealTypes }) {
   }
 
   return (
-    <Button onClick={getMeal} type="submit">
+    <button className={css.button} onClick={getMeal} type="submit">
       {mealTypes}
-    </Button>
+    </button>
   )
 }
