@@ -40,7 +40,8 @@ const Home = () => {
           <FeatureButton />
           <Camera/>
 
-        </nav>
+    
+    
 
   
          
