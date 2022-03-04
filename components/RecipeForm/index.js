@@ -26,8 +26,6 @@ import SubmitButton from "../SubmitButton";
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
 
-	// update
-
 	const [title, setTitle] = useState("");
 	const [portions, setPortions] = useState(0);
 	const [story, setStory] = useState("");
