@@ -4,11 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Header = () => {
-	const [navActive, setNavActive] = useState(false);
+  const [navActive, setNavActive] = useState(false);
 
-	function openMenu() {
-		setNavActive(!navActive);
-	}
+  function openMenu() {
+    setNavActive(!navActive);
+  }
+
 
 	return (
 		<div className="header">
@@ -55,6 +56,7 @@ const Header = () => {
 			</div>
 		</div>
 	);
+
 };
 
 export default Header;

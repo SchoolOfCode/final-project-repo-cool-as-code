@@ -1,3 +1,5 @@
+
+
 import { useState } from "react"
 import Image from "next/image"
 
@@ -68,3 +70,4 @@ function Camera() {
 }
 
 export default Camera
+

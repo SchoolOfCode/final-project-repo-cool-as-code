@@ -10,7 +10,13 @@ export let pageWrapper = React.createContext({});
 import { foodstory } from "../styles/theme";
 
 function MyApp({ Component, pageProps }) {
-	let [state, setState] = useState({ apiData: [], apiMessage: "" });
+
+  let [state, setState] = useState({
+    apiData: [],
+    apiMessage: "",
+    selectingRecipe: null,
+  });
+
 
 	return (
 		<ChakraProvider theme={foodstory}>
