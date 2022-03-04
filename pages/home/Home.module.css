@@ -1,8 +1,18 @@
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
   .grid {
     z-index: 0;
-    border: 1px solid black;
+    border: 1px solid transparent;
     display: grid;
+    gap:5px;
     grid-template-columns: 1fr 1fr;
+  }
+  .centerLabel{
+  /* border:1px greenyellow solid;*/
+ width: fit-content;
+   margin: 0 auto;
+  }
+
+  .label{
+    font-size: 1.5em;
   }
 }

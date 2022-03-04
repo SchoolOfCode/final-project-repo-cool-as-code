@@ -6,6 +6,8 @@ const nextConfig = {
 module.exports = nextConfig;
 
 module.exports = {
+
+
 	images: {
 		domains: ["https://i.ibb.co", "images.immediate.co.uk"],
 	},
@@ -13,3 +15,4 @@ module.exports = {
 		API_URL: "https://recipe-soc-project.herokuapp.com",
 	},
 };
+

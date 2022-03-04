@@ -1,15 +1,46 @@
 .checkbox {
 	display: none;
 }
-
 .selected {
-	background-color: orange;
-	border-radius: 3px;
-	margin: 20px;
+	white-space: nowrap;
+	border-color: var(--clr-2);
+	border-width: thin;
+	color: var(--clr-w);
+	border-radius: 25px;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	background-color: var(--clr-2);
+	cursor: pointer;
+	transition-timing-function: ease-in;
 }
 
+.selected:hover,
+.notSelected:hover {
+	background-color: var(--clr-1);
+	border-color: var(--clr-1);
+}
 .notSelected {
-	background-color: rgb(233, 203, 119);
-	border-radius: 3px;
-	margin: 20px;
+	white-space: nowrap;
+	border-color: var(--clr-2);
+	border-width: thin;
+	color: var(--clr-3);
+	border-radius: 12px;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	background-color: #e0f2f8;
+	cursor: pointer;
+	transition-timing-function: ease-in;
+}
+.healthTag {
+	margin: 0.5rem;
+}
+
+.tagContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }

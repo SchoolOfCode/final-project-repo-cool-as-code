@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from "react";
-import AddIngredients from "../AddIngredients";
-import AddInstructions from "../AddInstructions";
-import Button from "../Button";
+
 import AddTags from "../AddTags";
+
+import {
+	FormControl,
+	FormLabel,
+	Input,
+	NumberInput,
+	NumberInputField,
+	NumberInputStepper,
+	NumberIncrementStepper,
+	NumberDecrementStepper,
+	Textarea,
+	Text,
+	Select,
+	Button,
+} from "@chakra-ui/react";
 
 //styling
 import styles from "./styles.module.css";
+import RecipeFormTabs from "../RecipeFormTabs";
+import AddRecipePhoto from "../AddRecipePhoto";
+import SubmitButton from "../SubmitButton";
 
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
 
+	// update
+
 	const [title, setTitle] = useState("");
-	const [portions, setPortions] = useState("");
+	const [portions, setPortions] = useState(0);
 	const [story, setStory] = useState("");
 	const [tags, setTags] = useState(["Alcohol-Cocktail", "American"]);
 	const [type, setType] = useState("Breakfast");
@@ -41,8 +59,9 @@ function RecipeForm(props) {
 		setTitle(event.target.value);
 	}
 
-	function handleChangePortions(event) {
-		setPortions(event.target.value);
+	function handleChangePortions(portions) {
+		// console.log(portions);
+		setPortions(portions);
 	}
 
 	function handleChangeStory(event) {
@@ -55,7 +74,8 @@ function RecipeForm(props) {
 	}
 
 	function handleChangeImage(event) {
-		setImage(event.target.value);
+		console.log("main recipe image button clicked");
+		// setImage(event.target.value);
 	}
 
 	useEffect(() => {
@@ -77,9 +97,9 @@ function RecipeForm(props) {
 			instructions,
 		};
 		console.log(recipe);
-		addNewRecipe(recipe);
+		// addNewRecipe(recipe);
 		setTitle("");
-		setPortions("");
+		setPortions(0);
 		setStory("");
 		setTags([]);
 		setType("Breakfast");
@@ -89,68 +109,95 @@ function RecipeForm(props) {
 	}
 
 	return (
-		<form action="">
-			<input
-				type="text"
-				placeholder="Recipe Name"
-				maxLength="100"
-				onChange={handleChangeTitle}
-				value={title}
-			/>
+		<div className={styles.createRecipe}>
+			<div className={styles.recipeForm}>
+				<FormControl className={styles.infoContainer}>
+					<div className={styles.flexIcon}>
+						<FormLabel htmlFor="title">Recipe:</FormLabel>
+						<AddRecipePhoto
+							className={styles.cameraIcon}
+							onClick={(event) => handleChangeImage(event)}
+						/>
+					</div>
+					<Input
+						focusBorderColor="#fb8500"
+						id="title"
+						type="text"
+						placeholder="Enter the recipe title"
+						variant="flushed"
+						onChange={handleChangeTitle}
+						value={title}
+					/>
+					<br />
+					<br />
+					<FormLabel htmlFor="story">Story:</FormLabel>
+					<Textarea
+						focusBorderColor="#fb8500"
+						value={story}
+						onChange={handleChangeStory}
+						placeholder="What is the story behind this recipe?"
+						size="sm"
+					/>
+					<br />
+					<br />
+					<div className={styles.inputsOne}>
+						<FormLabel htmlFor="portions">Number of Servings:</FormLabel>
+						<NumberInput
+							focusBorderColor="#fb8500"
+							size="sm"
+							maxW={20}
+							defaultValue={0}
+							min={0}
+							onChange={(value) =>
+								handleChangePortions(value ? Number.parseInt(value) : 0)
+							}
+							value={portions}
+						>
+							<NumberInputField />
+							<NumberInputStepper>
+								<NumberIncrementStepper />
+								<NumberDecrementStepper />
+							</NumberInputStepper>
+						</NumberInput>
+						<br />
+						<FormLabel htmlFor="type">Meal Type:</FormLabel>
+						<Select
+							focusBorderColor="#fb8500"
+							placeholder="Select"
+							onChange={handleChangeType}
+						>
+							{mealTypeOptions.map((mealTypeOption) => (
+								<option key={mealTypeOption.key} value={mealTypeOption.value}>
+									{mealTypeOption.label}
+								</option>
+							))}
+						</Select>
+						<AddTags
+							tags={tags}
+							setTags={setTags}
+							dishType={dishType}
+							setDishType={setDishType}
+							cuisineType={cuisineType}
+							setCuisineType={setCuisineType}
+							health={health}
+							setHealth={setHealth}
+						/>
+					</div>
+				</FormControl>
+			</div>
 			<br />
-			<input
-				type="text"
-				placeholder="Recipe Image"
-				onChange={handleChangeImage}
-				value={image}
-			/>
-			<br />
-			<input
-				type="number"
-				min="0"
-				placeholder="Number of Portions"
-				onChange={handleChangePortions}
-				value={portions}
-			/>
-			<br />
-			<input
-				type="text"
-				placeholder="Story Behind the Recipe"
-				onChange={handleChangeStory}
-				value={story}
-			/>
-			<br />
-			<select placeholder="select" onChange={handleChangeType}>
-				{mealTypeOptions.map((mealTypeOption) => (
-					<option key={mealTypeOption.key} value={mealTypeOption.value}>
-						{mealTypeOption.label}
-					</option>
-				))}
-			</select>
-			<br />
-			<AddIngredients
-				ingredients={ingredients}
-				setIngredients={setIngredients}
-			/>
-			<AddInstructions
-				instructions={instructions}
-				setInstructions={setInstructions}
-			/>
-			<p>Tags</p>
-			<AddTags
-				tags={tags}
-				setTags={setTags}
-				dishType={dishType}
-				setDishType={setDishType}
-				cuisineType={cuisineType}
-				setCuisineType={setCuisineType}
-				health={health}
-				setHealth={setHealth}
-			/>
-			<Button type="submit" onClick={handleSubmit} className={styles.button}>
-				SAVE
-			</Button>
-		</form>
+			<div className={styles.tabContainer}>
+				<RecipeFormTabs
+					ingredients={ingredients}
+					setIngredients={setIngredients}
+					instructions={instructions}
+					setInstructions={setInstructions}
+				/>
+				<Button onClick={handleSubmit} colorScheme="teal" size="lg">
+					SAVE
+				</Button>
+			</div>
+		</div>
 	);
 }
 
