@@ -1,12 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import API from "../APIconfig/API";
+import API from "../../components/APIconfig/API";
+
 import { pageWrapper } from "../../pages/_app";
 
-const showRecipe = ({ recipeId }) => {
+const showRecipe = ({ props }) => {
   let { state, setState } = useContext(pageWrapper);
-
-  const fetchRecipe = async (recipeId) => {
+  const fetchRecipes = async (recipeId) => {
     const response = await API.fetchRecipe(recipeId);
     setState({
       ...state,
@@ -15,15 +15,21 @@ const showRecipe = ({ recipeId }) => {
     });
     console.log(state);
   };
-
-  function getRecipe() {
-    fetchRecipe(recipeId);
-    Router.push("/search");
-  }
-
+  fetchRecipes();
+  console.log(state);
   return (
     <div>
       <h1>Here is the recipe you were looking for</h1>
+      {/* <div>
+        {data.map((recipe) => (
+          <>
+            <p>{title}</p>
+            <Image src={image} layout="fill" alt="Recipe Picture" />
+            <p>{portions}</p>
+            <p>{story}</p>
+          </>
+        ))}
+      </div> */}
     </div>
   );
 };
