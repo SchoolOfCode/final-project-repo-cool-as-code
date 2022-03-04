@@ -1,5 +1,6 @@
-import React from "react";
-//import { useUser } from "@auth0/nextjs-auth0";
+
+import { useUser } from "@auth0/nextjs-auth0";
+import { useEffect, useState } from "react";
 //import Image from "next/image";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
@@ -13,8 +14,63 @@ import MtButton from "../../components/MealTypeButton";
 import FeatureButton from "../../components/FeatureButton";
 
 const Home = () => {
+  //const [nickName , setNickName] = useState("")
+    const {user , error , isLoading} = useUser();
+  const [nickName , setNickName] = useState("");
+  const [subId , setSubId] = useState("");
+    const [ userInfo , setUserInfo] =  useState({sub:"", nickName:""})
+
+    
+
+    async function postUser(nickName , subId){
+ let response = await fetch('http://localhost:5002/users',{
+	method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(use),
+
+ })
+ 
+  
+    }
+   
+
+
+ 
+useEffect(()=>{
+setUserInfo(user)
+
+
+
+  },[user])
+
+
+useEffect(()=>{
+
+setSubId(userInfo)
+setNickName(userInfo)
+
+
+  },[userInfo])
+
+ console.log(subId)
+ console.log(nickName) 
+ console.log(user)
+
+
+
+
+
+
+  
+  
+  
+   if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>
+  
+  
   return (
     <>
+   
       <div>
         <Header />
         <h1>Home Page</h1>
