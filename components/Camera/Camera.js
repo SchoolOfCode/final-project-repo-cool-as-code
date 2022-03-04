@@ -36,7 +36,7 @@ function Camera() {
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-type": "application/json" },
       })
-      console.log(response)
+      console.log(await response.json())
       return setResponse(response)
     } catch (error) {
       console.log(error)

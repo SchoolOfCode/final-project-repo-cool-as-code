@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   try {
     const urlResponse = await SendFile(req.body.data)
     console.log(urlResponse)
-    return await res.json({ url: `${urlResponse}` })
+    return res.json({ url: `${urlResponse}` })
   } catch (error) {
     console.log(error)
     res.status(500).json({ err: "Oops something went wrong" })
