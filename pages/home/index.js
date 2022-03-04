@@ -1,7 +1,9 @@
 import React from "react";
 //import { useUser } from "@auth0/nextjs-auth0";
 //import Image from "next/image";
-//import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Camera from "../../components/Camera/Camera";
 
 //styling
 import css from "../home/Home.module.css";
@@ -35,7 +37,9 @@ const Home = () => {
           <FeatureButton />
           <FeatureButton />
           <FeatureButton />
-          <FeatureButton />/
+          <FeatureButton />
+          <Camera/>
+
         </nav>
 
   
