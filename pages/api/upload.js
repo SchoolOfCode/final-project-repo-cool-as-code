@@ -1,38 +1,25 @@
 import cloudinary from "cloudinary"
-//import { NextApiRequest, NextApiResponse } from "next"
 
 cloudinary.config({
-cloud_name:'food-story',
-api_key:'319415282638259',
-api_secret:'FZuMH-pIFTvytt6de0FaDgB0OvQ'
+  cloud_name: process.env.CLOUDINARY_API_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-
-export default async function handler(req, res){
-
-try {
-  const fileStr = req.body.data;
-  const uploadedResponse = await cloudinary.uploader.upload(fileStr,{
-    upload_preset:"food_story"
-
+async function SendFile(fileStr) {
+  const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+    upload_preset: "food_story",
   })
-  console.log(uploadedResponse)
-  res.json({msg:"yay"})
-} catch (error) {
-  console.log(error);
-  res.status(500).json({err:"something went wrong"})
+  return uploadedResponse
 }
 
-
-
+export default async function handler(req, res) {
+  try {
+    const data = await SendFile(req.body.data)
+    console.log(data.url)
+    return res.send({ data })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ err: "Oops something went wrong" })
+  }
 }
-
-
-
-
-    
-    
-   
-
-
-  
