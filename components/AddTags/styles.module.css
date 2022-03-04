@@ -1,0 +1,15 @@
+.checkbox {
+	display: none;
+}
+
+.selected {
+	background-color: orange;
+	border-radius: 3px;
+	margin: 20px;
+}
+
+.notSelected {
+	background-color: rgb(233, 203, 119);
+	border-radius: 3px;
+	margin: 20px;
+}
