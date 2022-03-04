@@ -1,0 +1,24 @@
+.container {
+	background-color: var(--clr-2a);
+}
+
+.recipeForm {
+	/* margin: 3vw; */
+	background-color: var(--clr-w);
+	border-radius: 8px;
+	padding: 2vw;
+}
+.instructionItem {
+	margin-bottom: 2rem;
+}
+.rowOne {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.step {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-right: 20px;
+}

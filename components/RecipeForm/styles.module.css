@@ -1,0 +1,44 @@
+.createRecipe {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"one two"
+		". two";
+	background-color: rgba(241, 242, 244, 255);
+}
+
+.container {
+	background-color: var(--clr-2a);
+}
+.recipeForm {
+	grid-area: one;
+	margin-left: 3vw;
+	margin-bottom: 3vw;
+	margin-top: 3vw;
+	background-color: var(--clr-w);
+	border-radius: 8px;
+	padding: 2vw;
+}
+
+.tabContainer {
+	grid-area: two;
+}
+
+@media (max-width: 50em) {
+	.createRecipe {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto minmax(0, 1fr);
+		grid-template-areas: "one" "two";
+	}
+	.recipeForm {
+		margin: 3vw;
+	}
+}
+
+.flexIcon {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}

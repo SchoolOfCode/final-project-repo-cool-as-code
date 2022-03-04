@@ -13,6 +13,8 @@ import MtButton from "../../components/MealTypeButton";
 import FeatureButton from "../../components/FeatureButton";
 
 const Home = () => {
+
+
   return (
     <>
       <div>
@@ -40,6 +42,7 @@ const Home = () => {
       </div>
     </>
   );
+
 };
 
 export default Home;
