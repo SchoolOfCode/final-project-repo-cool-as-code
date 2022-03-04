@@ -2,6 +2,7 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
 import AddInstructions from "../../components/AddInstructions";
+import Button from "../../components/SubmitButton";
 import Header from "../../components/Header";
 
 //components

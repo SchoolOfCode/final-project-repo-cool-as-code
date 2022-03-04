@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Button from "../Button";
 import AddTags from "../AddTags";
 
 import {
@@ -15,12 +14,14 @@ import {
 	Textarea,
 	Text,
 	Select,
+	Button,
 } from "@chakra-ui/react";
 
 //styling
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
 import AddRecipePhoto from "../AddRecipePhoto";
+import SubmitButton from "../SubmitButton";
 
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
@@ -113,7 +114,7 @@ function RecipeForm(props) {
 						<FormLabel htmlFor="title">Recipe:</FormLabel>
 						<AddRecipePhoto
 							className={styles.cameraIcon}
-							onChange={handleChangeImage}
+							onClick={(event) => handleChangeImage(event)}
 						/>
 					</div>
 					<Input
@@ -190,7 +191,7 @@ function RecipeForm(props) {
 					instructions={instructions}
 					setInstructions={setInstructions}
 				/>
-				<Button type="submit" onClick={handleSubmit} className={styles.button}>
+				<Button onClick={handleSubmit} colorScheme="teal" size="lg">
 					SAVE
 				</Button>
 			</div>

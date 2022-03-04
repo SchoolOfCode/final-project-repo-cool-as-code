@@ -15,7 +15,7 @@ const Header = () => {
 			<div className="logo">
 				<Image
 					className="image"
-					src="/nav_logo1.png"
+					src="/logo_white.png"
 					alt="Foodstory Logo"
 					// layout="responsive"
 					width="136"

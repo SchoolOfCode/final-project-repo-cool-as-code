@@ -1,8 +1,10 @@
 .createRecipe {
 	display: grid;
 	grid-template-columns: 0.5fr 1fr;
-	grid-template-rows: 1fr;
-	grid-template-areas: "one two";
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"one two"
+		". two";
 	background-color: rgba(241, 242, 244, 255);
 }
 
@@ -29,6 +31,9 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: auto minmax(0, 1fr);
 		grid-template-areas: "one" "two";
+	}
+	.recipeForm {
+		margin: 3vw;
 	}
 }
 
