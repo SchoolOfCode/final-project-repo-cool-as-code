@@ -10,7 +10,12 @@ import { AudioOutlined } from "@ant-design/icons";
 import API from "../APIconfig/API";
 
 //Page Wrapper for useContext
-import { pageWrapper } from "../../pages/_app";
+
+import { pageWrapper } from "../../pages/_app"
+import { css } from "@emotion/react"
+import styles from "./Searchbar.module.css"
+import { color, style } from "@mui/system"
+
 
 const { Search } = Input;
 
@@ -59,16 +64,19 @@ function SearchInput() {
 		//else push
 	}
 
-	return (
-		<div>
-			<Search
-				placeholder="What do you fancy?"
-				allowClear
-				onSearch={onClick}
-				style={{ width: 200 }}
-			/>
-		</div>
-	);
+
+  return (
+    <div className={styles.searchBox}>
+    <label className={styles.searchLabel}>What do you Fancy?</label>
+      <Search
+        placeholder="Search"
+        allowClear
+        onSearch={onClick}
+        style={{ width: 300 }}
+      />
+    </div>
+  )
+
 }
 
 export default SearchInput;

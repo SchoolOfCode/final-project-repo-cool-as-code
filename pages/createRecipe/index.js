@@ -1,4 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
 import AddInstructions from "../../components/AddInstructions";
@@ -29,6 +30,7 @@ const CreateRecipe = () => {
 			<RecipeForm addNewRecipe={addNewRecipe} />
 		</div>
 	);
+
 };
 
 export default CreateRecipe;

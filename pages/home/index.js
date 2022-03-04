@@ -4,7 +4,7 @@ import React from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 //styling
-import PageStyling from "../home/Home.module.css";
+import css from "../home/Home.module.css";
 
 //components
 import Header from "../../components/Header";
@@ -17,19 +17,26 @@ const Home = () => {
     <>
       <div>
         <Header />
-        <h1>Home Page</h1>
-
+       
         <SearchInput />
-        <nav className={PageStyling.grid}>
+        <div className={css.centerLabel}>
+        <h2 className={css.label}>Search for a meal type below</h2>
+</div>
+
+        <nav className={css.grid}>
           <MtButton onClick={() => getMeal} mealTypes="Breakfast" />
           <MtButton onClick={() => getMeal} mealTypes="Lunch" />
           <MtButton onClick={() => getMeal} mealTypes="Dinner" />
           <MtButton onClick={() => getMeal} mealTypes="Snack" />
+ </nav>
+
           <FeatureButton />
           <FeatureButton />
           <FeatureButton />
           <FeatureButton />
-        </nav>
+         
+       
+        
       </div>
     </>
   );
