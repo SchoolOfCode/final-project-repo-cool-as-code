@@ -41,10 +41,14 @@ body {
 	width: 100%;
 	align-items: center;
 	justify-content: space-between;
-	position: a;
+	/* position: a; */
 	padding: 0.4rem;
 	background: var(--clr-3);
-	/* height: 10vh; */
+	height: 10vh;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 1000000;
 }
 
 .list_items {
