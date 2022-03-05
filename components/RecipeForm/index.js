@@ -127,6 +127,7 @@ function RecipeForm(props) {
 						variant="flushed"
 						onChange={handleChangeTitle}
 						value={title}
+						isRequired
 					/>
 					<br />
 					<br />
@@ -195,10 +196,22 @@ function RecipeForm(props) {
 				/>
 				<div className={styles.buttonDiv}>
 					<Button
-						className={styles.submitButton}
-						onClick={handleSubmit}
-						colorScheme="teal"
+						border="1px"
+						bg="orange.main"
+						borderRadius="8px"
+						borderColor="orange.main"
+						color="blue.main"
 						size="lg"
+						_hover={{ bg: "orange.one" }}
+						_active={{
+							bg: "orange.one",
+							transform: "scale(0.98)",
+							borderColor: "orange.one",
+						}}
+						_focus={{
+							boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+						}}
+						onClick={handleSubmit}
 					>
 						SAVE
 					</Button>
