@@ -11,8 +11,7 @@ async function SendFile(fileStr) {
     upload_preset: "food_story",
   })
   console.log(uploadedResponse)
-  const response = uploadedResponse.url
-  //const p_id =  uploadedResponse.public_id
+  const response = uploadedResponse.secure_url
   return response
 }
 
