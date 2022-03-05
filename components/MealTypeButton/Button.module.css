@@ -1,6 +1,17 @@
-.button{
-    background-color: orange;
-   padding:3em;
-   border: none;
-   font-size: 1em;
+.button {
+	background-color: var(--clr-1);
+	height: 4em;
+	width: 10em;
+	border: none;
+	font-size: 1em;
+	border-radius: 12px;
+}
+
+.button:hover {
+	background-color: var(--clr-5);
+}
+
+.mtButtonGrid {
+	display: flex;
+	justify-content: space-evenly;
 }

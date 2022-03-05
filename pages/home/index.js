@@ -4,6 +4,8 @@ import React from "react";
 
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Camera from "../../components/Camera/Camera";
+import { Flex, Spacer, Box } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 //styling
 import css from "../home/Home.module.css";
@@ -15,43 +17,34 @@ import MtButton from "../../components/MealTypeButton";
 import FeatureButton from "../../components/FeatureButton";
 
 const Home = () => {
+	return (
+		<>
+			<div>
+				<Header />
+				<SearchInput />
+				<div className={css.background}>
+					<div className={css.buttons}>
+						<MtButton mealTypes="Breakfast">Breakfast</MtButton>
 
+						<MtButton mealTypes="Lunch">Lunch</MtButton>
 
-  return (
-    <>
-      <div>
-        <Header />
-       
-        <SearchInput />
-        <div className={css.centerLabel}>
-        <h2 className={css.label}>Search for a meal type below</h2>
-</div>
+						<MtButton mealTypes="Dinner">Dinner</MtButton>
 
-        <nav className={css.grid}>
-          <MtButton onClick={() => getMeal} mealTypes="Breakfast" />
-          <MtButton onClick={() => getMeal} mealTypes="Lunch" />
-          <MtButton onClick={() => getMeal} mealTypes="Dinner" />
-          <MtButton onClick={() => getMeal} mealTypes="Snack" />
- </nav>
+						<MtButton mealTypes="Snacks">Snacks</MtButton>
 
-          <FeatureButton />
-          <FeatureButton />
-          <FeatureButton />
-          <FeatureButton />
-          <Camera/>
+						<MtButton mealTypes="Dessert">Dessert</MtButton>
 
-    
-    
-
-  
-         
-       
-        
-
-      </div>
-    </>
-  );
-
+						<MtButton mealTypes="Drinks">Drinks</MtButton>
+					</div>
+					<FeatureButton />
+					<FeatureButton />
+					<FeatureButton />
+					<FeatureButton />
+					<Camera />
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default Home;

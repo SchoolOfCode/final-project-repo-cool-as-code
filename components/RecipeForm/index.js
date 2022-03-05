@@ -43,7 +43,9 @@ function RecipeForm(props) {
 		{ key: 1, label: "Breakfast", value: "Breakfast" },
 		{ key: 2, label: "Lunch", value: "Lunch" },
 		{ key: 3, label: "Dinner", value: "Dinner" },
-		{ key: 4, label: "Snack", value: "Snack" },
+		{ key: 4, label: "Snack", value: "Snacks" },
+		{ key: 5, label: "Dessert", value: "Dessert" },
+		{ key: 6, label: "Drinks", value: "Drinks" },
 	];
 
 	// TAG
