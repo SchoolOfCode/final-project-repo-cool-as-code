@@ -23,35 +23,37 @@ const Header = () => {
 						height="52"
 					/>
 				</div>
-				<div className="navbar_links">
-					<ul className={navActive ? "list_items active" : "list_items"}>
-						<div className="close_icon">
-							<Close className="close" onClick={openMenu} />
-						</div>
-						<li className="list">
-							<Link href="/home">
-								<a>home</a>
-							</Link>
-						</li>
-						<li className="list">
-							<Link href="/search">
-								<a>search</a>
-							</Link>
-						</li>
-						<li className="list">
-							<Link href="/createRecipe">
-								<a>add recipe</a>
-							</Link>
-						</li>
-						<li className="list">
-							<Link href="/api/auth/logout">
-								<a>logout</a>
-							</Link>
-						</li>
-					</ul>
-				</div>
-				<div className="hamburger_icon">
-					<MenuOutlined className="icon" onClick={openMenu} />
+				<div>
+					<div className="navbar_links">
+						<ul className={navActive ? "list_items active" : "list_items"}>
+							<div className="close_icon">
+								<Close className="close" onClick={openMenu} />
+							</div>
+							<li className="list">
+								<Link href="/home">
+									<a>home</a>
+								</Link>
+							</li>
+							<li className="list">
+								<Link href="/search">
+									<a>search</a>
+								</Link>
+							</li>
+							<li className="list">
+								<Link href="/createRecipe">
+									<a>add recipe</a>
+								</Link>
+							</li>
+							<li className="list">
+								<Link href="/api/auth/logout">
+									<a>logout</a>
+								</Link>
+							</li>
+						</ul>
+					</div>
+					<div className="hamburger_icon">
+						<MenuOutlined className="icon" onClick={openMenu} />
+					</div>
 				</div>
 			</nav>
 		</div>

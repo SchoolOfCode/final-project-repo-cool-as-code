@@ -60,6 +60,7 @@ body {
 	/* justify-content: flex-end; */
 	gap: 3.5rem;
 	padding-right: 3rem;
+	margin-bottom: 0;
 }
 
 .list_items .list a {
@@ -74,6 +75,9 @@ body {
 .list_items .list a:hover,
 .list_items .list a:focus {
 	color: var(--clr-1);
+}
+.list {
+	margin: 0;
 }
 
 .close_icon {
