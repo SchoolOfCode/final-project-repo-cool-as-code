@@ -7,23 +7,23 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import React from "react";
 export let pageWrapper = React.createContext({});
-import { foodstory } from "../styles/theme";
+import { foodstory } from "../styles/theme.js";
 
 function MyApp({ Component, pageProps }) {
-
-  let [state, setState] = useState({
-    apiData: [],
-    apiMessage: "",
-    selectingRecipe: null,
-  });
-
+	let [state, setState] = useState({
+		apiData: [],
+		apiMessage: "",
+		selectingRecipe: null,
+	});
 
 	return (
 		<ChakraProvider theme={foodstory}>
 			<pageWrapper.Provider value={{ state, setState }}>
 				<UserProvider>
 					<NextUIProvider>
-						<Component {...pageProps} />
+						<div className="bg-gray-global">
+							<Component {...pageProps} />
+						</div>
 					</NextUIProvider>
 				</UserProvider>
 			</pageWrapper.Provider>

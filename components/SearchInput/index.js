@@ -11,11 +11,10 @@ import API from "../APIconfig/API";
 
 //Page Wrapper for useContext
 
-import { pageWrapper } from "../../pages/_app"
-import { css } from "@emotion/react"
-import styles from "./Searchbar.module.css"
-import { color, style } from "@mui/system"
-
+import { pageWrapper } from "../../pages/_app";
+import { css } from "@emotion/react";
+import styles from "./Searchbar.module.css";
+import { color, style } from "@mui/system";
 
 const { Search } = Input;
 
@@ -64,19 +63,18 @@ function SearchInput() {
 		//else push
 	}
 
-
-  return (
-    <div className={styles.searchBox}>
-    <label className={styles.searchLabel}>What do you Fancy?</label>
-      <Search
-        placeholder="Search"
-        allowClear
-        onSearch={onClick}
-        style={{ width: 300 }}
-      />
-    </div>
-  )
-
+	return (
+		<div className={styles.searchBox}>
+			<h1 className={styles.title}>What Do You Fancy?</h1>
+			<Search
+				className={styles.input}
+				placeholder="Search"
+				allowClear
+				onSearch={onClick}
+				style={{ width: 300 }}
+			/>
+		</div>
+	);
 }
 
 export default SearchInput;
