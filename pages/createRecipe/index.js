@@ -1,5 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
+import FadeIn from "react-fade-in/lib/FadeIn";
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
 import AddInstructions from "../../components/AddInstructions";
@@ -30,7 +30,9 @@ const CreateRecipe = () => {
 	return (
 		<div>
 			<Header />
+			<FadeIn  transitionDuration={500} delay={200}>
 			<h1 className={styles.title}>Create Recipe</h1>
+			</FadeIn>
 			<RecipeForm addNewRecipe={addNewRecipe} />
 		</div>
 	);
