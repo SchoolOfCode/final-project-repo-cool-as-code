@@ -193,9 +193,16 @@ function RecipeForm(props) {
 					instructions={instructions}
 					setInstructions={setInstructions}
 				/>
-				<Button onClick={handleSubmit} colorScheme="teal" size="lg">
-					SAVE
-				</Button>
+				<div className={styles.buttonDiv}>
+					<Button
+						className={styles.submitButton}
+						onClick={handleSubmit}
+						colorScheme="teal"
+						size="lg"
+					>
+						SAVE
+					</Button>
+				</div>
 			</div>
 		</div>
 	);

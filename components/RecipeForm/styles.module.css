@@ -42,3 +42,10 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+.buttonDiv {
+	display: flex;
+	margin-bottom: 3vw;
+	margin-right: 3vw;
+	justify-content: flex-end;
+}
