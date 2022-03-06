@@ -1,13 +1,13 @@
 import React, { useEffect } from "react"
 import { useContext, useState } from "react"
 import Image from "next/image"
-import { pageWrapper } from "../../pages/_app"
+import { pageWrapper } from "../_app"
 
 //components
 import RecipeDisplay from "../../components/RecipeDisplay"
 import Template from "../template"
 
-const showRecipe = () => {
+const Recipe = () => {
   let { state, setState } = useContext(pageWrapper)
 
   let recipe = state.apiData.filter(
@@ -35,4 +35,4 @@ const showRecipe = () => {
   )
 }
 
-export default showRecipe
+export default Recipe
