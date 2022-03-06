@@ -7,9 +7,15 @@ import styles from "./styles.module.css";
 import RecipeFormAddButton from "../RecipeFormAddButton";
 import RecipeFormRemoveButton from "../RecipeFormRemoveButton";
 import AddRecipePhoto from "../AddRecipePhoto";
+import Camera from "../../components/Camera/Camera";
 
 function AddInstructions(props) {
-	const { instructions, setInstructions } = props;
+	const {
+		instructions,
+		setInstructions,
+		previewSourceArr,
+		setPreviewSourceArr,
+	} = props;
 
 	function handleInstructionChange(event, index) {
 		let data = [...instructions];
@@ -47,9 +53,10 @@ function AddInstructions(props) {
 								<div className={styles.rowOne}>
 									<div className={styles.step}>
 										<Text mb="8px">Step {index + 1}</Text>
-										<AddRecipePhoto
-											className={styles.cameraIcon}
-											onClick={(event) => handleImageChange(event, index)}
+										<Camera
+											previewSourceArr={previewSourceArr}
+											setPreviewSourceArr={setPreviewSourceArr}
+											photo="main-image"
 										/>
 									</div>
 									<RecipeFormRemoveButton

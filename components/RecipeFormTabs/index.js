@@ -6,7 +6,14 @@ import AddInstructions from "../AddInstructions";
 import styles from "./styles.module.css";
 
 function RecipeFormTabs(props) {
-	const { ingredients, setIngredients, instructions, setInstructions } = props;
+	const {
+		ingredients,
+		setIngredients,
+		instructions,
+		setInstructions,
+		previewSourceArr,
+		setPreviewSourceArr,
+	} = props;
 
 	return (
 		<Tabs className={styles.tabs} isFitted variant="enclosed">

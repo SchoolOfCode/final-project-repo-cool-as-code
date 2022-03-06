@@ -34,7 +34,6 @@ const CreateRecipe = () => {
 			<RecipeForm addNewRecipe={addNewRecipe} />
 		</div>
 	);
-
 };
 
 export default CreateRecipe;
