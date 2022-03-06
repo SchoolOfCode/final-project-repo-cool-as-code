@@ -1,12 +1,12 @@
 .title {
-	padding-left: 3vw;
-	padding-top: 8vw;
-	font-family: var(--font-2);
-	letter-spacing: 0.1em;
-	font-size: calc(3vw + 2em);
-	color: var(--clr-3);
-	text-shadow: 0 0 32px white;
-	margin-bottom: 0;
-	background-image: url("/bkgrd.jpg");
-	background-size: 1500px;
+  padding-left: 3vw;
+  padding-top: 8vw;
+  font-family: var(--font-2);
+  letter-spacing: 0.1em;
+  font-size: calc(3vw + 2em);
+  color: var(--clr-3);
+  text-shadow: 0 0 32px white;
+  margin-bottom: 0;
+  /* background-image: url("/bkgrd.jpg");
+	background-size: 1500px; */
 }

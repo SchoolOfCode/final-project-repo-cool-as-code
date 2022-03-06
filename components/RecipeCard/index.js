@@ -1,17 +1,17 @@
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useContext } from "react";
+import React from "react"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { useContext } from "react"
 //styles
-import CardStyles from "./RecipeCard.module.css";
-import { pageWrapper } from "../../pages/_app";
+import CardStyles from "./RecipeCard.module.css"
+import { pageWrapper } from "../../pages/_app"
 
 function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
-  let { state, setState } = useContext(pageWrapper);
-  const router = useRouter();
+  let { state, setState } = useContext(pageWrapper)
+  const router = useRouter()
   function setId() {
-    setState({ ...state, selectingRecipe: { recipeId } });
-    router.push("/showRecipe");
+    setState({ ...state, selectingRecipe: { recipeId } })
+    router.push("/showRecipe")
   }
   return (
     <>
@@ -36,6 +36,6 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default RecipeCard;
+export default RecipeCard

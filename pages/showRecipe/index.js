@@ -5,6 +5,7 @@ import { pageWrapper } from "../../pages/_app"
 
 //components
 import RecipeDisplay from "../../components/RecipeDisplay"
+import Template from "../template"
 
 const showRecipe = () => {
   let { state, setState } = useContext(pageWrapper)
@@ -21,12 +22,13 @@ const showRecipe = () => {
 
       {recipe.map((item, index) => (
         <>
-          <RecipeDisplay
+          <Template title={item.title} />
+          {/* <RecipeDisplay
             title={item.title}
             image={item.image}
             portions={item.portions}
             story={item.story}
-          />
+          /> */}
         </>
       ))}
     </div>
