@@ -1,51 +1,69 @@
-import React from "react";
+import React, { useEffect, useContext } from "react"
 //import { useUser } from "@auth0/nextjs-auth0";
 //import Image from "next/image";
+import { pageWrapper } from "../_app"
 
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Camera from "../../components/Camera/Camera";
-import { Flex, Spacer, Box } from "@chakra-ui/react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import { Flex, Spacer, Box } from "@chakra-ui/react"
+import { Grid, GridItem } from "@chakra-ui/react"
 
 //styling
-import css from "../home/Home.module.css";
+import css from "../home/Home.module.css"
 
 //components
-import Header from "../../components/Header";
-import SearchInput from "../../components/SearchInput";
-import MtButton from "../../components/MealTypeButton";
-import FeatureButton from "../../components/FeatureButton";
+import Header from "../../components/Header"
+import MtButton from "../../components/MealTypeButton"
+import SearchInput from "../../components/SearchInput"
+
+//API
+import API from "../../components/APIconfig/API"
+import SearchBarWrapper from "../../components/SearchBarWrapper"
 
 const Home = () => {
-	return (
-		<>
-			<div>
-				<Header />
-				<SearchInput />
-				<div className={css.background}>
-					<div className={css.buttons}>
-						<MtButton mealTypes="Breakfast">Breakfast</MtButton>
+  let { state, setState } = useContext(pageWrapper)
 
-						<MtButton mealTypes="Lunch">Lunch</MtButton>
+  const fetchData = async () => {
+    try {
+      const response = await API.fetchAllRecipes()
+      console.log(response)
+      setState({
+        apiData: response.payload,
+        apiMessage: response.message,
+      })
+    } catch (error) {
+      //set error
+    }
+  }
 
-						<MtButton mealTypes="Dinner">Dinner</MtButton>
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-						<MtButton mealTypes="Snacks">Snacks</MtButton>
+  return (
+    <>
+      <div>
+        <Header />
+        {/* <SearchInput /> */}
+        <SearchBarWrapper />
+        <div className={css.background}>
+          <div className={css.buttons}>
+            <MtButton mealTypes="Breakfast">Breakfast</MtButton>
 
-						<MtButton mealTypes="Dessert">Dessert</MtButton>
+            <MtButton mealTypes="Lunch">Lunch</MtButton>
 
-						<MtButton mealTypes="Drinks">Drinks</MtButton>
-					</div>
-					<FeatureButton />
-					<FeatureButton />
-					<FeatureButton />
-					<FeatureButton />
-					<Camera />
-				</div>
-			</div>
-		</>
-	);
-};
+            <MtButton mealTypes="Dinner">Dinner</MtButton>
 
-export default Home;
+            <MtButton mealTypes="Snacks">Snacks</MtButton>
+
+            <MtButton mealTypes="Dessert">Dessert</MtButton>
+
+            <MtButton mealTypes="Drinks">Drinks</MtButton>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default Home
 //export const getServerSideProps = withPageAuthRequired();

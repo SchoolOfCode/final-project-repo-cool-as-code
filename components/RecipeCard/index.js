@@ -28,7 +28,7 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
             </div>
             <div className={CardStyles.flip_card_back}>
               <h3 className={CardStyles.writing}>{title}</h3>
-              <p className={CardStyles.writing}>Meal Type: {p1}</p>
+              <p className={CardStyles.writing}>Meal Type: {p1}" "</p>
               <p className={CardStyles.writing}>Tags: {p2}</p>
               <button onClick={() => setId()}>Show Recipe</button>
             </div>

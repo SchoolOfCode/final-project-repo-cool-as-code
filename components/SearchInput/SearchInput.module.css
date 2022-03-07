@@ -7,6 +7,6 @@
   color: var(--clr-3);
   text-shadow: 0 0 32px white;
   margin-bottom: 0;
-  /* background-image: url("/bkgrd.jpg");
-	background-size: 1500px; */
+  background-image: url("/bkgrd.jpg");
+	background-size: 1500px; 
 }
