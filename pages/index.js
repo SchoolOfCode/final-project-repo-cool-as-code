@@ -63,7 +63,7 @@ export default function Home() {
         <Link href="/api/auth/logout">
           <a id={styles.id}>Logout</a>
         </Link>
-
+<div></div>
       <div></div>
       </div>
     
