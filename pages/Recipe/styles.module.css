@@ -1,87 +1,96 @@
 /* title */
 
 .title {
-  padding-left: 3vw;
-  padding-top: 8vw;
-  font-family: var(--font-2);
-  font-size: calc(3vw + 2em);
-  color: var(--clr-3);
-  text-shadow: 0 0 32px white;
-  letter-spacing: 0.1em;
-  margin-bottom: 0;
-  background-image: url("/bkgrd.jpg");
-  background-size: 1500px;
-  /* margin-top: 10vh; */
+	padding-left: 3vw;
+	padding-top: 8vw;
+	font-family: var(--font-2);
+	font-size: calc(3vw + 2em);
+	color: var(--clr-3);
+	text-shadow: 0 0 32px white;
+	letter-spacing: 0.1em;
+	margin-bottom: 0;
+	background-image: url("/bkgrd.jpg");
+	background-size: 1500px;
+	/* margin-top: 10vh; */
 }
 
 /* grid - in desktop view this shows two columns */
 .createRecipe {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "one two"
-    ". two";
-  background-color: var(--clr-bkgrd);
+	display: grid;
+	grid-template-columns: 0.5fr 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"one two"
+		". two";
+	background-color: var(--clr-bkgrd);
 }
 
 .container {
-  background-color: var(--clr-2a);
+	background-color: var(--clr-2a);
 }
 
 /* left coluumn of grid with general recipe info */
 .recipeForm {
-  grid-area: one;
-  margin-left: 3vw;
-  margin-bottom: 3vw;
-  margin-top: 3vw;
-  background-color: var(--clr-w);
-  border-radius: 8px;
-  padding: 2vw;
+	grid-area: one;
+	margin-left: 3vw;
+	margin-bottom: 3vw;
+	margin-top: 3vw;
+	background-color: var(--clr-w);
+	border-radius: 8px;
+	padding: 2vw;
 }
 
 .tabs {
-  margin: 3vw;
-  background-color: var(--clr-w);
-  border-radius: 8px;
-  /* padding: 2vw; */
+	margin: 3vw;
+	background-color: var(--clr-w);
+	border-radius: 8px;
+	/* padding: 2vw; */
 }
 
 .tabContainer {
-  grid-area: two;
+	grid-area: two;
 }
 
 .container {
-  background-color: var(--clr-2a);
+	background-color: var(--clr-2a);
 }
 
 @media (max-width: 50em) {
-  /* grid - in mobile view this shows one column two rows */
-  .createRecipe {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
-    grid-template-areas: "one" "two";
-  }
-  .recipeForm {
-    margin: 3vw;
-  }
+	/* grid - in mobile view this shows one column two rows */
+	.createRecipe {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto minmax(0, 1fr);
+		grid-template-areas: "one" "two";
+	}
+	.recipeForm {
+		margin: 3vw;
+	}
 }
 
 .recipeName {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .portionType {
-  display: flex;
-  justify-content: space-around;
-  color: var(--clr-3);
+	display: flex;
+	justify-content: space-around;
+	color: var(--clr-3);
 }
 
 .portion,
 .type {
-  background-color: var(--clr-3a);
-  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-  border-radius: 5px;
+	background-color: var(--clr-3a);
+	padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+	border-radius: 5px;
+}
+
+.buttonsContainer {
+	display: flex;
+	display: row;
+	margin-bottom: 3vw;
+	margin-right: 3vw;
+	justify-content: flex-end;
+	gap: 3vw;
 }
