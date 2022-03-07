@@ -1,9 +1,13 @@
+import styles from "./styles.module.css";
+
 function RenderTags(props) {
   const { tags } = props;
   return (
-    <div>
+    <div className={styles.tagContainer}>
       {tags.map((tag, index) => (
-        <div> {tag}</div>
+        <p className={styles.tags} key={index}>
+          {tag}
+        </p>
       ))}
     </div>
   );

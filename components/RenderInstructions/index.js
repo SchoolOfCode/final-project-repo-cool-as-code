@@ -9,21 +9,32 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-function RenderIngredients() {
+function RenderInstructions(props) {
+  const { instructions } = props;
+
+  let instructionsArr = instructions.map((instruction) =>
+    JSON.parse(instruction)
+  );
+
   return (
     <div>
-      THESE ARE THE INGREDIENTS Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Officia optio possimus veritatis asperiores est! Nostrum
-      temporibus corporis eum minima? Culpa tenetur pariatur quisquam unde
-      atque? Quisquam, iure! Atque, ab ducimus? Libero illo incidunt, magnam
-      optio animi ullam quae non veniam, enim, nemo provident necessitatibus
-      fugit quidem debitis cum perferendis odit? In optio praesentium eius
-      voluptate officiis perspiciatis expedita autem recusandae quos, deserunt
-      ex ut harum cupiditate dolorum atque sequi rerum libero inventore
-      accusamus debitis blanditiis delectus. Numquam nam expedita modi est
-      labore. Dicta illo vero odit possimus, ad libero aspernatur, neque,
-      eveniet deserunt sint error vel dignissimos. Nesciunt, laudantium nisi?
+      {instructionsArr.map((instruction, index) => (
+        <div key={index}>
+          <Text fontSize="xl">Step {index + 1}</Text>
+          <Text>{instruction.instruction}</Text>
+          {instruction.image ? (
+            <Image
+              boxSize="100%"
+              objectFit="cover"
+              src={instruction.image}
+              alt={`image for step {index + 1}`}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
-export default RenderIngredients;
+export default RenderInstructions;

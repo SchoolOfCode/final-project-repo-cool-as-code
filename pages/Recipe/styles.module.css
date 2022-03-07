@@ -68,7 +68,20 @@
   }
 }
 
+.recipeName {
+  display: flex;
+  justify-content: center;
+}
+
 .portionType {
   display: flex;
   justify-content: space-around;
+  color: var(--clr-3);
+}
+
+.portion,
+.type {
+  background-color: var(--clr-3a);
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 5px;
 }
