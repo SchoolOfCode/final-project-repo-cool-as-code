@@ -10,25 +10,25 @@ export let pageWrapper = React.createContext({});
 import { foodstory } from "../styles/theme.js";
 
 function MyApp({ Component, pageProps }) {
-	let [state, setState] = useState({
-		apiData: [],
-		apiMessage: "",
-		selectingRecipe: null,
-	});
+  let [state, setState] = useState({
+    apiData: [],
+    apiMessage: "",
+    selectingRecipe: null,
+  });
 
-	return (
-		<ChakraProvider theme={foodstory}>
-			<pageWrapper.Provider value={{ state, setState }}>
-				<UserProvider>
-					<NextUIProvider>
-						<div className="bg-gray-global">
-							<Component {...pageProps} />
-						</div>
-					</NextUIProvider>
-				</UserProvider>
-			</pageWrapper.Provider>
-		</ChakraProvider>
-	);
+  return (
+    <ChakraProvider theme={foodstory}>
+      <pageWrapper.Provider value={{ state, setState }}>
+        <UserProvider>
+          <NextUIProvider>
+            <div className="bg-gray-global">
+              <Component {...pageProps} />
+            </div>
+          </NextUIProvider>
+        </UserProvider>
+      </pageWrapper.Provider>
+    </ChakraProvider>
+  );
 }
 
 export default MyApp;

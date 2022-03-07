@@ -1,20 +1,20 @@
-import React, { useEffect } from "react"
-import { useContext, useState } from "react"
-import Image from "next/image"
-import { pageWrapper } from "../_app"
+import React, { useEffect } from "react";
+import { useContext, useState } from "react";
+import Image from "next/image";
+import { pageWrapper } from "../_app";
 
 //components
-import RecipeDisplay from "../../components/RecipeDisplay"
-import Template from "../template"
+import RecipeDisplay from "../../components/RecipeDisplay";
+import Template from "../template";
 
-const Recipe = () => {
-  let { state, setState } = useContext(pageWrapper)
+const recipe = () => {
+  let { state, setState } = useContext(pageWrapper);
 
   let recipe = state.apiData.filter(
     (item) => item.id === state.selectingRecipe.recipeId
-  )
+  );
 
-  console.log(recipe)
+  console.log(recipe);
 
   return (
     <div>
@@ -32,7 +32,7 @@ const Recipe = () => {
         </>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Recipe
+export default recipe;
