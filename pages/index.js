@@ -64,7 +64,7 @@ export default function Home() {
           <a id={styles.id}>Logout</a>
         </Link>
 
-      
+      <div></div>
       </div>
     
     </>
