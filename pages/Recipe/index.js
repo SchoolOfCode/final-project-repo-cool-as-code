@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 // import Image from "next/image";
 import { pageWrapper } from "../_app";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
 import styles from "./styles.module.css";
@@ -45,6 +46,22 @@ const recipe = () => {
 	let recipe = state.apiData.filter(
 		(item) => item.id === state.selectingRecipe.recipeId
 	);
+
+	useEffect(() => {
+		if (recipe.length === 0) {
+			returnHome();
+		}
+	}, []);
+
+	function returnHome() {
+		router.push("/home");
+	}
+
+	const router = useRouter();
+	function setId() {
+		setState({ ...state, selectingRecipe: { recipeId } });
+		router.push("/recipe");
+	}
 
 	return (
 		<div>
