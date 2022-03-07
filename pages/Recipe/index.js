@@ -211,27 +211,29 @@ const recipe = () => {
 										Story
 									</Tab>
 								</TabList>
-								{/* <TabPanels>
-								<TabPanel>
-									{item.ingredients.length !== 0 ? (
-										<RenderIngredients ingredients={item.ingredients} />
-									) : (
-										<Text>
-											You have not entered any ingredients for this recipe
-										</Text>
-									)}
-								</TabPanel>
-								<TabPanel>
-									{item.instructions.length !== 0 ? (
-										<RenderInstructions instructions={item.instructions} />
-									) : (
-										<Text>You have not entered the method for this recipe</Text>
-									)}
-								</TabPanel>
-								<TabPanel>
-									<RenderStory story={item.story} />
-								</TabPanel>
-							</TabPanels> */}
+								<TabPanels>
+									<TabPanel>
+										{item.ingredients.length !== 0 ? (
+											<RenderIngredients ingredients={item.ingredients} />
+										) : (
+											<Text>
+												You have not entered any ingredients for this recipe
+											</Text>
+										)}
+									</TabPanel>
+									<TabPanel>
+										{item.instructions.length !== 0 ? (
+											<RenderInstructions instructions={item.instructions} />
+										) : (
+											<Text>
+												You have not entered the method for this recipe
+											</Text>
+										)}
+									</TabPanel>
+									<TabPanel>
+										<RenderStory story={item.story} />
+									</TabPanel>
+								</TabPanels>
 							</Tabs>
 							<div className={styles.buttonsContainer}>
 								<div className={styles.buttonDiv}>
