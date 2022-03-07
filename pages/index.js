@@ -61,7 +61,7 @@ export default function Home() {
         </LoginButton>
           </FadeIn>
         <Link href="/api/auth/logout">
-          <a>Logout</a>
+          <a id={styles.id}>Logout</a>
         </Link>
 
       
