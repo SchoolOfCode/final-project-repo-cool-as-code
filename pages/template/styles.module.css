@@ -1,3 +1,20 @@
+/* title */
+
+.title {
+	padding-left: 3vw;
+	padding-top: 8vw;
+	font-family: var(--font-2);
+	font-size: calc(3vw + 2em);
+	color: var(--clr-3);
+	text-shadow: 0 0 32px white;
+	letter-spacing: 0.1em;
+	margin-bottom: 0;
+	background-image: url("/bkgrd.jpg");
+	background-size: 1500px;
+	/* margin-top: 10vh; */
+}
+
+/* grid - in desktop view this shows two columns */
 .createRecipe {
 	display: grid;
 	grid-template-columns: 0.5fr 1fr;
@@ -11,6 +28,8 @@
 .container {
 	background-color: var(--clr-2a);
 }
+
+/* left coluumn of grid with general recipe info */
 .recipeForm {
 	grid-area: one;
 	margin-left: 3vw;
@@ -21,11 +40,23 @@
 	padding: 2vw;
 }
 
+.tabs {
+	margin: 3vw;
+	background-color: var(--clr-w);
+	border-radius: 8px;
+	/* padding: 2vw; */
+}
+
 .tabContainer {
 	grid-area: two;
 }
 
+.container {
+	background-color: var(--clr-2a);
+}
+
 @media (max-width: 50em) {
+	/* grid - in mobile view this shows one column two rows */
 	.createRecipe {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -35,17 +66,4 @@
 	.recipeForm {
 		margin: 3vw;
 	}
-}
-
-.flexIcon {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.buttonDiv {
-	display: flex;
-	margin-bottom: 3vw;
-	margin-right: 3vw;
-	justify-content: flex-end;
 }

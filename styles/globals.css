@@ -6,6 +6,7 @@
 	--clr-2: #219ebc;
 	--clr-2a: #eefbff;
 	--clr-3: #023047;
+	--clr-3a: #bbeaf8;
 	--clr-4: #ffb703;
 	--clr-5: #fbd3a2;
 	--clr-4a: rgb(255, 226, 146);
@@ -30,20 +31,8 @@ body {
 }
 
 /* [START] THIS IS STYLING FOR THE HEADER - DO NOT CHANGE */
-.logo {
-	padding-top: 1vh;
-	padding-bottom: 1vh;
-	padding-left: 6vh;
-	padding-right: 6vh;
-}
+
 .header {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: space-between;
-	/* position: a; */
-	padding: 0.4rem;
-	background: var(--clr-3);
 	height: 10vh;
 	position: sticky;
 	top: 0;
@@ -51,24 +40,45 @@ body {
 	z-index: 1000000;
 }
 
+.logo {
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	padding-left: 6vh;
+	padding-right: 6vh;
+}
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--clr-3);
+	/* color: var(--clr-w); */
+	height: 10vh;
+}
+
 .list_items {
 	list-style-type: none;
 	display: flex;
-	justify-content: flex-end;
+	/* justify-content: flex-end; */
 	gap: 3.5rem;
+	padding-right: 3rem;
+	margin-bottom: 0;
 }
 
 .list_items .list a {
 	text-decoration: none;
 	font-family: var(--font-2);
 	color: var(--clr-w);
-	font-weight: bolder;
+	/* font-weight: bolder; */
+	letter-spacing: 0.12em;
 	font-size: clamp(1.5rem, 0.5vw + 0.5rem, 3.5rem);
 }
 
 .list_items .list a:hover,
 .list_items .list a:focus {
 	color: var(--clr-1);
+}
+.list {
+	margin: 0;
 }
 
 .close_icon {
@@ -80,12 +90,25 @@ body {
 	font-size: clamp(1rem, 4vw + 1rem, 4rem);
 	cursor: pointer;
 	display: none;
+	top: 0.75rem;
+	right: 1rem;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 60em) {
+	/* .navbar {
+		position: relative;
+	} */
+
+	.navbar {
+		flex-direction: row;
+		align-items: center;
+		/* position: relative; */
+		/* justify-content: space-between; */
+	}
+
 	.list_items {
 		z-index: 2;
-		width: 46%;
+		width: 100%;
 		padding: 10px;
 		flex-direction: column;
 		position: fixed;
@@ -94,21 +117,28 @@ body {
 		gap: 4rem;
 		background-color: rgba(255, 255, 255, 0.39);
 		backdrop-filter: blur(1rem);
-		transform: translateX(110%);
-		transition: 500ms;
+		transform: translate(100%, 0);
+		transition: 2000ms;
 		inset: 0, 0, 0, 30;
+		top: 10vh;
 		/* border-radius: 15px; */
 	}
 
 	.list_items.active {
-		transform: translateX(0);
+		/* top: 0; */
+		/* left: 0; */
+		top: 10vh;
+		/* transform: translate(-50%, 0); */
+		left: 50%;
+		transform: translateX(-50%);
+		margin: 0;
 	}
 
 	.list_items li a {
 		font-size: clamp(0.1rem, 1vw + 0.5rem, 3.5rem);
 	}
 	.list_items .list a {
-		color: var(--clr-2);
+		color: var(--clr-1);
 	}
 	.close_icon {
 		display: block;
@@ -116,16 +146,17 @@ body {
 		left: 2%;
 		top: 2%;
 		cursor: pointer;
-		color: var(--clr-b);
+		color: var(--clr-3);
 	}
 
 	.list_items .list a:hover,
 	.list_items .list a:focus {
-		color: var(--clr-w);
+		color: var(--clr-3);
 	}
 
 	.hamburger_icon .icon {
 		display: block;
+		margin-right: 2rem;
 	}
 }
 

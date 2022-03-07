@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import AddTags from "../AddTags";
+import Camera from "../../components/Camera/Camera";
 
 import {
 	FormControl,
@@ -20,8 +21,6 @@ import {
 //styling
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
-import AddRecipePhoto from "../AddRecipePhoto";
-import SubmitButton from "../SubmitButton";
 
 function RecipeForm(props) {
 	const { addNewRecipe } = props;
@@ -29,8 +28,8 @@ function RecipeForm(props) {
 	const [title, setTitle] = useState("");
 	const [portions, setPortions] = useState(0);
 	const [story, setStory] = useState("");
-	const [tags, setTags] = useState(["Alcohol-Cocktail", "American"]);
-	const [type, setType] = useState("Breakfast");
+	const [tags, setTags] = useState(["", ""]);
+	const [type, setType] = useState("");
 	const [ingredients, setIngredients] = useState([
 		{ quantity: "", measure: "", food: "" },
 	]);
@@ -49,9 +48,9 @@ function RecipeForm(props) {
 	];
 
 	// TAG
-	const [dishType, setDishType] = useState("Alcohol-Cocktail");
+	const [dishType, setDishType] = useState("");
 
-	const [cuisineType, setCuisineType] = useState("American");
+	const [cuisineType, setCuisineType] = useState("");
 
 	const [health, setHealth] = useState([]);
 
@@ -60,7 +59,6 @@ function RecipeForm(props) {
 	}
 
 	function handleChangePortions(portions) {
-		// console.log(portions);
 		setPortions(portions);
 	}
 
@@ -69,23 +67,52 @@ function RecipeForm(props) {
 	}
 
 	function handleChangeType(event) {
-		// console.log(event.target.value);
 		setType(event.target.value);
 	}
 
-	function handleChangeImage(event) {
-		console.log("main recipe image button clicked");
-		// setImage(event.target.value);
-	}
-
 	useEffect(() => {
-		// console.log(dishType, cuisineType, health);
 		setTags([dishType, cuisineType, ...health]);
 	}, [dishType, cuisineType, health]);
 
-	function handleSubmit(event) {
+	// [START] FUNCTIONS FOR IMAGE UPLOAD
+	const [previewSource, setPreviewSource] = useState();
+	const [previewSourceArr, setPreviewSourceArr] = useState([]);
+
+	function handleSubmitFile() {
+		console.log("main photo submitted");
+		if (!previewSource) {
+			handlePostFetch();
+		} else {
+			uploadImage(previewSource);
+		}
+	}
+
+	async function uploadImage(base64EncodedImage) {
+		try {
+			const response = await fetch("/api/upload", {
+				method: "POST",
+				body: JSON.stringify({ data: base64EncodedImage }),
+				headers: { "Content-type": "application/json" },
+			});
+			const data = await response.json();
+			setImage(data.url);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	// [END] FUNCTIONS FOR IMAGE UPLOAD
+
+	function handleSubmitForm(event) {
 		event.preventDefault();
-		// console.log(tags);
+		handleSubmitFile();
+	}
+	useEffect(() => {
+		console.log("useEffect triggered", image);
+		handlePostFetch();
+	}, [image]);
+
+	function handlePostFetch() {
 		const recipe = {
 			title,
 			portions,
@@ -97,26 +124,22 @@ function RecipeForm(props) {
 			instructions,
 		};
 		console.log(recipe);
-		// addNewRecipe(recipe);
-		setTitle("");
-		setPortions(0);
-		setStory("");
-		setTags([]);
-		setType("Breakfast");
-		setIngredients([{ quantity: "", measure: "", food: "" }]);
-		setInstructions([{ instruction: "", image: "" }]);
-		setImage("");
 	}
-	// test
+
+	// [END] FUNCTIONS FOR IMAGE UPLOAD
+
 	return (
 		<div className={styles.createRecipe}>
 			<div className={styles.recipeForm}>
 				<FormControl className={styles.infoContainer}>
 					<div className={styles.flexIcon}>
 						<FormLabel htmlFor="title">Recipe:</FormLabel>
-						<AddRecipePhoto
-							className={styles.cameraIcon}
-							onClick={(event) => handleChangeImage(event)}
+						<Camera
+							image={image}
+							setImage={setImage}
+							previewSource={previewSource}
+							setPreviewSource={setPreviewSource}
+							photo="main-image"
 						/>
 					</div>
 					<Input
@@ -127,6 +150,7 @@ function RecipeForm(props) {
 						variant="flushed"
 						onChange={handleChangeTitle}
 						value={title}
+						isRequired
 					/>
 					<br />
 					<br />
@@ -192,10 +216,31 @@ function RecipeForm(props) {
 					setIngredients={setIngredients}
 					instructions={instructions}
 					setInstructions={setInstructions}
+					previewSourceArr={previewSourceArr}
+					setPreviewSourceArr={setPreviewSourceArr}
 				/>
-				<Button onClick={handleSubmit} colorScheme="teal" size="lg">
-					SAVE
-				</Button>
+				<div className={styles.buttonDiv}>
+					<Button
+						border="1px"
+						bg="orange.main"
+						borderRadius="8px"
+						borderColor="orange.main"
+						color="blue.main"
+						size="lg"
+						_hover={{ bg: "orange.one" }}
+						_active={{
+							bg: "orange.one",
+							transform: "scale(0.98)",
+							borderColor: "orange.one",
+						}}
+						_focus={{
+							boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+						}}
+						onClick={handleSubmitForm}
+					>
+						SAVE
+					</Button>
+				</div>
 			</div>
 		</div>
 	);
