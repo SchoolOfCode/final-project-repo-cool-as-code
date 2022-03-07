@@ -27,7 +27,7 @@ const suffix = (
 )
 
 function SearchInput() {
-  //Use a copy of line 24 to put the results  on any other page
+  //Use a copy of line below to put the results  on any other page
   let { state, setState } = useContext(pageWrapper)
   const router = useRouter()
   // console.log(state.apiData)
@@ -38,9 +38,9 @@ function SearchInput() {
       const response = await API.fetchRecipesSearch(searchTerm)
 
       setState({
-        ...state,
-        apiData: response.payload,
-        apiMessage: response.message,
+        state,
+        searchResult: response.payload,
+        searchMessage: response.message,
       })
       console.log(state)
       if (router.pathname === "/search" || response.payload.length === 0) {

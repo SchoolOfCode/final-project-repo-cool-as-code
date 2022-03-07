@@ -15,8 +15,6 @@ function SearchBar({ setSearchTerm }) {
       initial.current = false
       return
     }
-
-    console.log(value)
   }, [setSearchTerm, value])
 
   return (

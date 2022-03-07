@@ -2,7 +2,7 @@
 //Read more about the API: add link to API doc/read me
 
 // const API_URL = "https://soc-foodstory.herokuapp.com/";
-// const API_URL = "https://recipe-soc-project.herokuapp.com/"
+//const API_URL = "https://recipe-soc-project.herokuapp.com/"
 
 const API_URL = process.env.API_URL
 
