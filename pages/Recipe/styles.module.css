@@ -67,3 +67,8 @@
     margin: 3vw;
   }
 }
+
+.portionType {
+  display: flex;
+  justify-content: space-around;
+}
