@@ -1,0 +1,31 @@
+.title {
+  padding-left: 3vw;
+  padding-top: 8vw;
+  font-family: var(--font-2);
+  font-size: calc(3vw + 2em);
+  color: var(--clr-3);
+  text-shadow: 0 0 32px white;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
+  background-image: url("/bkgrd.jpg");
+  background-size: 1500px;
+  /* margin-top: 10vh; */
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding-top: 9vh;
+  padding-bottom: 3vh;
+  color: grey;
+  font-size: xx-large;
+}
+
+.mainText {
+  text-align: center;
+  padding: 3vh 12vw 3vh 12vw;
+  color: grey;
+}
