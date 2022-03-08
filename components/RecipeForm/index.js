@@ -23,6 +23,8 @@ import {
 	ModalFooter,
 	ModalBody,
 	ModalCloseButton,
+	Center,
+	Spinner,
 } from "@chakra-ui/react";
 
 //styling
@@ -31,6 +33,7 @@ import RecipeFormTabs from "../RecipeFormTabs";
 
 function RecipeForm(props) {
 	const { addNewRecipe, recipe } = props;
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [isSubmit, setIsSubmit] = useState(false);
 	const [isFromComplete, setIsFormComplete] = useState(false);
@@ -111,14 +114,20 @@ function RecipeForm(props) {
 
 	function handleSubmitForm(event) {
 		event.preventDefault();
+		setIsSubmit(true);
+		handleSubmitFile();
+		console.log("handle submit form function called");
+	}
+
+	useEffect(() => {
 		if (title === "" || story === "" || type === "") {
 			setIsFormComplete(false);
+			console.log("form incomplete");
 		} else {
 			setIsFormComplete(true);
-			setIsSubmit(true);
-			handleSubmitFile();
+			console.log("YAY form complete");
 		}
-	}
+	}, [title, story, type]);
 
 	useEffect(() => {
 		if (isSubmit === true) {
@@ -250,7 +259,7 @@ function RecipeForm(props) {
 					setPreviewSourceArr={setPreviewSourceArr}
 				/>
 				<div className={styles.buttonDiv}>
-					<Button
+					{/* <Button
 						border="1px"
 						bg="orange.main"
 						borderRadius="8px"
@@ -269,7 +278,89 @@ function RecipeForm(props) {
 						onClick={handleSubmitForm}
 					>
 						SAVE
-					</Button>
+					</Button> */}
+
+					{/* <Button onClick={onOpen}>Trigger modal</Button> */}
+					{!isFromComplete ? (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={onOpen}
+						>
+							SAVE
+						</Button>
+					) : (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={(event) => {
+								onOpen();
+								handleSubmitForm(event);
+							}}
+						>
+							SAVE
+						</Button>
+					)}
+
+					{!isFromComplete ? (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>
+									Oops, you have not completed the recipe
+								</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Please add a title, story and meal type for your recipe.
+								</ModalBody>
+								<ModalFooter>
+									<Button onClick={onClose}>Close</Button>
+								</ModalFooter>
+							</ModalContent>
+						</Modal>
+					) : (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>Save Recipe</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Recipe is being saved.
+									<br />
+									<Center>
+										<Spinner size="lg" />
+									</Center>
+								</ModalBody>
+								<ModalFooter></ModalFooter>
+							</ModalContent>
+						</Modal>
+					)}
 				</div>
 			</div>
 		</div>
