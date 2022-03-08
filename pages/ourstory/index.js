@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Center } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 const ourstory = () => {
@@ -8,13 +8,15 @@ const ourstory = () => {
     <div>
       <Header />
       <h1 className={styles.title}>Our Story</h1>
-      <Image
-        src="/image/logo_dark.png"
-        alt="Foodstory Logo"
-        layout="intrinsic"
-        width="136"
-        height="52"
-      />
+      <Center>
+        <Image
+          src="/image/logo_dark.png"
+          alt="Foodstory Logo"
+          layout="intrinsic"
+          width={500}
+          height={200}
+        />
+      </Center>
       <div className={styles.flex}>
         <Box>
           <Text fontSize="3xl"> This is how Foodstory came to be...</Text>
