@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import AddTags from "../AddTags";
 import Camera from "../Camera/Camera";
+import { useDisclosure } from "@chakra-ui/react";
+
 import {
 	FormControl,
 	FormLabel,
@@ -14,6 +16,15 @@ import {
 	Textarea,
 	Select,
 	Button,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton,
+	Center,
+	Spinner,
 } from "@chakra-ui/react";
 
 //styling
@@ -22,8 +33,10 @@ import RecipeFormTabs from "../RecipeFormTabs";
 
 function RecipeEditForm(props) {
 	const { editRecipeInfo, recipe, id } = props;
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [isSubmit, setIsSubmit] = useState(false);
+	const [isFromComplete, setIsFormComplete] = useState(false);
 
 	const [title, setTitle] = useState(recipe.dataTitle);
 	const [portions, setPortions] = useState(recipe.dataPortions);
@@ -101,8 +114,20 @@ function RecipeEditForm(props) {
 
 	function handleSubmitForm(event) {
 		event.preventDefault();
+		setIsSubmit(true);
 		handleSubmitFile();
+		console.log("handle submit form function called");
 	}
+	useEffect(() => {
+		if (title === "" || story === "" || type === "") {
+			setIsFormComplete(false);
+			console.log("form incomplete");
+		} else {
+			setIsFormComplete(true);
+			console.log("YAY form complete");
+		}
+	}, [title, story, type]);
+
 	useEffect(() => {
 		if (isSubmit === true) {
 			console.log("useEffect triggered", image);
@@ -121,6 +146,7 @@ function RecipeEditForm(props) {
 			ingredients,
 			instructions,
 		};
+		console.log("save button pressed");
 		editRecipeInfo(recipe, id);
 	}
 	return (
@@ -229,26 +255,86 @@ function RecipeEditForm(props) {
 					setPreviewSourceArr={setPreviewSourceArr}
 				/>
 				<div className={styles.buttonDiv}>
-					<Button
-						border="1px"
-						bg="orange.main"
-						borderRadius="8px"
-						borderColor="orange.main"
-						color="blue.main"
-						size="lg"
-						_hover={{ bg: "orange.one" }}
-						_active={{
-							bg: "orange.one",
-							transform: "scale(0.98)",
-							borderColor: "orange.one",
-						}}
-						_focus={{
-							boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
-						}}
-						onClick={handleSubmitForm}
-					>
-						SAVE
-					</Button>
+					{!isFromComplete ? (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={onOpen}
+						>
+							SAVE
+						</Button>
+					) : (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={(event) => {
+								onOpen();
+								handleSubmitForm(event);
+							}}
+						>
+							SAVE
+						</Button>
+					)}
+
+					{!isFromComplete ? (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>
+									Oops, you have not completed the recipe
+								</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Please add a title, story and meal type for your recipe.
+								</ModalBody>
+								<ModalFooter>
+									<Button onClick={onClose}>Close</Button>
+								</ModalFooter>
+							</ModalContent>
+						</Modal>
+					) : (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>Save Recipe</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Recipe is being saved.
+									<br />
+									<Center>
+										<Spinner size="lg" />
+									</Center>
+								</ModalBody>
+								<ModalFooter></ModalFooter>
+							</ModalContent>
+						</Modal>
+					)}
 				</div>
 			</div>
 		</div>

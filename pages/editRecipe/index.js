@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import { useContext } from "react";
 import { pageWrapper } from "../../pages/_app";
+import { useRouter } from "next/router";
 
 //components
 import RecipeEditForm from "../../components/RecipeEditForm";
@@ -16,6 +17,7 @@ const API_URL = process.env.API_URL;
 const EditRecipe = () => {
 	let { state, setState } = useContext(pageWrapper);
 
+	const router = useRouter();
 	let data = state.apiData.filter(
 		(item) => item.id === state.selectingRecipe.recipeId
 	)[0];
@@ -49,6 +51,8 @@ const EditRecipe = () => {
 		const data = await response.json();
 		console.log(data, "recipe updated");
 		setRecipe(data);
+		setRecipe(data);
+		router.push("/home");
 	}
 
 	return (
