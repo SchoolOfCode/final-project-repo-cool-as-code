@@ -148,7 +148,7 @@ function RecipeForm(props) {
 			instructions,
 		};
 		console.log("save button pressed");
-		// addNewRecipe(recipe);
+		addNewRecipe(recipe);
 	}
 
 	// [END] FUNCTIONS FOR IMAGE UPLOAD
@@ -259,28 +259,6 @@ function RecipeForm(props) {
 					setPreviewSourceArr={setPreviewSourceArr}
 				/>
 				<div className={styles.buttonDiv}>
-					{/* <Button
-						border="1px"
-						bg="orange.main"
-						borderRadius="8px"
-						borderColor="orange.main"
-						color="blue.main"
-						size="lg"
-						_hover={{ bg: "orange.one" }}
-						_active={{
-							bg: "orange.one",
-							transform: "scale(0.98)",
-							borderColor: "orange.one",
-						}}
-						_focus={{
-							boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
-						}}
-						onClick={handleSubmitForm}
-					>
-						SAVE
-					</Button> */}
-
-					{/* <Button onClick={onOpen}>Trigger modal</Button> */}
 					{!isFromComplete ? (
 						<Button
 							border="1px"

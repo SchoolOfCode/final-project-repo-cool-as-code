@@ -3,6 +3,7 @@ import FadeIn from "react-fade-in/lib/FadeIn";
 import React, { useState } from "react";
 import Header from "../../components/Header";
 import { useDisclosure } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 //components
 import RecipeForm from "../../components/RecipeForm";
@@ -24,6 +25,7 @@ const CreateRecipe = () => {
 		dataImage: "",
 	});
 
+	const router = useRouter();
 	async function addNewRecipe(recipe) {
 		const response = await fetch(`${API_URL}/recipes`, {
 			method: "POST",
@@ -33,6 +35,7 @@ const CreateRecipe = () => {
 		const data = await response.json();
 		console.log(data, "recipe added");
 		setRecipe(data);
+		router.push("/home");
 	}
 
 	return (
