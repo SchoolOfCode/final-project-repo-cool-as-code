@@ -211,7 +211,7 @@ const recipe = () => {
 										Story
 									</Tab>
 								</TabList>
-								<TabPanels>
+								{/* <TabPanels>
 									<TabPanel>
 										{item.ingredients.length !== 0 ? (
 											<RenderIngredients ingredients={item.ingredients} />
@@ -233,7 +233,7 @@ const recipe = () => {
 									<TabPanel>
 										<RenderStory story={item.story} />
 									</TabPanel>
-								</TabPanels>
+								</TabPanels> */}
 							</Tabs>
 							<div className={styles.buttonsContainer}>
 								<div className={styles.buttonDiv}>
