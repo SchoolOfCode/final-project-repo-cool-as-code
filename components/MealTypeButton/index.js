@@ -15,12 +15,14 @@ export default function MtButton(props) {
 
   const fetchRecipesByType = async (mealTypes) => {
     const response = await API.fetchRecipesByType(mealTypes)
+    // console.log(mealTypes)
     setState({
-      state,
+      ...state,
+      searchSuccess: response.success,
       searchResult: response.payload,
       searchMessage: response.message,
     })
-    console.log(state)
+    //console.log(response)
   }
 
   function getMeal() {

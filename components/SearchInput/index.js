@@ -38,7 +38,7 @@ function SearchInput() {
       const response = await API.fetchRecipesSearch(searchTerm)
 
       setState({
-        state,
+        ...state,
         searchResult: response.payload,
         searchMessage: response.message,
       })
