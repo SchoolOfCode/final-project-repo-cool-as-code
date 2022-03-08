@@ -39,34 +39,35 @@ export default function Home() {
     <>
       <BgImage />
       <div className={styles.wrapper}>
-       <FadeIn delay={2000} transitionDuration={3000}  >
-        <Image
-          src="/image/logo_dark.png"
-          alt="Foodstory Logo"
-          width="1491px"
-          height="608px"
-          className={styles.logo}
-          priority={true}
-        /></FadeIn>
-        <FadeIn delay={4000} transitionDuration={3000} >
-        <LoginButton
-          className={styles.landingButton}
-          color="primary"
-          size="xl"
-          clickable="true"
-        >
-          <Link href="/api/auth/login">
-            <a>Login</a>
-          </Link>
-        </LoginButton>
-          </FadeIn>
-        <Link href="/api/auth/logout">
+        <FadeIn delay={2000} transitionDuration={3000}>
+          <Image
+            src="/image/logo_dark.png"
+            alt="Foodstory Logo"
+            width="1491px"
+            height="608px"
+            className={styles.logo}
+            priority={true}
+          />
+        </FadeIn>
+        <FadeIn delay={4000} transitionDuration={3000}>
+          <LoginButton
+            className={styles.landingButton}
+            color="primary"
+            size="xl"
+            clickable="true"
+          >
+            {/* <Link href="/api/auth/login"> */}
+            <Link href="/home ">
+              <a>Login</a>
+            </Link>
+          </LoginButton>
+        </FadeIn>
+        {/* <Link href="/api/auth/logout">
           <a id={styles.id}>Logout</a>
-        </Link>
-<div></div>
-      <div></div>
+        </Link> */}
+        <div></div>
+        <div></div>
       </div>
-    
     </>
   );
 }

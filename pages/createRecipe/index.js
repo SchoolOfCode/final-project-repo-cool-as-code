@@ -1,4 +1,4 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+//import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import FadeIn from "react-fade-in/lib/FadeIn";
 import React, { useState } from "react";
 import AddIngredients from "../../components/AddIngredients";
@@ -39,4 +39,4 @@ const CreateRecipe = () => {
 };
 
 export default CreateRecipe;
-export const getServerSideProps = withPageAuthRequired();
+//export const getServerSideProps = withPageAuthRequired();
