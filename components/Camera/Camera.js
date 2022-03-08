@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 
 function Camera(props) {
-	const { photo, previewSource, setPreviewSource } = props;
+	const { photo, previewSource, setPreviewSource, image } = props;
 	const [fileInput, setFileInputState] = useState("");
 
 	function handleFileInputChange(e) {
@@ -49,9 +49,11 @@ function Camera(props) {
 			<form className="form">
 				<label
 					htmlFor={photo}
-					className={previewSource ? styles.photoAdded : styles.addPhoto}
+					className={
+						previewSource || image ? styles.photoAdded : styles.addPhoto
+					}
 				>
-					{previewSource ? "Change Photo" : "Add Photo"}
+					{previewSource || image ? "Change Photo" : "Add Photo"}
 					<PhotoCameraIcon className={styles.cameraIcon} />
 				</label>
 				<input

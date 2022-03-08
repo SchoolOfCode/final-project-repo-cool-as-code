@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import AddTags from "../AddTags";
-import Camera from "../../components/Camera/Camera";
-import { useDisclosure } from "@chakra-ui/react";
-
+import Camera from "../Camera/Camera";
 import {
 	FormControl,
 	FormLabel,
@@ -16,24 +14,16 @@ import {
 	Textarea,
 	Select,
 	Button,
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
 } from "@chakra-ui/react";
 
 //styling
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
 
-function RecipeForm(props) {
-	const { addNewRecipe, recipe } = props;
+function RecipeEditForm(props) {
+	const { editRecipeInfo, recipe, id } = props;
 
 	const [isSubmit, setIsSubmit] = useState(false);
-	const [isFromComplete, setIsFormComplete] = useState(false);
 
 	const [title, setTitle] = useState(recipe.dataTitle);
 	const [portions, setPortions] = useState(recipe.dataPortions);
@@ -111,15 +101,8 @@ function RecipeForm(props) {
 
 	function handleSubmitForm(event) {
 		event.preventDefault();
-		if (title === "" || story === "" || type === "") {
-			setIsFormComplete(false);
-		} else {
-			setIsFormComplete(true);
-			setIsSubmit(true);
-			handleSubmitFile();
-		}
+		handleSubmitFile();
 	}
-
 	useEffect(() => {
 		if (isSubmit === true) {
 			console.log("useEffect triggered", image);
@@ -138,12 +121,8 @@ function RecipeForm(props) {
 			ingredients,
 			instructions,
 		};
-		console.log("save button pressed");
-		// addNewRecipe(recipe);
+		editRecipeInfo(recipe, id);
 	}
-
-	// [END] FUNCTIONS FOR IMAGE UPLOAD
-
 	return (
 		<div className={styles.createRecipe}>
 			<div className={styles.recipeForm}>
@@ -276,4 +255,4 @@ function RecipeForm(props) {
 	);
 }
 
-export default RecipeForm;
+export default RecipeEditForm;
