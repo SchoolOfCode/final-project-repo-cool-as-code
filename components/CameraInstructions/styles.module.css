@@ -1,0 +1,37 @@
+.formInput {
+	display: none;
+}
+
+.photoAdded {
+	display: flex;
+	background-color: var(--clr-1);
+	font-weight: bold;
+	color: var(--clr-w);
+	cursor: pointer;
+	border-radius: 2px;
+	padding: 2px;
+	padding: 2px 5px 2px 5px;
+	margin-left: 3rem;
+}
+.photoAdded:hover {
+	background-color: var(--clr-5);
+	color: var(--clr-3);
+}
+
+.addPhoto {
+	display: flex;
+	background-color: var(--clr-3);
+	font-weight: bold;
+	color: var(--clr-w);
+	cursor: pointer;
+	border-radius: 2px;
+	padding: 2px 5px 2px 5px;
+	margin-left: 3rem;
+}
+.addPhoto:hover {
+	background-color: var(--clr-3a);
+	color: var(--clr-3);
+}
+.cameraIcon {
+	margin-left: 3px;
+}
