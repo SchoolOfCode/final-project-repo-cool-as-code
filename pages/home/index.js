@@ -96,11 +96,14 @@ const Home = () => {
         {/* {initial != undefined && console.log(state.apiData, initial)} */}
 
         {initial && (
-          <Grid header={`Your Recipes ${""} `}>
+          <Grid.Container gap={2} justify="flex-start" display="grid" >
+          {/*<Grid header={`Your Recipes ${""} `}>*/}
             {initial.length > 0 &&
               initial.map((item, index) => {
                 // console.log(item.id)
+            
                 return (
+                      <Grid xs={6} sm={3} key={index}>
                   <RecipeCard
                     key={index}
                     recipeId={item.id}
@@ -110,9 +113,11 @@ const Home = () => {
                     p1={item.type}
                     p2={item.tags}
                   />
+  </Grid>
                 );
+              
               })}
-          </Grid>
+              </Grid.Container>
         )}
       </div>
     </>
