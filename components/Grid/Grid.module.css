@@ -1,5 +1,9 @@
 .Header {
-  color: black;
+  font-family: var(--font-2);
+  font-size: calc(3vw + 2em);
+  color: var(--clr-3);
+  text-shadow: 0 0 32px white;
+  padding-left: 8px;
 
   @media screen and (max: width 768px) {
     font-size: 1.5rem;
@@ -7,9 +11,39 @@
 }
 
 .Content {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   align-items: center;
-  justify-items: center;
+  justify-items: center; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.one {
+  grid-area: one;
+}
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+
+.four {
+  grid-area: four;
+}
+
+.five {
+  grid-area: five;
+}
+
+.six {
+  grid-area: six;
 }

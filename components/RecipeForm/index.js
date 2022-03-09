@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import AddTags from "../AddTags";
+import Camera from "../../components/Camera/Camera";
+import { useDisclosure } from "@chakra-ui/react";
 
 import {
 	FormControl,
@@ -12,46 +14,52 @@ import {
 	NumberIncrementStepper,
 	NumberDecrementStepper,
 	Textarea,
-	Text,
 	Select,
 	Button,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton,
+	Center,
+	Spinner,
 } from "@chakra-ui/react";
 
 //styling
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
-import AddRecipePhoto from "../AddRecipePhoto";
-import SubmitButton from "../SubmitButton";
 
 function RecipeForm(props) {
-	const { addNewRecipe } = props;
+	const { addNewRecipe, recipe } = props;
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	// update
+	const [isSubmit, setIsSubmit] = useState(false);
+	const [isFromComplete, setIsFormComplete] = useState(false);
 
-	const [title, setTitle] = useState("");
-	const [portions, setPortions] = useState(0);
-	const [story, setStory] = useState("");
-	const [tags, setTags] = useState(["Alcohol-Cocktail", "American"]);
-	const [type, setType] = useState("Breakfast");
-	const [ingredients, setIngredients] = useState([
-		{ quantity: "", measure: "", food: "" },
-	]);
-	const [instructions, setInstructions] = useState([
-		{ instruction: "", image: "" },
-	]);
-	const [image, setImage] = useState("");
+	const [title, setTitle] = useState(recipe.dataTitle);
+	const [portions, setPortions] = useState(recipe.dataPortions);
+	const [story, setStory] = useState(recipe.dataStory);
+	const [tags, setTags] = useState(recipe.dataTags);
+	const [type, setType] = useState(recipe.dataType);
+	const [ingredients, setIngredients] = useState(recipe.dataIngredients);
+	const [instructions, setInstructions] = useState(recipe.dataInstructions);
+	const [image, setImage] = useState(recipe.dataImage);
 
 	const mealTypeOptions = [
 		{ key: 1, label: "Breakfast", value: "Breakfast" },
 		{ key: 2, label: "Lunch", value: "Lunch" },
 		{ key: 3, label: "Dinner", value: "Dinner" },
-		{ key: 4, label: "Snack", value: "Snack" },
+		{ key: 4, label: "Snacks", value: "Snacks" },
+		{ key: 5, label: "Dessert", value: "Dessert" },
+		{ key: 6, label: "Drinks", value: "Drinks" },
 	];
 
 	// TAG
-	const [dishType, setDishType] = useState("Alcohol-Cocktail");
+	const [dishType, setDishType] = useState("");
 
-	const [cuisineType, setCuisineType] = useState("American");
+	const [cuisineType, setCuisineType] = useState("");
 
 	const [health, setHealth] = useState([]);
 
@@ -60,7 +68,6 @@ function RecipeForm(props) {
 	}
 
 	function handleChangePortions(portions) {
-		// console.log(portions);
 		setPortions(portions);
 	}
 
@@ -69,23 +76,67 @@ function RecipeForm(props) {
 	}
 
 	function handleChangeType(event) {
-		// console.log(event.target.value);
 		setType(event.target.value);
 	}
 
-	function handleChangeImage(event) {
-		console.log("main recipe image button clicked");
-		// setImage(event.target.value);
-	}
-
 	useEffect(() => {
-		// console.log(dishType, cuisineType, health);
 		setTags([dishType, cuisineType, ...health]);
 	}, [dishType, cuisineType, health]);
 
-	function handleSubmit(event) {
+	// [START] FUNCTIONS FOR IMAGE UPLOAD
+	const [previewSource, setPreviewSource] = useState();
+	const [previewSourceArr, setPreviewSourceArr] = useState([]);
+
+	function handleSubmitFile() {
+		console.log("main photo submitted");
+		if (!previewSource) {
+			handleFetch();
+		} else {
+			uploadImage(previewSource);
+		}
+	}
+
+	async function uploadImage(base64EncodedImage) {
+		try {
+			const response = await fetch("/api/upload", {
+				method: "POST",
+				body: JSON.stringify({ data: base64EncodedImage }),
+				headers: { "Content-type": "application/json" },
+			});
+			const data = await response.json();
+			setImage(data.url);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	// [END] FUNCTIONS FOR IMAGE UPLOAD
+
+	function handleSubmitForm(event) {
 		event.preventDefault();
-		// console.log(tags);
+		setIsSubmit(true);
+		handleSubmitFile();
+		console.log("handle submit form function called");
+	}
+
+	useEffect(() => {
+		if (title === "" || story === "" || type === "") {
+			setIsFormComplete(false);
+			console.log("form incomplete");
+		} else {
+			setIsFormComplete(true);
+			console.log("YAY form complete");
+		}
+	}, [title, story, type]);
+
+	useEffect(() => {
+		if (isSubmit === true) {
+			console.log("useEffect triggered", image);
+			handleFetch();
+		}
+	}, [image]);
+
+	function handleFetch() {
 		const recipe = {
 			title,
 			portions,
@@ -96,17 +147,11 @@ function RecipeForm(props) {
 			ingredients,
 			instructions,
 		};
-		console.log(recipe);
-		// addNewRecipe(recipe);
-		setTitle("");
-		setPortions(0);
-		setStory("");
-		setTags([]);
-		setType("Breakfast");
-		setIngredients([{ quantity: "", measure: "", food: "" }]);
-		setInstructions([{ instruction: "", image: "" }]);
-		setImage("");
+		console.log("save button pressed");
+		addNewRecipe(recipe);
 	}
+
+	// [END] FUNCTIONS FOR IMAGE UPLOAD
 
 	return (
 		<div className={styles.createRecipe}>
@@ -114,9 +159,12 @@ function RecipeForm(props) {
 				<FormControl className={styles.infoContainer}>
 					<div className={styles.flexIcon}>
 						<FormLabel htmlFor="title">Recipe:</FormLabel>
-						<AddRecipePhoto
-							className={styles.cameraIcon}
-							onClick={(event) => handleChangeImage(event)}
+						<Camera
+							image={image}
+							setImage={setImage}
+							previewSource={previewSource}
+							setPreviewSource={setPreviewSource}
+							photo="main-image"
 						/>
 					</div>
 					<Input
@@ -127,6 +175,7 @@ function RecipeForm(props) {
 						variant="flushed"
 						onChange={handleChangeTitle}
 						value={title}
+						isRequired
 					/>
 					<br />
 					<br />
@@ -147,7 +196,7 @@ function RecipeForm(props) {
 							size="sm"
 							maxW={20}
 							defaultValue={0}
-							min={0}
+							min={1}
 							onChange={(value) =>
 								handleChangePortions(value ? Number.parseInt(value) : 0)
 							}
@@ -161,17 +210,31 @@ function RecipeForm(props) {
 						</NumberInput>
 						<br />
 						<FormLabel htmlFor="type">Meal Type:</FormLabel>
-						<Select
-							focusBorderColor="#fb8500"
-							placeholder="Select"
-							onChange={handleChangeType}
-						>
-							{mealTypeOptions.map((mealTypeOption) => (
-								<option key={mealTypeOption.key} value={mealTypeOption.value}>
-									{mealTypeOption.label}
-								</option>
-							))}
-						</Select>
+						{!type ? (
+							<Select
+								focusBorderColor="#fb8500"
+								placeholder="Select"
+								onChange={handleChangeType}
+							>
+								{mealTypeOptions.map((mealTypeOption) => (
+									<option key={mealTypeOption.key} value={mealTypeOption.value}>
+										{mealTypeOption.label}
+									</option>
+								))}
+							</Select>
+						) : (
+							<Select
+								focusBorderColor="#fb8500"
+								placeholder={type}
+								onChange={handleChangeType}
+							>
+								{mealTypeOptions.map((mealTypeOption) => (
+									<option key={mealTypeOption.key} value={mealTypeOption.value}>
+										{mealTypeOption.label}
+									</option>
+								))}
+							</Select>
+						)}
 						<AddTags
 							tags={tags}
 							setTags={setTags}
@@ -192,10 +255,91 @@ function RecipeForm(props) {
 					setIngredients={setIngredients}
 					instructions={instructions}
 					setInstructions={setInstructions}
+					previewSourceArr={previewSourceArr}
+					setPreviewSourceArr={setPreviewSourceArr}
 				/>
-				<Button onClick={handleSubmit} colorScheme="teal" size="lg">
-					SAVE
-				</Button>
+				<div className={styles.buttonDiv}>
+					{!isFromComplete ? (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={onOpen}
+						>
+							SAVE
+						</Button>
+					) : (
+						<Button
+							border="1px"
+							bg="orange.main"
+							borderRadius="8px"
+							borderColor="orange.main"
+							color="blue.main"
+							size="lg"
+							_hover={{ bg: "orange.one" }}
+							_active={{
+								bg: "orange.one",
+								transform: "scale(0.98)",
+								borderColor: "orange.one",
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px orange.one, 0 1px 1px orange.main",
+							}}
+							onClick={(event) => {
+								onOpen();
+								handleSubmitForm(event);
+							}}
+						>
+							SAVE
+						</Button>
+					)}
+
+					{!isFromComplete ? (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>
+									Oops, you have not completed the recipe
+								</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Please add a title, story and meal type for your recipe.
+								</ModalBody>
+								<ModalFooter>
+									<Button onClick={onClose}>Close</Button>
+								</ModalFooter>
+							</ModalContent>
+						</Modal>
+					) : (
+						<Modal onClose={onClose} isOpen={isOpen} isCentered>
+							<ModalOverlay />
+							<ModalContent>
+								<ModalHeader>Save Recipe</ModalHeader>
+								<ModalCloseButton />
+								<ModalBody>
+									Recipe is being saved.
+									<br />
+									<Center>
+										<Spinner size="lg" />
+									</Center>
+								</ModalBody>
+								<ModalFooter></ModalFooter>
+							</ModalContent>
+						</Modal>
+					)}
+				</div>
 			</div>
 		</div>
 	);

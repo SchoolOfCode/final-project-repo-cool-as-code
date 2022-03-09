@@ -1,0 +1,19 @@
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tags {
+  margin: 0.5rem;
+  white-space: nowrap;
+  border-color: var(--clr-2);
+  border-width: thin;
+  color: var(--clr-w);
+  border-radius: 25px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  background-color: var(--clr-2);
+}

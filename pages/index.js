@@ -3,10 +3,11 @@ import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 //import { useRouter } from "next/router";
-
+import FadeIn from "react-fade-in/lib/FadeIn";
 import { useUser } from "@auth0/nextjs-auth0";
+import { Button } from "@chakra-ui/react";
 
-import LoginButton from "../components/LoginButton";
+
 
 const BgImage = dynamic(
   () => import("../components/BackgroundImage/BackgroundImage.js"),
@@ -37,7 +38,9 @@ export default function Home() {
 
   return (
     <>
+      <BgImage />
       <div className={styles.wrapper}>
+       <FadeIn delay={2000} transitionDuration={3000}  >
         <Image
           src="/image/logo_dark.png"
           alt="Foodstory Logo"
@@ -45,36 +48,41 @@ export default function Home() {
           height="608px"
           className={styles.logo}
           priority={true}
-        />
-        <LoginButton
-          className={styles.landingButton}
-          color="primary"
-          size="xl"
-          clickable="true"
-        >
-          <Link href="/api/auth/login">
-            <a>Login</a>
+        /></FadeIn>
+        <FadeIn delay={4000} transitionDuration={3000} >
+        <Button
+              width="200px"
+							border="1px"
+							bg="blue.main"
+							borderRadius="8px"
+							borderColor="blue.main"
+							color="white"
+							size="lg"
+							_hover={{ bg: "blue.four" ,color:"white" }}
+							_active={{
+								bg: "blue.one",
+								transform: "scale(0.98)",
+								borderColor: "blue.one",color:"white"
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px blue.four, 0 1px 1px blue.main",color:"white"
+									}}>
+					  <Link href="/api/auth/login">
+            <a className={styles.aTag}>Login</a>
           </Link>
-        </LoginButton>
-
+		
+						</Button>
+          </FadeIn>
         <Link href="/api/auth/logout">
-          <a>Logout</a>
+          <a id={styles.id}>Logout</a>
         </Link>
-
-        {/*  <div className="max-w-[500px] border-4 border-indigo-400 rounded-lg p-6 mx-auto text-3xl mt-16 font-bold text-indigo-700 text-center">
-       {user && (
-          <p className="mb-6">
-            <Link href="/home">
-              <a>Home</a>
-            </Link>
-            Welcome <span className="text-amber-600">{user.name}</span>
-          </p>
-        )}
-        {!user && (
-          <p>You are Not signed In, Please Sign In to view the Secret Pages.</p>
-        )}*/}
+<div></div>
+      <div></div>
       </div>
-      <BgImage />
+    
     </>
   );
 }
+
+
+         
