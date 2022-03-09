@@ -11,11 +11,13 @@ import { foodstory } from "../styles/theme.js"
 function MyApp({ Component, pageProps }) {
   let [state, setState] = useState({
     apiData: [],
+
     selectedRecipe: null,
     searchSuccess: false,
     searchResult: [],
     searchMessage: "",
   })
+
 
   return (
     <ChakraProvider theme={foodstory}>
@@ -29,7 +31,9 @@ function MyApp({ Component, pageProps }) {
         </UserProvider>
       </pageWrapper.Provider>
     </ChakraProvider>
-  )
+
+  );
+
 }
 
 export default MyApp

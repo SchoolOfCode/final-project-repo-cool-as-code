@@ -46,13 +46,14 @@ function BGImage() {
   if (width > height) {
     return (
       <div className={styles.box}>
-        <Image
+       {/* <Image
           src="/background_landscape.jpg"
           width={width}
           height={height}
           alt="Background Image"
           priority={true}
-        />
+        />*/}
+        <video id={styles.videoBackground} muted={true} autoPlay={true}  loop={false}  src="eating.mp4" type="video/mp4" style={{ width: 'auto', height: 'auto' }}/>
       </div>
     )
   }

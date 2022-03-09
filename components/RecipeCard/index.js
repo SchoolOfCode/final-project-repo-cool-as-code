@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
@@ -5,11 +6,14 @@ import { useRouter } from "next/router"
 //if no image exists
 import errImg from "../../public/image/no_image.jpg"
 
+
+
 //styles
-import CardStyles from "./RecipeCard.module.css"
-import { pageWrapper } from "../../pages/_app"
+import CardStyles from "./RecipeCard.module.css";
+import { pageWrapper } from "../../pages/_app";
 
 function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
+
   let { state, setState } = useContext(pageWrapper)
   const [imgSrc, setImgSrc] = useState(image)
   const router = useRouter()
@@ -50,5 +54,6 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
       </div>
     </>
   )
+
 }
-export default RecipeCard
+export default RecipeCard;
