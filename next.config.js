@@ -6,13 +6,13 @@ const nextConfig = {
 module.exports = nextConfig;
 
 module.exports = {
-
-
 	images: {
 		domains: ["https://i.ibb.co", "images.immediate.co.uk"],
 	},
 	env: {
-		API_URL: "http://localhost:3000/",
+
+		API_URL: "http://localhost:5000",
+
+	
 	},
 };
-

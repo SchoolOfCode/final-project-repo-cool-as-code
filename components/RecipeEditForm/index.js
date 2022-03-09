@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import AddTags from "../AddTags";
-import Camera from "../../components/Camera/Camera";
+import Camera from "../Camera/Camera";
 import { useDisclosure } from "@chakra-ui/react";
 
 import {
@@ -31,8 +31,8 @@ import {
 import styles from "./styles.module.css";
 import RecipeFormTabs from "../RecipeFormTabs";
 
-function RecipeForm(props) {
-	const { addNewRecipe, recipe } = props;
+function RecipeEditForm(props) {
+	const { editRecipeInfo, recipe, id } = props;
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [isSubmit, setIsSubmit] = useState(false);
@@ -118,7 +118,6 @@ function RecipeForm(props) {
 		handleSubmitFile();
 		console.log("handle submit form function called");
 	}
-
 	useEffect(() => {
 		if (title === "" || story === "" || type === "") {
 			setIsFormComplete(false);
@@ -148,11 +147,8 @@ function RecipeForm(props) {
 			instructions,
 		};
 		console.log("save button pressed");
-		addNewRecipe(recipe);
+		editRecipeInfo(recipe, id);
 	}
-
-	// [END] FUNCTIONS FOR IMAGE UPLOAD
-
 	return (
 		<div className={styles.createRecipe}>
 			<div className={styles.recipeForm}>
@@ -345,4 +341,4 @@ function RecipeForm(props) {
 	);
 }
 
-export default RecipeForm;
+export default RecipeEditForm;
