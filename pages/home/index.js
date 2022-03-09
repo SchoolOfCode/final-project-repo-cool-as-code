@@ -22,6 +22,7 @@ const Home = () => {
   let [initial, setInitial] = useState(false)
   let [results, setResults] = useState(false)
 
+  //useEffect for fecthing All recipes
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,30 +32,19 @@ const Home = () => {
           apiData: response.payload,
           apiMessage: response.message,
         })
-        // console.log(response, state.apiData, state.searchSuccess)
         setInitial(response.payload)
-        // {
-        //   state.searchSuccess && setResults(state.searchResult),
-        //     console.log("check state results:", state)
-        // }
       } catch (error) {
         //set error
       }
     }
     fetchData()
-    // }, [state.searchSuccess, results])
   }, [])
 
+  // useEffect for Search functionality
   useEffect(() => {
-    console.log(state.searchSuccess)
-    {
-      setResults(state.searchResult),
-        console.log("check state results:", state, "check results:", results)
-      // setState({
-      //   ...state,
-      //   searchSuccess: false,
-      // })
-    }
+    //console.log(results, state.searchResult)
+    setResults(state.searchResult)
+    //console.log("check state results:", state, "check results:", results)
   }, [state.searchMessage])
 
   return (
@@ -71,26 +61,28 @@ const Home = () => {
           <MtButton mealTypes="Dessert">Dessert</MtButton>
           <MtButton mealTypes="Drinks">Drinks</MtButton>
         </div>
-
-        {results && (
-          <Grid
-            header={`${results.length} Search Results: ${state.searchMessage}`}
-          >
-            {console.log(state.searchResult, state.searchMessage)}
-            {results.length > 0 &&
-              results.map((item, index) => (
-                <RecipeCard
-                  key={index}
-                  recipeId={item.id}
-                  image={item.image}
-                  recipeName={item.title}
-                  title={item.story}
-                  p1={item.type}
-                  p2={item.tags}
-                />
-              ))}
-          </Grid>
-        )}
+        {/* The logic for below needs work */}
+        {results &&
+          (console.log(!state.searchMessage.length),
+          (
+            <Grid
+              header={`${results.length} Search Results: ${state.searchMessage}`}
+            >
+              {console.log(state.searchResult, state.searchMessage)}
+              {results.length > 0 &&
+                results.map((item, index) => (
+                  <RecipeCard
+                    key={index}
+                    recipeId={item.id}
+                    image={item.image}
+                    recipeName={item.title}
+                    title={item.story}
+                    p1={item.type}
+                    p2={item.tags}
+                  />
+                ))}
+            </Grid>
+          ))}
 
         {/* {initial != undefined && console.log(state.apiData, initial)} */}
 

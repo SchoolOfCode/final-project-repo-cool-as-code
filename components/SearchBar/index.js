@@ -1,37 +1,60 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
+import React, { useState, useContext } from "react"
+
+// chakra ui search bar
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Button,
+} from "@chakra-ui/react"
 import { SearchIcon } from "@chakra-ui/icons"
 
+//useContext
 import { pageWrapper } from "../../pages/_app"
 
-function SearchBar({ setSearchTerm }) {
+//API fetch
+import API from "../APIconfig/API"
+
+function SearchBar() {
   let { state, setState } = useContext(pageWrapper)
   const [value, setValue] = useState("")
-  const initial = useRef(true)
   const handleChange = (event) => setValue(event.target.value)
 
-  useEffect(() => {
-    if (initial.current) {
-      initial.current = false
-      return
-    }
-  }, [setSearchTerm, value])
+  const fetchSearch = async (value) => {
+    const response = await API.fetchRecipesSearch(value)
+    //console.log(response)
+    response.message != "all recipes" &&
+      setState({
+        ...state,
+        searchSuccess: response.success,
+        searchResult: response.payload,
+        searchMessage: response.message,
+      })
+  }
+
+  const onClick = () => {
+    fetchSearch(value)
+    //console.log(state.searchMessage)
+  }
+
+  // useEffect(() => {
+  //   console.log(value)
+  //   value != "" && fetchSearch(value)
+  // }, [value])
 
   return (
-    <InputGroup display="flex" alignItems="center">
+    <InputGroup size="lg" outlineColor="darkgrey">
       <InputLeftElement
         pointerEvents="none"
         children={<SearchIcon color="gray.300" />}
       />
-      <Input
-        display="flex"
-        alignItems="center"
-        placeholder="Search Recipes"
-        size="md"
-        width="90%"
-        outlineColor="darkgrey"
-        onChange={handleChange}
-      />
+      <Input placeholder="Search Recipes" width="90%" onChange={handleChange} />
+      <InputRightElement width="4.5rem">
+        <Button h="1.75rem" size="sm" onClick={onClick}>
+          Search
+        </Button>
+      </InputRightElement>
     </InputGroup>
   )
 }
