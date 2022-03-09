@@ -10,6 +10,9 @@ module.exports = {
 		domains: ["https://i.ibb.co", "images.immediate.co.uk"],
 	},
 	env: {
+
 		API_URL: "http://localhost:5000",
+
+	
 	},
 };
