@@ -17,7 +17,7 @@ const BgImage = dynamic(
 );
 
 export default function Home() {
-  const { error, isLoading } = useUser();
+  const {user, error, isLoading } = useUser();
 
   // you can use the error and loading state to show an error message or a loading spinner while loading.
   if (isLoading) {
@@ -35,7 +35,7 @@ export default function Home() {
       </div>
     );
   }
-
+console.log(user)
   return (
     <>
       <BgImage />

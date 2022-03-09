@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
-//import { useUser } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0";
+
 import { pageWrapper } from "../_app"
 import FadeIn from "react-fade-in/lib/FadeIn";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
@@ -22,6 +23,10 @@ const Home = () => {
   let [initial, setInitial] = useState(false)
   let [results, setResults] = useState(false)
 
+  //useUser from Auth) to get user
+  const { user, error, isLoading } = useUser();
+  
+console.log(user)
   //useEffect for fecthing All recipes
   useEffect(() => {
     const fetchData = async () => {

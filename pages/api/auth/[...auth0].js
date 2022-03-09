@@ -7,8 +7,15 @@ export default handleAuth({
     async login(req, res) {
       await handleLogin(req, res, {
         returnTo: "/home",
-      });
+        authorizationParams: {
+          response_type: 'code',
+          scope: 'openid profile email',
+        }
+
+      })
+      ;
     },
-  });
+  })
+
 
 
