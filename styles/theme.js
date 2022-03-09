@@ -13,6 +13,8 @@ export const foodstory = extendTheme({
 			one: "#90dff7",
 			two: "#bbeaf8",
 			three: "#eefbff",
+			four:"#05547B"
+			
 		},
 		teal: {
 			main: "#219ebc",

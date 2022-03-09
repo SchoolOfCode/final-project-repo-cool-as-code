@@ -5,8 +5,9 @@ import Link from "next/link";
 //import { useRouter } from "next/router";
 import FadeIn from "react-fade-in/lib/FadeIn";
 import { useUser } from "@auth0/nextjs-auth0";
+import { Button } from "@chakra-ui/react";
 
-import LoginButton from "../components/LoginButton";
+
 
 const BgImage = dynamic(
   () => import("../components/BackgroundImage/BackgroundImage.js"),
@@ -49,16 +50,28 @@ export default function Home() {
           priority={true}
         /></FadeIn>
         <FadeIn delay={4000} transitionDuration={3000} >
-        <LoginButton
-          className={styles.landingButton}
-          color="primary"
-          size="xl"
-          clickable="true"
-        >
-          <Link href="/api/auth/login">
-            <a>Login</a>
+        <Button
+              width="200px"
+							border="1px"
+							bg="blue.main"
+							borderRadius="8px"
+							borderColor="blue.main"
+							color="white"
+							size="lg"
+							_hover={{ bg: "blue.four" ,color:"white" }}
+							_active={{
+								bg: "blue.one",
+								transform: "scale(0.98)",
+								borderColor: "blue.one",color:"white"
+							}}
+							_focus={{
+								boxShadow: "0 0 1px 2px blue.four, 0 1px 1px blue.main",color:"white"
+									}}>
+					  <Link href="/api/auth/login">
+            <a className={styles.aTag}>Login</a>
           </Link>
-        </LoginButton>
+		
+						</Button>
           </FadeIn>
         <Link href="/api/auth/logout">
           <a id={styles.id}>Logout</a>
@@ -70,3 +83,6 @@ export default function Home() {
     </>
   );
 }
+
+
+         

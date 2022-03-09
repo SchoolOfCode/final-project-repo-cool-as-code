@@ -34,11 +34,7 @@ const Header = () => {
                   <a>home</a>
                 </Link>
               </li>
-              <li className="list">
-                <Link href="/search">
-                  <a>search</a>
-                </Link>
-              </li>
+             
               <li className="list">
                 <Link href="/createRecipe">
                   <a>add recipe</a>

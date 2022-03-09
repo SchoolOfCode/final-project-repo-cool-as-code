@@ -19,7 +19,7 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
   const router = useRouter()
   function setId() {
     setState({ ...state, selectingRecipe: { recipeId } })
-    router.push("/showRecipe")
+    router.push("/Recipe")
   }
   const handleOnError = () => {
     // console.log("error on:", recipeId)

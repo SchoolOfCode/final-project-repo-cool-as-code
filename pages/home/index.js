@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 //import { useUser } from "@auth0/nextjs-auth0";
 import { pageWrapper } from "../_app"
-
+import FadeIn from "react-fade-in/lib/FadeIn";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 
 //styling
@@ -50,6 +50,9 @@ const Home = () => {
   return (
     <>
       <Header />
+      <FadeIn transitionDuration={500} delay={200}>
+      <h1 className={css.title}>What do you fancy?</h1>
+    </FadeIn>
       {/* <SearchInput /> */}
       <SearchBarWrapper />
       <div className={css.background}>
@@ -57,7 +60,7 @@ const Home = () => {
           <MtButton mealTypes="Breakfast">Breakfast</MtButton>
           <MtButton mealTypes="Lunch">Lunch</MtButton>
           <MtButton mealTypes="Dinner">Dinner</MtButton>
-          <MtButton mealTypes="Snack">Snacks</MtButton>
+          <MtButton mealTypes="Snacks">Snacks</MtButton>
           <MtButton mealTypes="Dessert">Dessert</MtButton>
           <MtButton mealTypes="Drinks">Drinks</MtButton>
         </div>
