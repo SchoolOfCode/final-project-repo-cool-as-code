@@ -11,7 +11,6 @@ const apiSettings = {
     return await (await fetch(endpoint)).json()
   },
   fetchRecipesByType: async (type) => {
-    //console.log(`${TYPE_BASE_URL}${type}`);
     const endpoint = `${TYPE_BASE_URL}${type}`
     return await (await fetch(endpoint)).json()
   },
@@ -32,5 +31,11 @@ const apiSettings = {
     return await (await fetch(endpoint)).json()
   },
   //  DELETE - /recipes/recipe_id - deleteRecipe
+  deleteRecipe: async (id) => {
+    const endpoint = await fetch(`${API_URL}recipes/${id}`, {
+      method: "DELETE",
+    })
+    return await (await fetch(endpoint)).json()
+  },
 }
 export default apiSettings

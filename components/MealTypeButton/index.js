@@ -1,7 +1,8 @@
 import { useContext, React } from "react"
-import Router from "next/router"
 
+//styles
 import styles from "./Button.module.css"
+
 //API
 import API from "../APIconfig/API"
 
@@ -14,17 +15,18 @@ export default function MtButton(props) {
 
   const fetchRecipesByType = async (mealTypes) => {
     const response = await API.fetchRecipesByType(mealTypes)
+    // console.log(mealTypes)
     setState({
       ...state,
-      apiData: response.payload,
-      apiMessage: response.message,
+      searchSuccess: response.success,
+      searchResult: response.payload,
+      searchMessage: response.message,
     })
-    console.log(state)
+    //console.log(response)
   }
 
   function getMeal() {
     fetchRecipesByType(mealTypes)
-    Router.push("/search")
   }
 
   return (
