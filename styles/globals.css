@@ -138,7 +138,7 @@ body {
 		font-size: clamp(0.1rem, 1vw + 0.5rem, 3.5rem);
 	}
 	.list_items .list a {
-		color: var(--clr-1);
+		color: var(--clr-3);
 	}
 	.close_icon {
 		display: block;
@@ -151,7 +151,7 @@ body {
 
 	.list_items .list a:hover,
 	.list_items .list a:focus {
-		color: var(--clr-3);
+		color: var(--clr-1);
 	}
 
 	.hamburger_icon .icon {
