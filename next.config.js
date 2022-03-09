@@ -10,9 +10,7 @@ module.exports = {
 		domains: ["https://i.ibb.co", "images.immediate.co.uk"],
 	},
 	env: {
-
 		API_URL: "https://recipe-soc-project.herokuapp.com",
-	
-	
+		// API_URL: "https://recipe-soc-project.herokuapp.com",
 	},
 };
