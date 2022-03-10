@@ -47,4 +47,12 @@
 	background-image: url("/bkgrd.jpg");
 	background-size: 1500px;
 	/* margin-top: 10vh; */
+
+}
+
+.newGrid{
+
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+	border:1px solid red;
 }
