@@ -45,7 +45,7 @@ const Home = () => {
     };
     fetchData();
   }, []);
-
+ 
   // useEffect for Search functionality
   useEffect(() => {
     //console.log(results, state.searchResult)
@@ -70,15 +70,16 @@ const Home = () => {
           <MtButton mealTypes="Dessert">Dessert</MtButton>
           <MtButton mealTypes="Drinks">Drinks</MtButton>
         </div>
+        <div>Your Search Results</div>
         {/* The logic for below needs work */}
         {results &&
           (console.log(!state.searchMessage.length),
           (
-            <Grid.Container gap={2} justify="flex-start" display="grid">
+            <Grid.Container   gap={2} justify="flex-start" >
               {console.log(state.searchResult, state.searchMessage)}
               {results.length > 0 &&
                 results.map((item, index) => (
-                  <Grid xs={6} sm={3} key={index}>
+                  <Grid xs={1} sm={1} key={index}>
                     <RecipeCard
                       key={index}
                       recipeId={item.id}
@@ -94,22 +95,24 @@ const Home = () => {
           ))}
 
         {/* {initial != undefined && console.log(state.apiData, initial)} */}
-
+<div>Your Recipes</div>
         {initial && (
-          <Grid.Container gap={2} justify="flex-start" display="grid" >
+          <Grid.Container gap={2} justify="flex-start" display="flex: " >
           {/*<Grid header={`Your Recipes ${""} `}>*/}
             {initial.length > 0 &&
               initial.map((item, index) => {
                 // console.log(item.id)
             
                 return (
+                 
                       <Grid xs={6} sm={3} key={index}>
+                   
                   <RecipeCard
                     key={index}
                     recipeId={item.id}
                     image={item.image}
                     recipeName={item.title}
-                    title={item.story}
+                   
                     p1={item.type}
                     p2={item.tags}
                   />
@@ -120,7 +123,8 @@ const Home = () => {
               </Grid.Container>
         )}
       </div>
-    </>
+      </>
+   
   );
 };
 

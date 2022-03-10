@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 const ourstory = () => {
   return (
-    <div>
+    <div className={styles.body}>
       <Header />
       <h1 className={styles.title}>Our Story</h1>
       <Center>
@@ -15,6 +15,7 @@ const ourstory = () => {
           layout="intrinsic"
           width={500}
           height={200}
+        
         />
       </Center>
       <div className={styles.flex}>

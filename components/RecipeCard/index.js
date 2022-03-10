@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Card, Grid, Row, Text } from "@nextui-org/react";
+import { Card, Grid, Row, Text ,Spacer , Button, Divider} from "@nextui-org/react";
 
 //if no image exists
 import errImg from "../../public/image/no_image.jpg";
@@ -58,17 +58,44 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
             objectFit="cover"
             src={imgSrc.length > 0 || imgSrc === null ? imgSrc : errImg}
             width="100%"
-            height={140}
+            height={250}
             alt={title}
           />
-        </Card.Body>
-        <Card.Footer justify="flex-start">
-          <Row wrap="wrap" justify="space-between">
-            <Text b>{recipeName}</Text>
+
+
+<Row justify="center" align="center">
+
+            <Text h1 size={20}>{recipeName}</Text>
+        
+            </Row>
+            <Divider/>
+          
+            <Spacer y={1}/>
+    
+            <Row justify="center" align="center">
+            <Text color="orange" h3 size={20}>{p1}</Text>
+            </Row>
+         
+           
+            <Row justify="center" align="center">
+            <Text h3 size={15}>{p2}</Text>
+            </Row>
+            <Spacer y={2}/>
             <Text css={{ color: "$accents4", fontWeight: "$semibold" }}>
               {title}
             </Text>
+               <Divider/>
+               <Spacer y={1}/>
+            <Row justify="center" align="center">
+         
+            <Button onClick={()=>setId()} flat auto rounded css={{ color: 'White', bg: '#023047;' }}>Show Recipe</Button>
           </Row>
+       
+        </Card.Body>
+        
+
+        <Card.Footer justify="flex-start">
+          
         </Card.Footer>
       </Card>
       {/* </Grid> */}
