@@ -1,7 +1,15 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Card, Grid, Row, Text ,Spacer , Button, Divider} from "@nextui-org/react";
+import {
+	Card,
+	Grid,
+	Row,
+	Text,
+	Spacer,
+	Button,
+	Divider,
+} from "@nextui-org/react";
 
 //if no image exists
 import errImg from "../../public/image/no_image.jpg";
@@ -11,20 +19,20 @@ import CardStyles from "./RecipeCard.module.css";
 import { pageWrapper } from "../../pages/_app";
 
 function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
-  let { state, setState } = useContext(pageWrapper);
-  const [imgSrc, setImgSrc] = useState(image);
-  const router = useRouter();
-  function setId() {
-    setState({ ...state, selectingRecipe: { recipeId } });
-    router.push("/Recipe");
-  }
-  const handleOnError = () => {
-    // console.log("error on:", recipeId)
-    setImgSrc(errImg);
-  };
-  return (
-    <>
-      {/* <div>
+	let { state, setState } = useContext(pageWrapper);
+	const [imgSrc, setImgSrc] = useState(image);
+	const router = useRouter();
+	function setId() {
+		setState({ ...state, selectingRecipe: { recipeId } });
+		router.push("/Recipe");
+	}
+	const handleOnError = () => {
+		// console.log("error on:", recipeId)
+		setImgSrc(errImg);
+	};
+	return (
+		<>
+			{/* <div>
         <div className={CardStyles.flip_card}>
           <div className={CardStyles.flip_card_inner}>
             <div className={CardStyles.flip_card_front}>
@@ -49,59 +57,64 @@ function RecipeCard({ recipeId, image, recipeName, title, p1, p2 }) {
           </div>
         </div>
       </div> */}
-      {/* <Grid.Container gap={2} justify="flex-start">
+			{/* <Grid.Container gap={2} justify="flex-start">
         {list.map((item, index) => ( */}
-      {/* <Grid xs={6} sm={3} key={index}> */}
-      <Card hoverable clickable>
-        <Card.Body css={{ p: 0 }}>
-          <Card.Image
-            objectFit="cover"
-            src={imgSrc.length > 0 || imgSrc === null ? imgSrc : errImg}
-            width="100%"
-            height={250}
-            alt={title}
-          />
+			{/* <Grid xs={6} sm={3} key={index}> */}
+			<Card hoverable clickable>
+				<Card.Body css={{ p: 0 }}>
+					<Card.Image
+						objectFit="cover"
+						src={imgSrc ? imgSrc : errImg}
+						width="100%"
+						height={250}
+						alt={title}
+					/>
 
+					<Row justify="center" align="center">
+						<Text h1 size={20}>
+							{recipeName}
+						</Text>
+					</Row>
+					<Divider />
 
-<Row justify="center" align="center">
+					<Spacer y={1} />
 
-            <Text h1 size={20}>{recipeName}</Text>
-        
-            </Row>
-            <Divider/>
-          
-            <Spacer y={1}/>
-    
-            <Row justify="center" align="center">
-            <Text color="orange" h3 size={20}>{p1}</Text>
-            </Row>
-         
-           
-            <Row justify="center" align="center">
-            <Text h3 size={15}>{p2}</Text>
-            </Row>
-            <Spacer y={2}/>
-            <Text css={{ color: "$accents4", fontWeight: "$semibold" }}>
-              {title}
-            </Text>
-               <Divider/>
-               <Spacer y={1}/>
-            <Row justify="center" align="center">
-         
-            <Button onClick={()=>setId()} flat auto rounded css={{ color: 'White', bg: '#023047;' }}>Show Recipe</Button>
-          </Row>
-       
-        </Card.Body>
-        
+					<Row justify="center" align="center">
+						<Text color="orange" h3 size={20}>
+							{p1}
+						</Text>
+					</Row>
 
-        <Card.Footer justify="flex-start">
-          
-        </Card.Footer>
-      </Card>
-      {/* </Grid> */}
-      {/* ))}
+					<Row justify="center" align="center">
+						<Text h3 size={15}>
+							{p2}
+						</Text>
+					</Row>
+					<Spacer y={2} />
+					<Text css={{ color: "$accents4", fontWeight: "$semibold" }}>
+						{title}
+					</Text>
+					<Divider />
+					<Spacer y={1} />
+					<Row justify="center" align="center">
+						<Button
+							onClick={() => setId()}
+							flat
+							auto
+							rounded
+							css={{ color: "White", bg: "#023047;" }}
+						>
+							Show Recipe
+						</Button>
+					</Row>
+				</Card.Body>
+
+				<Card.Footer justify="flex-start"></Card.Footer>
+			</Card>
+			{/* </Grid> */}
+			{/* ))}
       </Grid.Container> */}
-    </>
-  );
+		</>
+	);
 }
 export default RecipeCard;
