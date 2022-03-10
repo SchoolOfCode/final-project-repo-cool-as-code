@@ -90,9 +90,9 @@ function RecipeEditForm(props) {
   function handleSubmitFile() {
     console.log("main photo submitted");
     if (!previewSource) {
-      setImage(
-        "https://images.pexels.com/photos/2255924/pexels-photo-2255924.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-      );
+      // setImage(
+      //   "https://images.pexels.com/photos/2255924/pexels-photo-2255924.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      // );
       handleFetch();
     } else {
       uploadImage(previewSource);
