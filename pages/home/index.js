@@ -7,7 +7,6 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 import { Grid } from "@nextui-org/react";
 
-
 //styling
 import css from "../home/Home.module.css";
 
@@ -16,8 +15,6 @@ import Header from "../../components/Header";
 import MtButton from "../../components/MealTypeButton";
 
 //import Grid from "../../components/Grid";
-
-
 
 import RecipeCard from "../../components/RecipeCard";
 
@@ -81,7 +78,7 @@ const Home = () => {
         {results &&
           (console.log(!state.searchMessage.length),
           (
-            <Grid.Container   gap={2} justify="flex-start" >
+            <Grid.Container gap={2} justify="flex-start">
               {console.log(state.searchResult, state.searchMessage)}
               {results.length > 0 &&
                 results.map((item, index) => (
@@ -101,40 +98,31 @@ const Home = () => {
           ))}
 
         {/* {initial != undefined && console.log(state.apiData, initial)} */}
-<div>Your Recipes</div>
+        <div>Your Recipes</div>
         {initial && (
-          <Grid.Container gap={2} justify="flex-start" display="flex: " >
-          {/*<Grid header={`Your Recipes ${""} `}>*/}
+          <Grid.Container gap={2} justify="flex-start" display="flex: ">
+            {/*<Grid header={`Your Recipes ${""} `}>*/}
             {initial.length > 0 &&
               initial.map((item, index) => {
                 // console.log(item.id)
-            
+
                 return (
-                 
-                      <Grid xs={6} sm={3} key={index}>
-                   
-                  <RecipeCard
-                    key={index}
-                    recipeId={item.id}
-                    image={item.image}
-                    recipeName={item.title}
-                   
-                    p1={item.type}
-                    p2={item.tags}
-                  />
-
-  </Grid>
+                  <Grid xs={8} sm={3} key={index}>
+                    <RecipeCard
+                      key={index}
+                      recipeId={item.id}
+                      image={item.image}
+                      recipeName={item.title}
+                      p1={item.type}
+                      p2={item.tags}
+                    />
+                  </Grid>
                 );
-              
-
               })}
-              </Grid.Container>
+          </Grid.Container>
         )}
       </div>
-
-      </>
-   
-
+    </>
   );
 };
 
