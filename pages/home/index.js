@@ -4,7 +4,9 @@ import { useUser } from "@auth0/nextjs-auth0";
 import { pageWrapper } from "../_app";
 import FadeIn from "react-fade-in/lib/FadeIn";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
 import { Grid } from "@nextui-org/react";
+
 
 //styling
 import css from "../home/Home.module.css";
@@ -12,7 +14,11 @@ import css from "../home/Home.module.css";
 //components
 import Header from "../../components/Header";
 import MtButton from "../../components/MealTypeButton";
+
 //import Grid from "../../components/Grid";
+
+
+
 import RecipeCard from "../../components/RecipeCard";
 
 //API
@@ -45,7 +51,7 @@ const Home = () => {
     };
     fetchData();
   }, []);
- 
+
   // useEffect for Search functionality
   useEffect(() => {
     //console.log(results, state.searchResult)
@@ -116,15 +122,19 @@ const Home = () => {
                     p1={item.type}
                     p2={item.tags}
                   />
+
   </Grid>
                 );
               
+
               })}
               </Grid.Container>
         )}
       </div>
+
       </>
    
+
   );
 };
 
