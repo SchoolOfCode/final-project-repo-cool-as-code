@@ -56,3 +56,9 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 	border:1px solid red;
 }
+
+.heading{
+
+font-size: 2em;
+
+}

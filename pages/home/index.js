@@ -64,6 +64,7 @@ const Home = () => {
       </FadeIn>
       {/* <SearchInput /> */}
       <SearchBarWrapper />
+     
       <div className={css.background}>
         <div className={css.buttons}>
           <MtButton mealTypes="Breakfast">Breakfast</MtButton>
@@ -73,7 +74,7 @@ const Home = () => {
           <MtButton mealTypes="Dessert">Dessert</MtButton>
           <MtButton mealTypes="Drinks">Drinks</MtButton>
         </div>
-        <div>Your Search Results</div>
+        <div className={css.heading}>{`${results.length} Search results ${state.searchMessage}`}</div>
         {/* The logic for below needs work */}
         {results &&
           (console.log(!state.searchMessage.length),
@@ -82,7 +83,7 @@ const Home = () => {
               {console.log(state.searchResult, state.searchMessage)}
               {results.length > 0 &&
                 results.map((item, index) => (
-                  <Grid xs={1} sm={1} key={index}>
+                  <Grid xs={8} sm={3} key={index}>
                     <RecipeCard
                       key={index}
                       recipeId={item.id}
@@ -98,7 +99,7 @@ const Home = () => {
           ))}
 
         {/* {initial != undefined && console.log(state.apiData, initial)} */}
-        <div>Your Recipes</div>
+        <div className={css.heading}>Your Recipes</div>
         {initial && (
           <Grid.Container gap={2} justify="flex-start" display="flex: ">
             {/*<Grid header={`Your Recipes ${""} `}>*/}
