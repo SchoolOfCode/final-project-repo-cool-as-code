@@ -9,7 +9,7 @@ describe("Navigation", () => {
 
     //Click on logout on navbar, its redirected to home page
 
-    cy.contains("logout").click();
+    //cy.contains("logout").click();
 
     //  "add recipe" is clicked and navigates to create recipe form
 
@@ -27,5 +27,7 @@ describe("Navigation", () => {
 
     // // The new page should contain an h1 with "About page"
     // cy.get("h1").contains("About Page");
+
+    cy.clearAuth0Cookies();
   });
 });
