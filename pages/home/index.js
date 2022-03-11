@@ -85,13 +85,13 @@ const Home = () => {
 							{console.log(state.searchResult, state.searchMessage)}
 							{results.length > 0 &&
 								results.map((item, index) => (
-									<Grid xs={8} sm={3} key={index}>
+									<Grid xs={12} sm={3} key={index}>
 										<RecipeCard
 											key={index}
 											recipeId={item.id}
 											image={item.image}
 											recipeName={item.title}
-											title={item.story}
+											// title={item.story}
 											p1={item.type}
 											p2={item.tags}
 										/>
