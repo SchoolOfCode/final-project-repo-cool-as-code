@@ -1,13 +1,10 @@
 import React, { useState, useContext } from "react"
 
+//style
+import SBstyles from "./SearchBar.module.css"
+
 // chakra ui search bar
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Button,
-} from "@chakra-ui/react"
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import { SearchIcon } from "@chakra-ui/icons"
 
 //useContext
@@ -19,7 +16,7 @@ import API from "../APIconfig/API"
 function SearchBar() {
   let { state, setState } = useContext(pageWrapper)
   const [value, setValue] = useState("")
-  const handleChange = (event) => setValue(event.target.value)
+  //const handleChange = (event) => setValue(event.target.value)
 
   const fetchSearch = async (value) => {
     const response = await API.fetchRecipesSearch(value)
@@ -33,28 +30,29 @@ function SearchBar() {
       })
   }
 
-  const onClick = () => {
-    fetchSearch(value)
-    //console.log(state.searchMessage)
-  }
-
-  // useEffect(() => {
-  //   console.log(value)
-  //   value != "" && fetchSearch(value)
-  // }, [value])
+  // const onClick = () => {
+  //   fetchSearch(value)
+  //   //console.log(state.searchMessage)
+  // }
 
   return (
-    <InputGroup size="lg" outlineColor="darkgrey">
+    <InputGroup size="lg">
       <InputLeftElement
         pointerEvents="none"
         children={<SearchIcon color="gray.300" />}
       />
-      <Input placeholder="Search Recipes" width="90%" onChange={handleChange} />
-      <InputRightElement width="4.5rem">
-        <Button h="1.75rem" size="sm" onClick={onClick}>
-          Search
-        </Button>
-      </InputRightElement>
+      <Input
+        placeholder="Search Recipes"
+        outlineColor="darkgrey"
+        width="90%"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            fetchSearch(value)
+          }
+        }}
+      />
     </InputGroup>
   )
 }
